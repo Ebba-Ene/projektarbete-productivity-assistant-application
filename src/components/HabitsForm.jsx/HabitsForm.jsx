@@ -2,28 +2,27 @@ import { useState, useContext } from "react"
 import { HabitsContext } from "../../context/HabitsContext"
 
 const HabitsForm = () => {
-  const { habits, addHabit } = useContext(HabitsContext)
+  const { addHabit } = useContext(HabitsContext)
   const [priority, setPriority] = useState(null)
   const [reps, setReps] = useState(null)
   const [title, setTitle] = useState(null)
   const [isError, setIsError] = useState(null)
 
   const checkInput = () => {
-    console.log("in checkinput function")
-    console.log(`prio, reps och title är : ${title} ${reps} ${priority}`)
     priority
     if (!title || !reps || !priority) {
       setIsError(true)
     } else if (title && reps && priority) {
+      const newHabit = {
+        title,
+        repetitions: +reps,
+        priority,
+      }
       setIsError(false)
+      addHabit(newHabit)
     }
   }
 
-  const newHabit = {
-    title,
-    reps,
-    priority,
-  }
   return (
     <>
       <h1>HabitsForm component</h1>
@@ -68,7 +67,7 @@ const HabitsForm = () => {
       {isError && (
         <p>
           Se till att fylla ut <strong>all information</strong> innan du skapar
-          en ny vana
+          en ny vana!
         </p>
       )}
     </>
