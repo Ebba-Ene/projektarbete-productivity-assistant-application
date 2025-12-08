@@ -10,10 +10,8 @@ const HabitsForm = () => {
     console.log(`prio, reps och title är : ${title} ${reps} ${priority}`)
     priority
     if (!title || !reps || !priority) {
-      alert("Se till att fylla ut all information innan du skapar en ny vana")
       setIsError(true)
     } else if (title && reps && priority) {
-      alert("all information finns skapar en ny vana")
       setIsError(false)
     }
   }
