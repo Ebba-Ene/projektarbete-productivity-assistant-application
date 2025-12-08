@@ -1,0 +1,12 @@
+.habitCard{
+    display:flex;
+    flex-direction: column;
+    background-color:rgb(245, 193, 253);
+    border-radius:1rem;
+    align-items: center;
+}
+.grid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:1rem;
+}
