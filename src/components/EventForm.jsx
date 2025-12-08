@@ -20,6 +20,16 @@ const EventForm = () => {
     const [name, setName] = useState("");
 
     const handleAdd = () => {
+        if (new Date(start) < now) {
+            alert("Du kan inte välja ett förflutet datum.");
+            return;
+        }
+
+        if (new Date(end) < new Date(start)) {
+            alert("Sluttiden kan inte vara före starttiden.");
+            return;
+        }
+
         addEvent(start, end, name);
         setName("");
     };
@@ -27,11 +37,12 @@ const EventForm = () => {
     return (
         <>
             <h3>Add Event</h3>
+
             <label>Start</label>
             <input type="datetime-local" value={start} min={formatDateTimeLocal(now)} onChange={(e) => setStart(e.target.value)}/>
             
             <label>End</label>
-            <input type="datetime-local" value={end} min={formatDateTimeLocal(now)} onChange={(e) => setEnd(e.target.value)}/>
+            <input type="datetime-local" value={end} min={start} onChange={(e) => setEnd(e.target.value)}/>
             
             <label>Event</label>
             <input type="text" value={name} placeholder="Event name" onChange={(e) => setName(e.target.value)}/>
