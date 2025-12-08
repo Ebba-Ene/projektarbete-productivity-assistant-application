@@ -9,12 +9,12 @@ const EventList = () => {
         <>
             <h3>All Events</h3>
             <ul>
-                {events.map((event, index) => (
-                    <EventItem key={index} event={event}/>
+                {events.map((event) => (
+                    <EventItem key={event.id} event={event}/>
                 ))}
             </ul>
         </>
     );
-}
+};
 
 export default EventList;
