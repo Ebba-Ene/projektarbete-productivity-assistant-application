@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home"
 import Todo from "./pages/Todo/Todo"
 import EventPlanner from "./pages/EventPlanner/EventPlanner"
 import Habits from "./pages/Habits/Habits"
-import Navigation from "./components/Navigation"
+import Navigation from "./components/Navigation/Navigation"
 
 function App() {
   return (
