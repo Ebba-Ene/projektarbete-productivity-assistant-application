@@ -3,6 +3,20 @@ const HabitsForm = () => {
   const [priority, setPriority] = useState(null)
   const [reps, setReps] = useState(null)
   const [title, setTitle] = useState(null)
+  const [isError, setIsError] = useState(null)
+
+  const checkInput = () => {
+    console.log("in checkinput function")
+    console.log(`prio, reps och title är : ${title} ${reps} ${priority}`)
+    priority
+    if (!title || !reps || !priority) {
+      alert("Se till att fylla ut all information innan du skapar en ny vana")
+      setIsError(true)
+    } else if (title && reps && priority) {
+      alert("all information finns skapar en ny vana")
+      setIsError(false)
+    }
+  }
   return (
     <>
       <h1>HabitsForm component</h1>
@@ -39,11 +53,18 @@ const HabitsForm = () => {
       </select>
       <button
         onClick={() => {
-          console.log(`prio, reps och title är : ${title} ${reps} ${priority}`)
+          /* console.log(`prio, reps och title är : ${title} ${reps} ${priority}`) */
+          checkInput()
         }}
       >
         Lägg till vana
       </button>
+      {isError && (
+        <p>
+          Se till att fylla ut <strong>all information</strong> innan du skapar
+          en ny vana
+        </p>
+      )}
     </>
   )
 }
