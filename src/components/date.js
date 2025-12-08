@@ -17,10 +17,3 @@ export const formatDisplayDate = (date) =>
     dateStyle: "long",
     timeStyle: "short",
   });
-
-export const validateDates = (start, end) => {
-  const now = new Date();
-
-  new Date(start) < now ? "Du kan inte välja ett förflutet datum." : null;
-  new Date(end) < new Date(start) ? "Sluttiden kan inte vara före starttiden." : null;
-};

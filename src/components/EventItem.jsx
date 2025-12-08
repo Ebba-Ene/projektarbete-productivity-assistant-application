@@ -1,7 +1,7 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { EventContext } from "../context/EventContext"
 import EventInputs from "./EventInputs";
-import { formatDisplayDate, validateDates } from "./date";
+import { formatDisplayDate } from "./date";
 
 const EventItem = ({ event }) => {
     const { removeEvent, editEvent } = useContext(EventContext);
@@ -12,6 +12,13 @@ const EventItem = ({ event }) => {
     const [start, setStart] = useState(event.start);
     const [end, setEnd] = useState(event.end);
 
+    useEffect(() => {
+        if (new Date(end) < new Date(start)) {
+            setEnd(start);
+        }
+    }, [start]);
+
+
     const cancelEdit = () => {
         setStart(event.start);
         setEnd(event.end);
@@ -20,9 +27,20 @@ const EventItem = ({ event }) => {
     }
 
     const saveEdit = () => {
-        const error = validateDates(start, end)
-        if (error) {
-            alert(error);
+        const now = new Date();
+
+        if (name === "") {
+            alert("Eventet måste ha ett namn.");
+            return;
+        }
+
+        if (new Date(start) < now) {
+            alert("Du kan inte välja ett förflutet datum.");
+            return;
+        }
+
+        if (new Date(end) < new Date(start)) {
+            alert("Sluttiden kan inte vara före starttiden.");
             return;
         }
 
