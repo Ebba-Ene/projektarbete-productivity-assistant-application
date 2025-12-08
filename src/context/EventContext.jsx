@@ -25,6 +25,7 @@ const EventProvider = ({ children }) => {
     const editedEventList = events.map((event) => 
       event.id === id ? {...event, start, end, name} : event
     );
+    
     setEvents(editedEventList);
   };
 

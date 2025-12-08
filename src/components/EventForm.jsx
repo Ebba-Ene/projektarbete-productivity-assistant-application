@@ -1,35 +1,24 @@
 import { useContext, useState } from "react";
 import { EventContext } from "../context/EventContext";
+import EventInputs from "./EventInputs";
+import { formatDateTimeLocal, validateDates } from "./date";
 
 const EventForm = () => {
     const { addEvent } = useContext(EventContext)
 
     const now = new Date();
-    const formatDateTimeLocal = (date) => {
-        const pad = (d) => d.toString().padStart(2, "0");
-        const year = date.getFullYear();
-        const month = pad(date.getMonth() + 1);
-        const day = pad(date.getDate());
-        const hours = pad(date.getHours());
-        const minutes = pad(date.getMinutes());
-        return `${year}-${month}-${day}T${hours}:${minutes}`;
-    };
 
     const [start, setStart] = useState(formatDateTimeLocal(now));
     const [end, setEnd] = useState(formatDateTimeLocal(now));
     const [name, setName] = useState("");
 
     const handleAdd = () => {
-        if (new Date(start) < now) {
-            alert("Du kan inte välja ett förflutet datum.");
+        const error = validateDates(start, end);
+        if (error) {
+            alert(error);
             return;
         }
-
-        if (new Date(end) < new Date(start)) {
-            alert("Sluttiden kan inte vara före starttiden.");
-            return;
-        }
-
+        
         addEvent(start, end, name);
         setName("");
     };
@@ -38,14 +27,7 @@ const EventForm = () => {
         <>
             <h3>Add Event</h3>
 
-            <label>Start</label>
-            <input type="datetime-local" value={start} min={formatDateTimeLocal(now)} onChange={(e) => setStart(e.target.value)}/>
-            
-            <label>End</label>
-            <input type="datetime-local" value={end} min={start} onChange={(e) => setEnd(e.target.value)}/>
-            
-            <label>Event</label>
-            <input type="text" value={name} placeholder="Event name" onChange={(e) => setName(e.target.value)}/>
+            <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
 
             <button onClick={handleAdd}>Add</button>
         </>

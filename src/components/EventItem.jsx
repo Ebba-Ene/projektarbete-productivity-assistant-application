@@ -1,5 +1,7 @@
 import { useContext, useState } from "react"
 import { EventContext } from "../context/EventContext"
+import EventInputs from "./EventInputs";
+import { formatDisplayDate, validateDates } from "./date";
 
 const EventItem = ({ event }) => {
     const { removeEvent, editEvent } = useContext(EventContext);
@@ -10,27 +12,6 @@ const EventItem = ({ event }) => {
     const [start, setStart] = useState(event.start);
     const [end, setEnd] = useState(event.end);
 
-    const now = new Date();
-
-    const formatDateTimeLocal = (date) => {
-        const d = new Date(date);
-
-        const pad = (v) => v.toString().padStart(2, "0");
-        const year = d.getFullYear();
-        const month = pad(d.getMonth() + 1);
-        const day = pad(d.getDate());
-        const hours = pad(d.getHours());
-        const minutes = pad(d.getMinutes());
-        return `${year}-${month}-${day}T${hours}:${minutes}`;
-    };
-
-    const formatDisplayDate = (date) => {
-            return new Date(date).toLocaleString("sv-SE", {
-            dateStyle: "long",
-            timeStyle: "short",
-        });
-    };
-
     const cancelEdit = () => {
         setStart(event.start);
         setEnd(event.end);
@@ -39,13 +20,9 @@ const EventItem = ({ event }) => {
     }
 
     const saveEdit = () => {
-        if (new Date(start) < now) {
-            alert("Du kan inte välja ett förflutet datum.");
-            return;
-        }
-
-        if (new Date(end) < new Date(start)) {
-            alert("Sluttiden kan inte vara före starttiden.");
+        const error = validateDates(start, end)
+        if (error) {
+            alert(error);
             return;
         }
 
@@ -58,14 +35,7 @@ const EventItem = ({ event }) => {
             <li>
                 {isEditing ? (
                     <>
-                        <label>Start</label>
-                        <input type="datetime-local" value={formatDateTimeLocal(start)} min={formatDateTimeLocal(now)} onChange={(e) => setStart(e.target.value)}/>
-
-                        <label>End</label>
-                        <input type="datetime-local" value={formatDateTimeLocal(end)} min={start} onChange={(e) => setEnd(e.target.value)}/>
-
-                        <label>Event name</label>
-                        <input type="text" value={name} placeholder="Event name" onChange={(e) => setName(e.target.value)}/>
+                        <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
 
                         <button onClick={cancelEdit}>Cancel</button>
                         <button onClick={saveEdit}>Save</button>
