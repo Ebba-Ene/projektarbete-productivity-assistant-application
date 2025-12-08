@@ -7,6 +7,7 @@ const EventProvider = ({ children }) => {
 
   const addEvent = (start, end, name) => {
     const newEvent = {
+      id: crypto.randomUUID(),
       start,
       end,
       name,
@@ -15,12 +16,20 @@ const EventProvider = ({ children }) => {
     setEvents([...events, newEvent]);
   };
 
-  const removeEvent = (event) => {
-    setEvents(events.filter((e) => e !== event));
+  const removeEvent = (id) => {
+    const remainingEvents = events.filter((event) => id !== event.id);
+    setEvents(remainingEvents);
+  };
+
+  const editEvent = (id, start, end, name) => {
+    const editedEventList = events.map((event) => 
+      event.id === id ? {...event, start, end, name} : event
+    );
+    setEvents(editedEventList);
   };
 
   return (
-    <EventContext value={{ events, addEvent, removeEvent }}>
+    <EventContext value={{ events, addEvent, removeEvent, editEvent }}>
       {children}
     </EventContext>
   );
