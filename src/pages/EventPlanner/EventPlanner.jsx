@@ -52,6 +52,7 @@ const EventPlanner = () => {
     <>
       <h2>Event Planner</h2>
       <div>
+        <h3>Add Event</h3>
         <label>Start</label>
         <input
           type="datetime-local"
@@ -78,10 +79,11 @@ const EventPlanner = () => {
 
         <button onClick={addEvent}>Add</button>
 
+        <h3>All Events</h3>
         <ul>
           {events.map((event, index) => (
             <li key={index}>
-              {event.start}-{event.end}: <strong>{event.name}</strong>
+              {event.start} – {event.end}: <strong>{event.name}</strong>
               <button onClick={() => removeEvent(event)}>Remove</button>
             </li>
           ))}
