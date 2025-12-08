@@ -11,7 +11,6 @@ function App() {
     <>
       <BrowserRouter>
         <Navigation />
-        <h1>Startsida</h1>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/todo" element={<Todo />} />
