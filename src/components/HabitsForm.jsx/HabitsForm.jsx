@@ -1,5 +1,8 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { HabitsContext } from "../../context/HabitsContext"
+
 const HabitsForm = () => {
+  const { habits, addHabit } = useContext(HabitsContext)
   const [priority, setPriority] = useState(null)
   const [reps, setReps] = useState(null)
   const [title, setTitle] = useState(null)
@@ -14,6 +17,12 @@ const HabitsForm = () => {
     } else if (title && reps && priority) {
       setIsError(false)
     }
+  }
+
+  const newHabit = {
+    title,
+    reps,
+    priority,
   }
   return (
     <>
@@ -51,7 +60,6 @@ const HabitsForm = () => {
       </select>
       <button
         onClick={() => {
-          /* console.log(`prio, reps och title är : ${title} ${reps} ${priority}`) */
           checkInput()
         }}
       >
