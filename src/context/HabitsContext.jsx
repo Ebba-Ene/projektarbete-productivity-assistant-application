@@ -11,8 +11,16 @@ const HabitsProvider = ({ children }) => {
   const showArray = (habits) => {
     console.log("showArray function sees habits as: " + JSON.stringify(habits))
   }
+  const addHabit = (newHabit) => {
+    console.log(JSON.stringify(newHabit))
+    setHabits([...habits, newHabit])
+  }
 
-  return <HabitsContext value={{ habits, showArray }}>{children}</HabitsContext>
+  return (
+    <HabitsContext value={{ habits, showArray, addHabit }}>
+      {children}
+    </HabitsContext>
+  )
 }
 
 export default HabitsProvider
