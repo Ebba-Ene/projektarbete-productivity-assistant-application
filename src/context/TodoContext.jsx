@@ -3,6 +3,8 @@ import { createContext, useState } from "react";
 export const TodoContext = createContext()
 
 const TodoProvider = ({children}) => {
+  
+  const[show, setShow] = useState(false)
 
   const [todos, setTodos] = useState([{ //Kommer vara tom, objektet finns bara för att testa
     title: "Städa",
@@ -18,11 +20,15 @@ const TodoProvider = ({children}) => {
     timeEstimate: "40min",
     category: "Hälsa",
     deadline: "10 december"
-  },
+  }
 ])
+
+  const addTodo = (todo) => {
+    setTodos([...todos, todo])
+  }
   
   return(
-    <TodoContext value={{todos}}>
+    <TodoContext value={{todos, addTodo, show, setShow}}>
       {children}
     </TodoContext>
   )
