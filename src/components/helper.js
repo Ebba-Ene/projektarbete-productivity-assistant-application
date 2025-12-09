@@ -18,14 +18,14 @@ export const formatDisplayDate = (date) =>
   });
 
 export const useSyncEndWithStart = (start, end, setEnd) => {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
-
   useEffect(() => {
-        if (endDate < startDate) {
-            setEnd(start);
-        }
-    }, [start]);
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    if (endDate < startDate) {
+      setEnd(start);
+    }
+  }, [start, end]);
 }
 
 export const validateEvent = (start, end, name) => {

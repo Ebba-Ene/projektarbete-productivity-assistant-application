@@ -1,8 +1,10 @@
-import { formatDateTimeLocal } from "../helper";
+import { formatDateTimeLocal, useSyncEndWithStart } from "../helper";
 
 const EventInputs = ({ start, end, name, setStart, setEnd, setName }) => {
     const now = new Date();
 
+    useSyncEndWithStart(start, end, setEnd);
+    
     return (
         <>
             <label>Start</label>
