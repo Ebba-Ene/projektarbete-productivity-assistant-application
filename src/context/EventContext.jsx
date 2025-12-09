@@ -17,7 +17,7 @@ const EventProvider = ({ children }) => {
   };
 
   const removeEvent = (id) => {
-    const remainingEvents = events.filter((event) => id !== event.id);
+    const remainingEvents = events.filter((event) => event.id !== id);
     setEvents(remainingEvents);
   };
 
