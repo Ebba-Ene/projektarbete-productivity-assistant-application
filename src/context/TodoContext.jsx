@@ -26,9 +26,26 @@ const TodoProvider = ({children}) => {
   const addTodo = (todo) => {
     setTodos([...todos, todo])
   }
+
+  const removeTodo = (todo) => {
+
+  }
+
+  const completeTodo = (index) => {
+
+    let newTodoList = [...todos]
+
+    if(newTodoList[index].status == false){
+      newTodoList[index].status = true
+    }else{
+      newTodoList[index].status = false
+    }
+    
+    setTodos(newTodoList)
+  }
   
   return(
-    <TodoContext value={{todos, addTodo, show, setShow}}>
+    <TodoContext value={{todos, addTodo, show, setShow, completeTodo, removeTodo}}>
       {children}
     </TodoContext>
   )

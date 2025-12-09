@@ -1,0 +1,14 @@
+.complete{
+  color: gold;
+}
+
+.ul{
+  list-style-type: none;
+}
+
+.ul li {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(78, 78, 78, 1);
+  width: 30%;
+}
