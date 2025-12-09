@@ -26,13 +26,13 @@ const HabitsForm = () => {
 
   return (
     <div className={s.habitsform}>
-      <h1>HabitsForm component</h1>
-      <h2>Skapa upp en ny vana:</h2>
+      <h2 className={s.titleForm}>Skapa upp en ny vana:</h2>
       <label htmlFor="title">Titel:</label>
       <input
         type="text"
         name="title"
         id="title"
+        placeholder="Lägg till en rubrik"
         onChange={(e) => {
           setTitle(e.target.value)
         }}
@@ -42,6 +42,7 @@ const HabitsForm = () => {
         type="number"
         name="repetitions"
         id="repetitions"
+        placeholder="antal utförda repetitioner"
         onChange={(e) => {
           setReps(e.target.value)
         }}
