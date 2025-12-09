@@ -8,11 +8,18 @@ const HabitsForm = () => {
   const [reps, setReps] = useState(null)
   const [title, setTitle] = useState(null)
   const [isError, setIsError] = useState(null)
+  const [typeError, setTypeError] = useState(null)
 
   const checkInput = () => {
     priority
     if (!title || !reps || !priority) {
-      setIsError(true)
+      alert(
+        "Var vänlig fyll i alla rutor med information innan du skapar en ny vana!"
+      )
+    } else if (reps < 0) {
+      alert(
+        "Antalet genomförda repetitioner kan inte vara färre än noll gånger!"
+      )
     } else if (title && reps && priority) {
       const newHabit = {
         title,
@@ -66,12 +73,6 @@ const HabitsForm = () => {
       >
         Lägg till vana
       </button>
-      {isError && (
-        <p>
-          Se till att fylla ut <strong>all information</strong> innan du skapar
-          en ny vana!
-        </p>
-      )}
     </div>
   )
 }

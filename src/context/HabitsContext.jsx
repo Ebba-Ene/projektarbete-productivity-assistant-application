@@ -24,14 +24,16 @@ const HabitsProvider = ({ children }) => {
     const newHabits = [...habits]
     if (change === "increase") {
       ++newHabits[placement].repetitions
-    } else if (change === "decrease") {
+    } else if (change === "decrease" && newHabits[placement].repetitions > 0) {
       --newHabits[placement].repetitions
-    } else {
+    } else if (change === "reset") {
       newHabits[placement].repetitions = 0
+    } else {
+      alert("Det går inte att göra färre än 0 repetitioner!")
     }
-
     setHabits(newHabits)
   }
+  /* } */
 
   return (
     <HabitsContext
