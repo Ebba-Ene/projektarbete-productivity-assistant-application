@@ -1,7 +1,7 @@
 .habitCard{
     display:flex;
     flex-direction: column;
-    background-color:rgb(245, 193, 253);
+    background-color:rgb(199, 199, 199);
     border-radius:1rem;
     align-items: center;
 }
@@ -9,4 +9,24 @@
     display:grid;
     grid-template-columns: repeat(3,1fr);
     gap:1rem;
+}
+h1{
+    color:white;
+}
+body{
+    background-color:#222222;
+}
+.reps{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+    margin-bottom:0.1rem;
+}
+/* .reps button{
+    padding:1rem;
+} */
+.reps p{
+    text-align: center;
 }

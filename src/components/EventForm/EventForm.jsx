@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { EventContext } from "../context/EventContext";
-import { formatDateTimeLocal, useSyncEndWithStart, validateEvent } from "./eventUtils";
-import EventInputs from "./EventInputs";
+import { EventContext } from "../../context/EventContext";
+import { formatDateTimeLocal, useSyncEndWithStart, validateEvent } from "../helper";
+import EventInputs from "../EventInputs/EventInputs";
 
 const EventForm = () => {
     const { addEvent } = useContext(EventContext)
@@ -15,7 +15,7 @@ const EventForm = () => {
     useSyncEndWithStart(start, end, setEnd);
 
     const handleAdd = () => {
-        const error = validateEvent(start, end, name)
+        const error = validateEvent(start, end, name);
         if (error) {
             return alert(error);
         }
@@ -25,13 +25,13 @@ const EventForm = () => {
     };
     
     return (
-        <>
-            <h3>Add Event</h3>
+        <div>
+            <h3>Skapa event</h3>
 
-            <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName} minStart={formatDateTimeLocal(now)}/>
+            <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
 
             <button onClick={handleAdd}>Add</button>
-        </>
+        </div>
     );
 };
 
