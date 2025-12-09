@@ -12,11 +12,11 @@ const Todo = () => {
 
   return(
     <>
-      <h1>Mina todos:</h1>
+      <h2>Mina todos:</h2>
       <div className={todoCss.container}>
 
         <div className={todoCss.form}>
-          <button onClick={() => {setShow(true)}}>Skapa ny todo</button>
+          <button onClick={() => {setShow(!show)}}>{!show ? "Skapa ny todo" : "Avsluta"}</button>
           {show && 
           <TodoForm/>}
         </div>

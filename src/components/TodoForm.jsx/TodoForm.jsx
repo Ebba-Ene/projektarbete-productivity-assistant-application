@@ -6,6 +6,7 @@ import todoCss from "./TodoForm.module.css"
 const TodoForm = () => {
 
   const {addTodo, setShow} = useContext(TodoContext)
+  const now = new Date()
 
   const[title, setTitle] = useState("")
   const[description, setDescription] = useState("")
@@ -15,26 +16,41 @@ const TodoForm = () => {
   const[category, setCategory] = useState("")
   const[deadline, setDeadline] = useState("")
 
+  const formatDateTimeLocal = () => {
+  const d = new Date()
+  const pad = (v) => v.toString().padStart(2, "0")
+  const year = d.getFullYear()
+  const month = pad(d.getMonth() + 1)
+  const day = pad(d.getDate())
+  return `${year}-${month}-${day}`
+};
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
     if(category){
-      let newTodo = {
-        title,
-        description,
-        status: false,
-        timeEstimate,
-        timeEstimateNumber,
-        category,
-        deadline
-      }
-      addTodo(newTodo)
-      setShow(false)
-      
-    } else{
-      alert("Välj kategori")
-      console.log(category)
-    }
+      if(title){
+        if(timeEstimate){
+          if(timeEstimateNumber !== 0){
+            if(deadline){ 
+              if(description){
+                let newTodo = {
+                  title,
+                  description,
+                  status: false,
+                  timeEstimate,
+                  timeEstimateNumber,
+                  category,
+                  deadline
+                }
+                addTodo(newTodo)
+                setShow(false)
+              } else{alert("Fyll i beskrivning")}         
+            } else{alert("Fyll i deadline")}
+          } else{alert("Fyll i enhet för tidsestimat")}
+        } else{alert("Fyll i tidsestimat")}
+      } else{alert("Fyll i titel")}
+    } else{alert("Välj kategori")}
   }
 
   return(
@@ -55,8 +71,7 @@ const TodoForm = () => {
         <option>Jobbrelaterat</option>
         <option>Nöje</option>
       </select>
-      {/* <input type="text" placeholder="Deadline" onChange={(e) => {setDeadline(e.target.value)}}/> */}
-      <input type="datetime-local"/>
+      <input type="date" min={formatDateTimeLocal(now)} onChange={(e) => setDeadline(e.target.value)}/>
 
       <button type="submit"> <strong>Lägg till ny todo</strong> {title}</button>
     </form>
