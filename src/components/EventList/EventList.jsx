@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { EventContext } from "../context/EventContext"
-import EventItem from "./EventItem"
+import { EventContext } from "../../context/EventContext"
+import EventItem from "../EventItem/EventItem";
 
 const EventList = () => {
     const { events } = useContext(EventContext);
@@ -8,6 +8,7 @@ const EventList = () => {
     return (
         <>
             <h3>All Events</h3>
+            
             <ul>
                 {events.map((event) => (
                     <EventItem key={event.id} event={event}/>

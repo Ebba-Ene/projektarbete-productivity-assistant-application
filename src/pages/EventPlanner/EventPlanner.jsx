@@ -1,5 +1,5 @@
-import EventForm from "../../components/EventForm";
-import EventList from "../../components/EventList";
+import EventForm from "../../components/EventForm/EventForm";
+import EventList from "../../components/EventList/EventList";
 
 const EventPlanner = () => {
   return (
