@@ -1,7 +1,14 @@
 .habitsform{
     background-color: rgb(255, 255, 255);
     padding: 1rem 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 h1{
+    color:#222222;
+}
+
+.titleForm{
     color:#222222;
 }

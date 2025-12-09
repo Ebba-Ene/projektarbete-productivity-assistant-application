@@ -4,17 +4,18 @@
     background-color:rgb(199, 199, 199);
     border-radius:1rem;
     align-items: center;
+    background: linear-gradient(#767676, #636363);  
 }
 .grid{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     gap:1rem;
 }
-h1{
+h2{
     color:white;
 }
-body{
-    background-color:#222222;
+html{
+    background-color: #222222;
 }
 .reps{
     display:grid;
@@ -29,4 +30,13 @@ body{
 } */
 .reps p{
     text-align: center;
+}
+label{
+    color:white;
+}
+.filtersort{
+    display:flex;
+    justify-content: end;
+    gap:1rem;
+    margin-bottom:1rem;
 }
