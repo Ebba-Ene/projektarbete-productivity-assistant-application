@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { EventContext } from "../../context/EventContext"
-import { useSyncEndWithStart, validateEvent } from "../helper";
+import { validateEvent } from "../helper";
 import EventInputs from "../EventInputs/EventInputs";
 
 const EventEdit = ({ event, onCancel }) => {
@@ -9,8 +9,6 @@ const EventEdit = ({ event, onCancel }) => {
     const [name, setName] = useState(event.name);
     const [start, setStart] = useState(event.start);
     const [end, setEnd] = useState(event.end);
-
-    useSyncEndWithStart(start, end, setEnd);
 
     const saveEdit = () => {
         const error = validateEvent(start, end, name);
