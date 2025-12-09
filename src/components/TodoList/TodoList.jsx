@@ -5,7 +5,7 @@ import todoCss from "./TodoList.module.css"
 
 const TodoList = () => {
 
-  const {todos, completeTodo} = useContext(TodoContext)
+  const {todos, completeTodo, removeTodo} = useContext(TodoContext)
 
   return(
       <ul className={todoCss.ul}>
@@ -27,6 +27,9 @@ const TodoList = () => {
           
           <p>{todo.timeEstimateNumber} {todo.timeEstimate}</p>
           <p>{todo.deadline}</p>
+
+          <button onClick={() => {removeTodo(id)}}>Ta bort</button>
+
         </li>)} 
       </ul>
   )

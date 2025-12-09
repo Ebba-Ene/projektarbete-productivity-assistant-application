@@ -20,6 +20,13 @@ const TodoProvider = ({children}) => {
     timeEstimate: "40min",
     category: "Hälsa",
     deadline: "10 december"
+  }, { //Kommer vara tom, objektet finns bara för att testa
+    title: "Städa",
+    description: "Tvätta",
+    status: false,
+    timeEstimate: "3 timmar",
+    category: "Hushåll",
+    deadline: "9 december"
   }
 ])
 
@@ -27,9 +34,10 @@ const TodoProvider = ({children}) => {
     setTodos([...todos, todo])
   }
 
-  const removeTodo = (todo) => {
-
-  }
+  const removeTodo = (index) => {
+    const remainingTodos = todos.filter((_, i) => i !== index)
+    setTodos(remainingTodos)
+}
 
   const completeTodo = (index) => {
 
