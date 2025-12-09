@@ -6,8 +6,8 @@ const EventView = ({ event, onEdit, onRemove, isPast }) => {
             {formatDisplayDate(event.start)} – {formatDisplayDate(event.end)}:{" "}
             <strong>{event.name}</strong>
 
-            {!isPast && <button onClick={onEdit}>Edit</button>}
-            <button onClick={onRemove}>Remove</button>
+            {!isPast && <button onClick={onEdit}>Redigera</button>}
+            <button onClick={onRemove}>Ta bort</button>
         </>
     );
 };

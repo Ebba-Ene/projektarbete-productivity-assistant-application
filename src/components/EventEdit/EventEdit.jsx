@@ -24,8 +24,8 @@ const EventEdit = ({ event, onCancel }) => {
         <>
             <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
 
-            <button onClick={onCancel}>Cancel</button>
-            <button onClick={saveEdit}>Save</button>
+            <button onClick={onCancel}>Ångra</button>
+            <button onClick={saveEdit}>Spara</button>
 
         </>
     );

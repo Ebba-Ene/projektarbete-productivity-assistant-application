@@ -7,13 +7,13 @@ const EventInputs = ({ start, end, name, setStart, setEnd, setName }) => {
     
     return (
         <>
-            <label>Start</label>
+            <label>Starttid</label>
             <input type="datetime-local" value={start} min={formatDateTimeLocal(now)} onChange={(e) => setStart(e.target.value)}/>
             
-            <label>End</label>
+            <label>Sluttid</label>
             <input type="datetime-local" value={end} min={start} onChange={(e) => setEnd(e.target.value)}/>
             
-            <label>Event name</label>
+            <label>Händelsenamn</label>
             <input type="text" value={name} placeholder="Event name" onChange={(e) => setName(e.target.value)}/>
         </>
     );

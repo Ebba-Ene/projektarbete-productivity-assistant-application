@@ -24,11 +24,11 @@ const EventForm = () => {
     
     return (
         <div>
-            <h3>Skapa event</h3>
+            <h3>Skapa händelse</h3>
 
             <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
 
-            <button onClick={handleAdd}>Add</button>
+            <button onClick={handleAdd}>Lägg till</button>
         </div>
     );
 };
