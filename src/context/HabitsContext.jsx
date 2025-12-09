@@ -20,9 +20,21 @@ const HabitsProvider = ({ children }) => {
     console.log("update sees the array as " + JSON.stringify(newArray))
     setHabits(newArray)
   }
+  const updateInArray = (placement, change) => {
+    const newHabits = [...habits]
+    if (change === "increase") {
+      ++newHabits[placement].repetitions
+    } else {
+      --newHabits[placement].repetitions
+    }
+
+    setHabits(newHabits)
+  }
 
   return (
-    <HabitsContext value={{ habits, showArray, addHabit, updateArray }}>
+    <HabitsContext
+      value={{ habits, showArray, addHabit, updateArray, updateInArray }}
+    >
       {children}
     </HabitsContext>
   )

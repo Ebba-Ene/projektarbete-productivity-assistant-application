@@ -4,9 +4,9 @@ import s from "./Habits.module.css"
 import HabitsForm from "../../components/HabitsForm.jsx/HabitsForm"
 
 const Habits = () => {
-  const { habits, showArray, updateArray } = useContext(HabitsContext)
+  const { habits, showArray, updateArray, updateInArray } =
+    useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
-  /* useEffect() */
 
   return (
     <>
@@ -29,17 +29,18 @@ const Habits = () => {
               </p>
               <button
                 onClick={(e) => {
-                  console.log(item.repetitions)
-                  ++item.repetitions
-                  console.log(
-                    "nu ses habits array som " + JSON.stringify(habits)
-                  )
-                  updateArray(habits)
+                  updateInArray(i, "increase")
                 }}
               >
                 +
               </button>
-              <button>-</button>
+              <button
+                onClick={(e) => {
+                  updateInArray(i, "decrease")
+                }}
+              >
+                -
+              </button>
             </div>
 
             <p>
