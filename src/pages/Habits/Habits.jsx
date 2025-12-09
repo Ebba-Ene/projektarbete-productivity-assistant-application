@@ -23,17 +23,10 @@ const Habits = () => {
         {habits.map((item, i) => (
           <div className={s.habitCard} key={i}>
             <h2>{item.title}</h2>
-            <div>
-              <p>
-                <strong>repetitioner:</strong> {item.repetitions}
-              </p>
-              <button
-                onClick={(e) => {
-                  updateInArray(i, "increase")
-                }}
-              >
-                +
-              </button>
+            <p>
+              <strong>repetitioner:</strong>
+            </p>
+            <div className={s.reps}>
               <button
                 onClick={(e) => {
                   updateInArray(i, "decrease")
@@ -41,7 +34,22 @@ const Habits = () => {
               >
                 -
               </button>
+              <p>{item.repetitions}</p>
+              <button
+                onClick={(e) => {
+                  updateInArray(i, "increase")
+                }}
+              >
+                +
+              </button>
             </div>
+            <button
+              onClick={(e) => {
+                updateInArray(i, "reset")
+              }}
+            >
+              återställ
+            </button>
 
             <p>
               <strong>prioritet:</strong> {item.priority}{" "}

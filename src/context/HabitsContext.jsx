@@ -24,8 +24,10 @@ const HabitsProvider = ({ children }) => {
     const newHabits = [...habits]
     if (change === "increase") {
       ++newHabits[placement].repetitions
-    } else {
+    } else if (change === "decrease") {
       --newHabits[placement].repetitions
+    } else {
+      newHabits[placement].repetitions = 0
     }
 
     setHabits(newHabits)
