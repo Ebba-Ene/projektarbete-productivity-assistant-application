@@ -1,0 +1,7 @@
+.menu{
+    display: flex;
+    justify-content: center;
+    gap:10rem;
+    background-color:#B253FF;
+    padding:1rem 2rem;
+}
