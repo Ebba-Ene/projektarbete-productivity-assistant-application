@@ -7,6 +7,8 @@ const Habits = () => {
   const { habits, showArray, updateArray, updateInArray } =
     useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
+  const [filter, setFilter] = useState(null)
+  const [sort, setSort] = useState(null)
 
   return (
     <>
@@ -21,18 +23,32 @@ const Habits = () => {
       {addMode && <HabitsForm />}
       <div className={s.filtersort}>
         <label htmlFor="filter">Filtrera efter:</label>
-        <select name="" id="filter">
+        <select
+          name="filter"
+          id="filter"
+          onChange={(e) => {
+            setFilter(e.target.value)
+          }}
+        >
           <option value="">Välj prioriteringsnivå...</option>
-          <option value="">Låg</option>
-          <option value="">Medel</option>
-          <option value="">Hög</option>
+          <option value="low">Låg</option>
+          <option value="medium">Medel</option>
+          <option value="high">Hög</option>
         </select>
-        <select name="" id="sort">
+        <select
+          name="sort"
+          id="sort"
+          onChange={(e) => {
+            setSort(e.target.value)
+          }}
+        >
           <option value="">Sortera efter...</option>
-          <option value="">Fallande</option>
-          <option value="">Stigande</option>
+          <option value="incr">Fallande</option>
+          <option value="decr">Stigande</option>
         </select>
-        <button>Kör</button>
+        <button>
+          Kör {filter} {sort}{" "}
+        </button>
       </div>
       <div className={s.grid}>
         {habits.map((item, i) => (
