@@ -6,7 +6,7 @@ import HabitsForm from "../../components/HabitsForm.jsx/HabitsForm"
 const Habits = () => {
   const { habits, showArray, updateArray } = useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
-  useEffect()
+  /* useEffect() */
 
   return (
     <>

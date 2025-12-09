@@ -1,5 +1,6 @@
 import { useState, useContext } from "react"
 import { HabitsContext } from "../../context/HabitsContext"
+import s from "./HabitsForm.module.css"
 
 const HabitsForm = () => {
   const { addHabit } = useContext(HabitsContext)
@@ -24,7 +25,7 @@ const HabitsForm = () => {
   }
 
   return (
-    <>
+    <div className={s.habitsform}>
       <h1>HabitsForm component</h1>
       <h2>Skapa upp en ny vana:</h2>
       <label htmlFor="title">Titel:</label>
@@ -70,7 +71,7 @@ const HabitsForm = () => {
           en ny vana!
         </p>
       )}
-    </>
+    </div>
   )
 }
 export default HabitsForm
