@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { TodoContext } from "../../context/TodoContext"
 
 import todoCss from "./TodoForm.module.css"
@@ -11,10 +11,17 @@ const TodoForm = () => {
   const[title, setTitle] = useState("")
   const[description, setDescription] = useState("")
   const[timeEstimate, setTimeEstimate] = useState("")
-  const[timeEstimateNumber, setTimeEstimateNumber] = useState(0)
-
+  
   const[category, setCategory] = useState("")
   const[deadline, setDeadline] = useState("")
+  
+  const[timeEstimateUnit, setTimeEstimateUnit] = useState("")
+  const[timeEstimateNumber, setTimeEstimateNumber] = useState(0)
+  
+    useEffect(() => {
+      const newTimeEstimate = `${timeEstimateNumber} ${timeEstimateUnit}`
+      setTimeEstimate(newTimeEstimate)
+    }, [timeEstimateNumber, timeEstimateUnit])
 
   const formatDateTimeLocal = () => {
   const d = new Date()
@@ -28,13 +35,12 @@ const TodoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if(category && title && timeEstimate && timeEstimateNumber !== 0 && deadline && description){
+    if(category && title && timeEstimate && Number(timeEstimateNumber) !== 0 && deadline && description){
       let newTodo = {
         title,
         description,
         status: false,
         timeEstimate,
-        timeEstimateNumber,
         category,
         deadline
     }
@@ -47,13 +53,15 @@ const TodoForm = () => {
     <form onSubmit={handleSubmit} className={todoCss.form}>
       <input type="text" placeholder="Titel" onChange={(e) => {setTitle(e.target.value)}}/>
       <input type="text" placeholder="Beskrivning" onChange={(e) => {setDescription(e.target.value)}}/>
-      <input type="number" placeholder="Tidsestimat?" onChange={(e) => {setTimeEstimateNumber(e.target.value)}}/>
-      <select value={timeEstimate} onChange={(e) => {setTimeEstimate(e.target.value)}}>
+      <input type="number" placeholder="Tidsestimat?" onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}/>
+      
+      <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
         <option value="" disabled>Tidsform</option>
         <option>minuter</option>
         <option>timmar</option>
         <option>dagar</option>
       </select>
+
       <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
         <option value="" disabled>Kategori</option>
         <option>Hälsa</option>
