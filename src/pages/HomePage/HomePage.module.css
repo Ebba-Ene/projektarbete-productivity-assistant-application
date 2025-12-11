@@ -1,0 +1,56 @@
+.homecontainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #D6A3FF;
+    color: #222;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 25px;
+}
+
+.homeitem {
+    display: flex;
+    flex-direction: column;
+}
+
+.homeitem h3 {
+    margin: 1rem 0rem;
+}
+
+.homeitem ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.homeitem li {
+  background-color: #B253FF;
+  list-style-type: none;
+  padding: 1rem;
+  border-radius: 15px;
+  flex: 1;
+  min-height: 120px;
+}
+
+.homeitem a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-left: auto;
+}
+
+.homeitem a:hover {
+    text-decoration: underline;
+}
+
+.date {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}

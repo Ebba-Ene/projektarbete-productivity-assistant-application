@@ -3,17 +3,9 @@ import { EventContext } from "../../context/EventContext"
 import EventItem from "../EventItem/EventItem";
 
 const EventList = () => {
-    const { events } = useContext(EventContext);
+    const { events, upcomingEvents, pastEvents } = useContext(EventContext);
     const [filter, setFilter] = useState("all")
     const now = new Date();
-
-    const upcomingEvents = events
-        .filter(e => new Date(e.end) >= now)
-        .sort((a, b) => new Date(a.start) - new Date(b.start))
-
-    const pastEvents = events
-        .filter(e => new Date(e.end) < now)
-        .sort((a, b) => new Date(b.start) - new Date(a.start))
 
     let sortedEvents = [...upcomingEvents, ...pastEvents]
 
