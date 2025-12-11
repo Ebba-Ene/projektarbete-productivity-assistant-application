@@ -4,7 +4,7 @@ import s from "./HabitsPage.module.css"
 import HabitsForm from "../../components/HabitsForm.jsx/HabitsForm"
 
 const HabitsPage = () => {
-  const { habits, showArray, updateArray, updateInArray } =
+  const { habits, showArray, updateArray, updateInArray, incrAndDecr } =
     useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
   const [filter, setFilter] = useState(null)
@@ -75,7 +75,8 @@ const HabitsPage = () => {
               <div className={s.reps}>
                 <button
                   onClick={(e) => {
-                    updateInArray(i, "decrease")
+                    incrAndDecr(item.habitId, "decr")
+                    /* updateInArray(i, "decrease") */
                   }}
                 >
                   -
