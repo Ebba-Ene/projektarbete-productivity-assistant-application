@@ -1,5 +1,6 @@
 .habitCard{
     display:flex;
+    padding:1.5rem;
     flex-direction: column;
     background-color:rgb(199, 199, 199);
     border-radius:1rem;
@@ -8,6 +9,7 @@
 }
 .grid{
     display:grid;
+    max-width: 60%;
     grid-template-columns: repeat(3,1fr);
     gap:1rem;
 }
