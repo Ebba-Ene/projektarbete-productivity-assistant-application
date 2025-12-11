@@ -28,7 +28,7 @@ const HabitsPage = () => {
     } else {
       setDisplay(orderedArr.sort((a, b) => b.repetitions - a.repetitions))
     }
-  }, [sortClick])
+  }, [sortClick, habits])
 
   /*   const checkFilterSort = () => {
     if (filter) {
@@ -100,13 +100,6 @@ const HabitsPage = () => {
           <option value="sortincrease">Fallande</option>
           <option value="sortdecrease">Stigande</option>
         </select>
-        <button
-          onClick={() => {
-            checkFilterSort()
-          }}
-        >
-          Kör {filterClick} {sortClick}{" "}
-        </button>
       </div>
       <h3>display:</h3>
       <div className={s.grid}>
