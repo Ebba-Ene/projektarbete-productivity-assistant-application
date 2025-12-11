@@ -9,6 +9,14 @@ const Habits = () => {
   const [addMode, setAddMode] = useState(false)
   const [filter, setFilter] = useState(null)
   const [sort, setSort] = useState(null)
+  const checkFilterSort = () => {
+    if (filter) {
+      console.log(`jag ser filter: ${filter}`)
+      const newList = habits.filter((item) => item.priority === filter)
+      console.log(JSON.stringify(newList))
+    }
+    console.log("du klickade")
+  }
 
   return (
     <>
@@ -31,9 +39,9 @@ const Habits = () => {
           }}
         >
           <option value="">Välj prioriteringsnivå...</option>
-          <option value="low">Låg</option>
-          <option value="medium">Medel</option>
-          <option value="high">Hög</option>
+          <option value="låg">Låg</option>
+          <option value="medel">Medel</option>
+          <option value="hög">Hög</option>
         </select>
         <select
           name="sort"
@@ -46,47 +54,53 @@ const Habits = () => {
           <option value="incr">Fallande</option>
           <option value="decr">Stigande</option>
         </select>
-        <button>
+        <button
+          onClick={() => {
+            checkFilterSort()
+          }}
+        >
           Kör {filter} {sort}{" "}
         </button>
       </div>
       <div className={s.grid}>
-        {habits.map((item, i) => (
-          <div className={s.habitCard} key={i}>
-            <h2>{item.title}</h2>
-            <p>
-              <strong>repetitioner:</strong>
-            </p>
-            <div className={s.reps}>
+        {!filter &&
+          !sort &&
+          habits.map((item, i) => (
+            <div className={s.habitCard} key={i}>
+              <h2>{item.title}</h2>
+              <p>
+                <strong>repetitioner:</strong>
+              </p>
+              <div className={s.reps}>
+                <button
+                  onClick={(e) => {
+                    updateInArray(i, "decrease")
+                  }}
+                >
+                  -
+                </button>
+                <p>{item.repetitions}</p>
+                <button
+                  onClick={(e) => {
+                    updateInArray(i, "increase")
+                  }}
+                >
+                  +
+                </button>
+              </div>
               <button
                 onClick={(e) => {
-                  updateInArray(i, "decrease")
+                  updateInArray(i, "reset")
                 }}
               >
-                -
+                återställ
               </button>
-              <p>{item.repetitions}</p>
-              <button
-                onClick={(e) => {
-                  updateInArray(i, "increase")
-                }}
-              >
-                +
-              </button>
-            </div>
-            <button
-              onClick={(e) => {
-                updateInArray(i, "reset")
-              }}
-            >
-              återställ
-            </button>
 
-            <p>
-              <strong>prioritet:</strong> {item.priority}{" "}
-            </p>
-          </div>
-        ))}
+              <p>
+                <strong>prioritet:</strong> {item.priority}{" "}
+              </p>
+            </div>
+          ))}
       </div>
     </>
   )
