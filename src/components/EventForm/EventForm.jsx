@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { EventContext } from "../../context/EventContext";
 import { formatDateTimeLocal, validateEvent } from "../helper";
 import EventInputs from "../EventInputs/EventInputs";
+import s from "./EventForm.module.css"
 
 const EventForm = () => {
     const { addEvent } = useContext(EventContext)
@@ -23,12 +24,13 @@ const EventForm = () => {
     };
     
     return (
-        <div>
+        <div className={s.eventform}>
             <h3>Skapa händelse</h3>
+            <div className={s.form}>
+                <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName} isEdit={false} showLabels={true}/>
 
-            <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
-
-            <button onClick={handleAdd}>Lägg till</button>
+                <button className={s.addbutton} onClick={handleAdd}>Lägg till</button>
+            </div>
         </div>
     );
 };
