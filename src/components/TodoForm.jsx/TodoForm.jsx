@@ -28,29 +28,19 @@ const TodoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if(category){
-      if(title){
-        if(timeEstimate){
-          if(timeEstimateNumber !== 0){
-            if(deadline){ 
-              if(description){
-                let newTodo = {
-                  title,
-                  description,
-                  status: false,
-                  timeEstimate,
-                  timeEstimateNumber,
-                  category,
-                  deadline
-                }
-                addTodo(newTodo)
-                setShow(false)
-              } else{alert("Fyll i beskrivning")}         
-            } else{alert("Fyll i deadline")}
-          } else{alert("Fyll i enhet för tidsestimat")}
-        } else{alert("Fyll i tidsestimat")}
-      } else{alert("Fyll i titel")}
-    } else{alert("Välj kategori")}
+    if(category && title && timeEstimate && timeEstimateNumber !== 0 && deadline && description){
+      let newTodo = {
+        title,
+        description,
+        status: false,
+        timeEstimate,
+        timeEstimateNumber,
+        category,
+        deadline
+    }
+    addTodo(newTodo)
+    setShow(false)
+    } else{alert("Fyll i alla tomma fält")}
   }
 
   return(
