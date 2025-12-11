@@ -5,6 +5,7 @@ import { TodoContext } from "../../context/TodoContext"
 
 import todoCss from "./Todo.module.css"
 import TodoSort from "../../components/TodoSort/TodoSort"
+import TodoFilter from "../../components/TodoFilter/TodoFilter"
 
 
 const Todo = () => {
@@ -23,6 +24,7 @@ const Todo = () => {
         </div>
         <div className={todoCss.list}>
           <TodoSort/>
+          <TodoFilter/>
           <TodoList/>
         </div>
       </div>
