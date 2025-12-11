@@ -22,6 +22,7 @@ const HabitsForm = () => {
       )
     } else if (title && reps && priority) {
       const newHabit = {
+        habitId: crypto.randomUUID(),
         title,
         repetitions: +reps,
         priority,

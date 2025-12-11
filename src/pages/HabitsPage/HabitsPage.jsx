@@ -21,6 +21,7 @@ const HabitsPage = () => {
   return (
     <>
       <h2>Habits:</h2>
+      {showArray(habits)}
       <button
         onClick={() => {
           setAddMode(!addMode)
