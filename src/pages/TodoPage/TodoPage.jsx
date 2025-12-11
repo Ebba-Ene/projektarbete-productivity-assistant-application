@@ -3,7 +3,7 @@ import TodoList from "../../components/TodoList/TodoList"
 import TodoForm from "../../components/TodoForm.jsx/TodoForm"
 import { TodoContext } from "../../context/TodoContext"
 
-import todoCss from "./Todo.module.css"
+import todoCss from "./TodoPage.module.css"
 import TodoSort from "../../components/TodoSort/TodoSort"
 import TodoFilter from "../../components/TodoFilter/TodoFilter"
 
