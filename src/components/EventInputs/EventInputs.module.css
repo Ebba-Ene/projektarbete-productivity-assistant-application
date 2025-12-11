@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.inputcontainer label {
+  font-size: 0.8rem;
+  color: #222;
+  display: block;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form label {
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 700;
+    color: #EEE;
+}
+
+.form input {
+    padding: 0.8rem;
+    border-radius: 5px;
+    background-color: #EEE;
+    color: #222;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form input[type="datetime-local"], .form input[type="text"] {
+    font-family: "Noto Sans", sans-serif;
+    border: 2px solid #EEE;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #222;
+}
+
+.edit {
+  display: inline-block;
+}
+
+.edit input {
+    padding: 0.3rem;
+    border-radius: 5px;
+    background-color: #EEE;
+    color: #222;
+    border: 2px solid #EEE;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.edit input:focus {
+    outline: none;
+    border-color: #222;
+}

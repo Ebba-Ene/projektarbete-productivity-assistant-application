@@ -1,0 +1,26 @@
+.eventform {
+    width: 400px;
+    height: 435px;
+    background-color: #B253FF;
+    padding: 2rem;
+    border-radius: 25px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.addbutton {
+    background-color: #97FFBF;
+    color: #222;
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem;
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+.addbutton:hover {
+    cursor: pointer;
+}

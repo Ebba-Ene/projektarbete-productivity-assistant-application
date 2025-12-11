@@ -1,0 +1,18 @@
+.editcontainer button {
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 0.8rem;
+    margin: 0 0 0 0.5rem;
+    font-weight: 600;
+}
+
+.editcontainer button:last-of-type {
+    background-color: #97FFBF;
+    color: #222;
+}
+
+.editcontainer button:first-of-type {
+    background-color: #222;
+    color: #EEE;
+}
