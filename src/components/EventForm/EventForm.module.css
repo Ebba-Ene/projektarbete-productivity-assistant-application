@@ -1,6 +1,6 @@
 .eventform {
     width: 400px;
-    height: 435px;
+    height: fit-content;
     background-color: #B253FF;
     padding: 2rem;
     border-radius: 25px;
