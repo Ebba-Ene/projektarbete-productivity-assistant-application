@@ -7,9 +7,37 @@ const HabitsPage = () => {
   const { habits, showArray, updateArray, incrDecrReset } =
     useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
-  const [filter, setFilter] = useState(null)
-  const [sort, setSort] = useState(null)
+  //added to communicate with select and set first value = ""
+  const [filterClick, setFilterClick] = useState("")
+  const [sortClick, setSortClick] = useState("")
   const [display, setDisplay] = useState(habits)
+
+  useEffect(() => {
+    setFilterClick("")
+    setSortClick("")
+    setDisplay(habits)
+  }, [habits])
+
+  useEffect(() => {
+    /* setFilterClick("all") */
+
+    if (filterClick && filterClick !== "all") {
+      setDisplay(habits.filter((item) => item.priority === filterClick))
+    } else {
+      setDisplay(habits)
+    }
+  }, [filterClick])
+
+  useEffect(() => {
+    /* setFilterClick("all") */
+    const orderedArr = [...display]
+    if (sortClick === "sortincrease") {
+      setDisplay(orderedArr.sort((a, b) => a.repetitions - b.repetitions))
+    } else {
+      setDisplay(orderedArr.sort((a, b) => b.repetitions - a.repetitions))
+    }
+  }, [sortClick])
+
   /*   const checkFilterSort = () => {
     if (filter) {
       console.log(`jag ser filter: ${filter}`)
@@ -18,22 +46,24 @@ const HabitsPage = () => {
     }
     console.log("du klickade")
   } */
-  const filterClick = (value) => {
+  const checkFiltering = (value) => {
     console.log("ändrade sort")
     console.log(value)
-    if (value === "låg") {
-      setDisplay(habits.filter((item) => item.priority === value))
-    } else if (value === "medel") {
-      setDisplay(habits.filter((item) => item.priority === value))
-    } else if (value === "hög") {
+    if (value && value !== "all") {
       setDisplay(habits.filter((item) => item.priority === value))
     } else {
       setDisplay(habits)
     }
   }
-  const sortClick = (event) => {
-    console.log("ändrade sort")
-    console.log(event.target.value)
+  const checkSorting = (value) => {
+    console.log("value is seen as " + value)
+    const orderedArr = [...display]
+    if (value === "sortincrease") {
+      setDisplay(orderedArr.sort((a, b) => a.priority - b.priority))
+      /* console.log(JSON.stringify(result)) */
+    } else {
+      setDisplay(orderedArr.sort((a, b) => b.priority - a.priority))
+    }
   }
 
   return (
@@ -51,10 +81,12 @@ const HabitsPage = () => {
       <div className={s.filtersort}>
         <label htmlFor="filter">Filtrera efter:</label>
         <select
+          value={filterClick}
           name="filter"
           id="filter"
           onChange={(e) => {
-            filterClick(e.target.value)
+            setFilterClick(e.target.value)
+            // checkFiltering(filterClick)
           }}
         >
           <option value="">Välj prioriteringsnivå...</option>
@@ -65,10 +97,11 @@ const HabitsPage = () => {
         </select>
         <label htmlFor="sort">Sortera efter:</label>
         <select
+          value={sortClick}
           name="sort"
           id="sort"
           onChange={(e) => {
-            sortClick(e)
+            setSortClick(e.target.value)
           }}
         >
           <option value="">Sortera efter...</option>
@@ -80,7 +113,7 @@ const HabitsPage = () => {
             checkFilterSort()
           }}
         >
-          Kör {filter} {sort}{" "}
+          Kör {filterClick} {sortClick}{" "}
         </button>
       </div>
       <h3>display:</h3>
@@ -121,47 +154,6 @@ const HabitsPage = () => {
             </p>
           </div>
         ))}
-        <br />
-        {
-          /* !filter &&
-          !sort && */
-          habits.map((item, i) => (
-            <div className={s.habitCard} key={i}>
-              <h2>{item.title}</h2>
-              <p>
-                <strong>repetitioner:</strong>
-              </p>
-              <div className={s.reps}>
-                <button
-                  onClick={() => {
-                    incrDecrReset(item.habitId, "decrease")
-                  }}
-                >
-                  -
-                </button>
-                <p>{item.repetitions}</p>
-                <button
-                  onClick={() => {
-                    incrDecrReset(item.habitId, "increase")
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <button
-                onClick={(e) => {
-                  incrDecrReset(item.habitId, "reset")
-                }}
-              >
-                återställ
-              </button>
-
-              <p>
-                <strong>prioritet:</strong> {item.priority}{" "}
-              </p>
-            </div>
-          ))
-        }
       </div>
     </>
   )
