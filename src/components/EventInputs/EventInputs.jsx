@@ -1,9 +1,17 @@
-import { formatDateTimeLocal, useSyncEndWithStart } from "../helper";
+import { useEffect } from "react";
+import { formatDateTimeLocal } from "../helper";
 
 const EventInputs = ({ start, end, name, setStart, setEnd, setName }) => {
     const now = new Date();
 
-    useSyncEndWithStart(start, end, setEnd);
+    useEffect(() => {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+    
+        if (endDate < startDate) {
+          setEnd(start);
+        }
+    }, [start, end]);
     
     return (
         <>

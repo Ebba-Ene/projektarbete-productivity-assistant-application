@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react"
 import { HabitsContext } from "../../context/HabitsContext"
-import s from "./Habits.module.css"
+import s from "./HabitsPage.module.css"
 import HabitsForm from "../../components/HabitsForm.jsx/HabitsForm"
 
-const Habits = () => {
+const HabitsPage = () => {
   const { habits, showArray, updateArray, updateInArray } =
     useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
@@ -90,4 +90,4 @@ const Habits = () => {
   )
 }
 
-export default Habits
+export default HabitsPage
