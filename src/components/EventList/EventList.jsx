@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { EventContext } from "../../context/EventContext"
 import EventItem from "../EventItem/EventItem";
+import s from "./EventList.module.css"
 
 const EventList = () => {
     const { events, upcomingEvents, pastEvents } = useContext(EventContext);
@@ -18,10 +19,10 @@ const EventList = () => {
     }
 
     return (
-        <>
+        <div className={s.eventlist}>
             <h3>Händelser</h3>
 
-           <div>
+           <div className={s.filterbutton}>
                 <button onClick={() => setFilter("all")}>Alla</button>
                 <button onClick={() => setFilter("upcoming")}>Kommande</button>
                 <button onClick={() => setFilter("past")}>Tidigare</button>
@@ -32,7 +33,7 @@ const EventList = () => {
                     <EventItem key={event.id} event={event} isPast={new Date(event.end) < now}/>
                 ))}
             </ul>
-        </>
+        </div>
     );
 };
 

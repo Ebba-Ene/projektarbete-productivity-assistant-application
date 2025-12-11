@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { EventContext } from "../../context/EventContext"
 import { validateEvent } from "../helper";
 import EventInputs from "../EventInputs/EventInputs";
+import s from "./EventEdit.module.css"
 
 const EventEdit = ({ event, onCancel }) => {
     const { editEvent } = useContext(EventContext);
@@ -21,13 +22,12 @@ const EventEdit = ({ event, onCancel }) => {
     }
 
     return (
-        <>
-            <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
+        <div className={s.editcontainer}>
+            <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName} isEdit={true} showLabels={false}/>
 
             <button onClick={onCancel}>Ångra</button>
             <button onClick={saveEdit}>Spara</button>
-
-        </>
+        </div>
     );
 };
 

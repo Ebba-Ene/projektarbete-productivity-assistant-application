@@ -1,3 +1,20 @@
+li {
+  display: flex;
+  align-items: center;
+  background-color: #B253FF;
+  padding: 1.5rem;
+  border-radius: 15px;
+  list-style-type: none;
+  height: 80px;
+  margin-bottom: 0.5rem;
+}
+
 .item.past {
-  color: #666;
+  background-color:#bd6dff;
+  color: #B253FF;
+}
+
+.item.past button {
+  background-color: #B253FF;
+  color: #222;
 }

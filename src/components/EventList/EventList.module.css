@@ -1,0 +1,27 @@
+.eventlist {
+    display: flex;
+    flex-direction: column;
+    background-color:#CA89FF;
+    padding: 2rem;
+    border-radius: 25px;
+    width: 100%;
+}
+
+.filterbutton button {
+    background-color: #222;
+    font-size: 0.8rem;
+    color: #EEE;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 0.8rem;
+    margin: 1rem 0.5rem 0 0;
+    font-weight: 600;
+}
+
+.filterbutton button:hover {
+    cursor: pointer;
+}
+
+.eventlist ul {
+    margin-top: 1rem;
+}
