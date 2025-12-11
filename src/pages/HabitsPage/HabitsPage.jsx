@@ -13,20 +13,12 @@ const HabitsPage = () => {
   const [display, setDisplay] = useState(habits)
 
   useEffect(() => {
-    setFilterClick("")
-    setSortClick("")
-    setDisplay(habits)
-  }, [habits])
-
-  useEffect(() => {
-    /* setFilterClick("all") */
-
     if (filterClick && filterClick !== "all") {
       setDisplay(habits.filter((item) => item.priority === filterClick))
     } else {
       setDisplay(habits)
     }
-  }, [filterClick])
+  }, [filterClick, habits])
 
   useEffect(() => {
     /* setFilterClick("all") */
