@@ -3,10 +3,10 @@ import TodoList from "../../components/TodoList/TodoList"
 import TodoForm from "../../components/TodoForm.jsx/TodoForm"
 import { TodoContext } from "../../context/TodoContext"
 
-import todoCss from "./Todo.module.css"
+import todoCss from "./TodoPage.module.css"
 
 
-const Todo = () => {
+const TodoPage = () => {
 
   const {show, setShow} = useContext(TodoContext)
 
@@ -28,4 +28,4 @@ const Todo = () => {
   )
 }
 
-export default Todo
+export default TodoPage

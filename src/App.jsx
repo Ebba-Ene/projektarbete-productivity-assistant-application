@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "./App.css"
-import Home from "./pages/Home/Home"
-import Todo from "./pages/Todo/Todo"
-import EventPlanner from "./pages/EventPlanner/EventPlanner"
-import Habits from "./pages/Habits/Habits"
+import HomePage from "./pages/HomePage/HomePage"
+import TodoPage from "./pages/TodoPage/TodoPage"
+import EventPlannerPage from "./pages/EventPlannerPage/EventPlannerPage"
+import HabitsPage from "./pages/HabitsPage/HabitsPage"
 import Navigation from "./components/Navigation/Navigation"
 
 function App() {
@@ -12,10 +12,10 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/todo" element={<Todo />} />
-          <Route path="/eventplanner" element={<EventPlanner />} />
-          <Route path="/habits" element={<Habits />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/todo" element={<TodoPage />} />
+          <Route path="/eventplanner" element={<EventPlannerPage />} />
+          <Route path="/habits" element={<HabitsPage />} />
         </Routes>
       </BrowserRouter>
     </>
