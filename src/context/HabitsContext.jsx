@@ -52,7 +52,19 @@ const HabitsProvider = ({ children }) => {
     const foundObject = habits.filter((item) => item.habitId === id)
     //indexOf returns array with 1 item if found or -1 if no match
     const placement = habits.indexOf(foundObject[0])
-    console.log(
+    const newHabits = [...habits]
+    if (change === "increase") {
+      ++newHabits[placement].repetitions
+    } else if (change === "decrease" && newHabits[placement].repetitions > 0) {
+      --newHabits[placement].repetitions
+    } else if (change === "reset") {
+      newHabits[placement].repetitions = 0
+    } else {
+      alert("Det går inte att göra färre än 0 repetitioner!")
+    }
+    setHabits(newHabits)
+
+    /*     console.log(
       "incrAndDecr found the following object + " +
         JSON.stringify(foundObject[0])
     )
@@ -62,25 +74,8 @@ const HabitsProvider = ({ children }) => {
     console.log(
       "using index of shows habits place as + " +
         JSON.stringify(habits[placement])
-    )
-    if (change === "decr" && foundObject.repetitions > 0) {
-      foundObject.repetitions--
-    }
-
-    const newHabits = [...habits]
-
-    /*     if (change === "increase") {
-      ++newHabits[placement].repetitions
-    } else if (change === "decrease" && newHabits[placement].repetitions > 0) {
-      --newHabits[placement].repetitions
-    } else if (change === "reset") {
-      newHabits[placement].repetitions = 0
-    } else {
-      alert("Det går inte att göra färre än 0 repetitioner!")
-    }
-    setHabits(newHabits) */
+    ) */
   }
-  /* } */
 
   return (
     <HabitsContext

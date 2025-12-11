@@ -75,8 +75,7 @@ const HabitsPage = () => {
               <div className={s.reps}>
                 <button
                   onClick={(e) => {
-                    incrAndDecr(item.habitId, "decr")
-                    /* updateInArray(i, "decrease") */
+                    incrAndDecr(item.habitId, "decrease")
                   }}
                 >
                   -
@@ -84,7 +83,7 @@ const HabitsPage = () => {
                 <p>{item.repetitions}</p>
                 <button
                   onClick={(e) => {
-                    updateInArray(i, "increase")
+                    incrAndDecr(item.habitId, "increase")
                   }}
                 >
                   +
