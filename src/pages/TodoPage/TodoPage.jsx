@@ -1,9 +1,11 @@
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import TodoList from "../../components/TodoList/TodoList"
 import TodoForm from "../../components/TodoForm.jsx/TodoForm"
 import { TodoContext } from "../../context/TodoContext"
 
-import todoCss from "./TodoPage.module.css"
+import todoCss from "./Todo.module.css"
+import TodoSort from "../../components/TodoSort/TodoSort"
+import TodoFilter from "../../components/TodoFilter/TodoFilter"
 
 
 const TodoPage = () => {
@@ -21,6 +23,8 @@ const TodoPage = () => {
           <TodoForm/>}
         </div>
         <div className={todoCss.list}>
+          <TodoSort/>
+          <TodoFilter/>
           <TodoList/>
         </div>
       </div>

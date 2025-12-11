@@ -1,51 +1,104 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const TodoContext = createContext()
 
 const TodoProvider = ({children}) => {
   
-  const[show, setShow] = useState(false)
+  const [show, setShow] = useState(false)
+  const [showFilterBtn, setShowFilterBtn] = useState(false)
 
-  const [todos, setTodos] = useState([{ //Kommer vara tom, objektet finns bara för att testa
-    title: "Städa",
-    description: "Damma",
-    status: false,
-    timeEstimate: "3 timmar",
-    category: "Hushåll",
-    deadline: "9 december"
-  },{ //Kommer vara tom, objektet finns bara för att testa
-    title: "Träna",
-    description: "Styrketräning",
-    status: true,
-    timeEstimate: "40min",
-    category: "Hälsa",
-    deadline: "10 december"
-  }
-])
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || [])
+
+  const[filter, setFilter] = useState("")
+  const[whatToFilter, setWhatToFilter] = useState("")
+
+
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
+
 
   const addTodo = (todo) => {
     setTodos([...todos, todo])
   }
 
-  const removeTodo = (todo) => {
+  const removeTodo = (id) => {
 
+    const remainingTodos = todos.filter(todo => todo.id !== id)
+    setTodos(remainingTodos)
+}
+
+  const completeTodo = (todoId) => {
+
+    const foundObject = todos.filter((todo) => todo.id === todoId)
+    const placement = todos.indexOf(foundObject[0])
+    const newTodoList = [...todos]
+    
+    if (newTodoList[placement].status === false) {
+
+      newTodoList[placement].status = true
+
+      
+    } else if (newTodoList[placement].status === true) {
+
+      newTodoList[placement].status = false
+    } 
+
+    setTodos(newTodoList)
   }
 
-  const completeTodo = (index) => {
+  const timeToMinutes = (time) => {
+    const units = {minut: 1, minuter: 1, timme: 60, timmar: 60, dag: 1440, dagar: 1440}
 
-    let newTodoList = [...todos]
+    const parts = time.match(/^(\d+)\s(minut|minuter|timme|timmar|dag|dagar)$/)
 
-    if(newTodoList[index].status == false){
-      newTodoList[index].status = true
-    }else{
-      newTodoList[index].status = false
-    }
+    if(!parts)
+      throw new Error(`'${time}' - Unexpected time format`)
+    const scalar = parseInt(parts[1])
+    const minutes = units[parts[2]]
+
+    return minutes*scalar
+  }
+
+  const sortTodo = (sorting, direction) => {
     
-    setTodos(newTodoList)
+      if(sorting == "Status"){
+        if(direction == "Fallande"){
+          const sorted = [...todos].sort((a,b) => a.status - b.status)
+          setTodos(sorted)
+        } else if(direction == "Stigande"){
+        const sorted = [...todos].sort((a,b) => b.status - a.status)
+          setTodos(sorted)
+        }
+      } else if(sorting == "Deadline"){
+          if(direction == "Fallande"){
+            const sorted = [...todos].sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
+            setTodos(sorted)
+          } else if(direction == "Stigande"){
+            const sorted = [...todos].sort((a, b) => new Date(b.deadline) - new Date(a.deadline))
+            setTodos(sorted)
+          }
+      }  else if (sorting == "Tidsestimat"){
+          if(direction == "Fallande"){
+            const sorted = [...todos].sort((a, b) => timeToMinutes(a.timeEstimate) - timeToMinutes(b.timeEstimate))
+            setTodos(sorted)
+          }else if(direction == "Stigande"){
+            const sorted = [...todos].sort((a, b) => timeToMinutes(b.timeEstimate) - timeToMinutes(a.timeEstimate))
+            setTodos(sorted)
+        
+      }
+    }
+  }
+
+  const filterTodo = (filter, what) => {
+    setFilter(filter)
+    setWhatToFilter(what)
+    setShowFilterBtn(true)
   }
   
   return(
-    <TodoContext value={{todos, addTodo, show, setShow, completeTodo, removeTodo}}>
+    <TodoContext value={{todos, addTodo, show, setShow, completeTodo, removeTodo, sortTodo, filterTodo, filter, whatToFilter, showFilterBtn, setShowFilterBtn, setFilter}}>
       {children}
     </TodoContext>
   )
