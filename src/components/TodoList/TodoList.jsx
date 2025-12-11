@@ -6,9 +6,6 @@ import todoCss from "./TodoList.module.css"
 const TodoList = () => {
 
   const {todos, completeTodo} = useContext(TodoContext)
-  const [isChecked, setIsChecked] = useState(todos)
-
-  console.log(todos)
 
   return(
       <ul className={todoCss.ul}>
