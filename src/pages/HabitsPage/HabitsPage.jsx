@@ -74,7 +74,7 @@ const HabitsPage = () => {
               </p>
               <div className={s.reps}>
                 <button
-                  onClick={(e) => {
+                  onClick={() => {
                     incrAndDecr(item.habitId, "decrease")
                   }}
                 >
@@ -82,7 +82,7 @@ const HabitsPage = () => {
                 </button>
                 <p>{item.repetitions}</p>
                 <button
-                  onClick={(e) => {
+                  onClick={() => {
                     incrAndDecr(item.habitId, "increase")
                   }}
                 >
