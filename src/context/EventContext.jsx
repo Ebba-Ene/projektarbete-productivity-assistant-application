@@ -28,9 +28,19 @@ const EventProvider = ({ children }) => {
     
     setEvents(editedEventList);
   };
+  
+  const now = new Date();
 
+  const upcomingEvents = events
+    .filter(e => new Date(e.end) >= now)
+    .sort((a, b) => new Date(a.start) - new Date(b.start))
+
+  const pastEvents = events
+    .filter(e => new Date(e.end) < now)
+    .sort((a, b) => new Date(b.start) - new Date(a.start))
+  
   return (
-    <EventContext value={{ events, addEvent, removeEvent, editEvent }}>
+    <EventContext value={{ events, addEvent, removeEvent, editEvent, upcomingEvents, pastEvents }}>
       {children}
     </EventContext>
   );

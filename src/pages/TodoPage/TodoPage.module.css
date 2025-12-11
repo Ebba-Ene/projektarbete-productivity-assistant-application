@@ -1,0 +1,21 @@
+.form{
+  background-color: rgba(214, 163, 255, 1);
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.list{
+  background-color: rgba(178, 83, 255, 1);
+  width: 70%;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: baseline;
+  /* padding: 10px; */
+  margin: 20px;
+}

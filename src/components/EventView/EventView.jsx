@@ -1,13 +1,13 @@
 import { formatDisplayDate } from "../helper";
 
-const EventView = ({ event, onEdit, onRemove }) => {
+const EventView = ({ event, onEdit, onRemove, isPast }) => {
     return (
         <>
             {formatDisplayDate(event.start)} – {formatDisplayDate(event.end)}:{" "}
             <strong>{event.name}</strong>
 
-            <button onClick={onEdit}>Edit</button>
-            <button onClick={onRemove}>Remove</button>
+            {!isPast && <button onClick={onEdit}>Redigera</button>}
+            <button onClick={onRemove}>Ta bort</button>
         </>
     );
 };

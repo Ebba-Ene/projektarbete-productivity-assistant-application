@@ -8,13 +8,21 @@ const HabitsForm = () => {
   const [reps, setReps] = useState(null)
   const [title, setTitle] = useState(null)
   const [isError, setIsError] = useState(null)
+  const [typeError, setTypeError] = useState(null)
 
   const checkInput = () => {
     priority
     if (!title || !reps || !priority) {
-      setIsError(true)
+      alert(
+        "Var vänlig fyll i alla rutor med information innan du skapar en ny vana!"
+      )
+    } else if (reps < 0) {
+      alert(
+        "Antalet genomförda repetitioner kan inte vara färre än noll gånger!"
+      )
     } else if (title && reps && priority) {
       const newHabit = {
+        habitId: crypto.randomUUID(),
         title,
         repetitions: +reps,
         priority,
@@ -26,13 +34,13 @@ const HabitsForm = () => {
 
   return (
     <div className={s.habitsform}>
-      <h1>HabitsForm component</h1>
-      <h2>Skapa upp en ny vana:</h2>
+      <h2 className={s.titleForm}>Skapa upp en ny vana:</h2>
       <label htmlFor="title">Titel:</label>
       <input
         type="text"
         name="title"
         id="title"
+        placeholder="Lägg till en rubrik"
         onChange={(e) => {
           setTitle(e.target.value)
         }}
@@ -42,6 +50,7 @@ const HabitsForm = () => {
         type="number"
         name="repetitions"
         id="repetitions"
+        placeholder="antal utförda repetitioner"
         onChange={(e) => {
           setReps(e.target.value)
         }}
@@ -65,12 +74,6 @@ const HabitsForm = () => {
       >
         Lägg till vana
       </button>
-      {isError && (
-        <p>
-          Se till att fylla ut <strong>all information</strong> innan du skapar
-          en ny vana!
-        </p>
-      )}
     </div>
   )
 }

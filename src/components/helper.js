@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export const formatDateTimeLocal = (date) => {
   const d = new Date(date);
   const pad = (v) => v.toString().padStart(2, "0");
@@ -16,17 +14,6 @@ export const formatDisplayDate = (date) =>
     dateStyle: "long",
     timeStyle: "short"
   });
-
-export const useSyncEndWithStart = (start, end, setEnd) => {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
-
-  useEffect(() => {
-        if (endDate < startDate) {
-            setEnd(start);
-        }
-    }, [start]);
-}
 
 export const validateEvent = (start, end, name) => {
     const startDate = new Date(start);

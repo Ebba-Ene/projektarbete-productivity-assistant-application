@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { EventContext } from "../../context/EventContext";
-import { formatDateTimeLocal, useSyncEndWithStart, validateEvent } from "../helper";
+import { formatDateTimeLocal, validateEvent } from "../helper";
 import EventInputs from "../EventInputs/EventInputs";
 
 const EventForm = () => {
@@ -11,8 +11,6 @@ const EventForm = () => {
     const [start, setStart] = useState(formatDateTimeLocal(now));
     const [end, setEnd] = useState(formatDateTimeLocal(now));
     const [name, setName] = useState("");
-
-    useSyncEndWithStart(start, end, setEnd);
 
     const handleAdd = () => {
         const error = validateEvent(start, end, name);
@@ -26,11 +24,11 @@ const EventForm = () => {
     
     return (
         <div>
-            <h3>Skapa event</h3>
+            <h3>Skapa händelse</h3>
 
             <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName}/>
 
-            <button onClick={handleAdd}>Add</button>
+            <button onClick={handleAdd}>Lägg till</button>
         </div>
     );
 };
