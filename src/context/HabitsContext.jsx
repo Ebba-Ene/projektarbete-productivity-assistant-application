@@ -34,8 +34,6 @@ const HabitsProvider = ({ children }) => {
     console.log("showArray function sees habits as: " + JSON.stringify(habits))
   }
   const addHabit = (newHabit) => {
-    console.log("entered addHabit")
-    console.log(JSON.stringify(newHabit))
     setHabits([...habits, newHabit])
   }
   const updateArray = (newArray) => {

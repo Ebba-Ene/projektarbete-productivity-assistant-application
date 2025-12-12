@@ -13,12 +13,9 @@ const HabitsPage = () => {
   const [display, setDisplay] = useState(habits)
 
   useEffect(() => {
-    console.log("entered useeffect and saw that habits array updated")
     if (filterClick && filterClick !== "all") {
-      console.log("entered that click was made to all")
       setDisplay(habits.filter((item) => item.priority === filterClick))
     } else {
-      console.log("entered second if statement else")
       setDisplay(habits)
     }
   }, [filterClick, habits])
@@ -41,7 +38,7 @@ const HabitsPage = () => {
     }
     console.log("du klickade")
   } */
-  const checkFiltering = (value) => {
+  /*   const checkFiltering = (value) => {
     console.log("ändrade sort")
     console.log(value)
     if (value && value !== "all") {
@@ -49,17 +46,17 @@ const HabitsPage = () => {
     } else {
       setDisplay(habits)
     }
-  }
-  const checkSorting = (value) => {
-    console.log("value is seen as " + value)
-    const orderedArr = [...display]
-    if (value === "sortincrease") {
-      setDisplay(orderedArr.sort((a, b) => a.priority - b.priority))
-      /* console.log(JSON.stringify(result)) */
-    } else {
-      setDisplay(orderedArr.sort((a, b) => b.priority - a.priority))
-    }
-  }
+  } */
+  // const checkSorting = (value) => {
+  //   console.log("value is seen as " + value)
+  //   const orderedArr = [...display]
+  //   if (value === "sortincrease") {
+  //     setDisplay(orderedArr.sort((a, b) => a.priority - b.priority))
+  //     /* console.log(JSON.stringify(result)) */
+  //   } else {
+  //     setDisplay(orderedArr.sort((a, b) => b.priority - a.priority))
+  //   }
+  // }
 
   return (
     <>
