@@ -14,12 +14,19 @@
     border: none;
     border-radius: 25px;
     padding: 0.5rem 0.8rem;
-    margin: 1rem 0.5rem 0 0;
-    font-weight: 600;
+    margin: 1rem 0rem 0 0.5rem;
+    font-weight: 500;
+    transition: 0.3s ease;
 }
 
 .filterbutton button:hover {
     cursor: pointer;
+    background-color: #000;
+}
+
+.filterbutton span {
+    font-weight: 500;
+    font-size: 0.8rem;
 }
 
 .eventlist ul {

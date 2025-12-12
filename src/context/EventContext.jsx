@@ -1,9 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const EventContext = createContext();
 
 const EventProvider = ({ children }) => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(JSON.parse(localStorage.getItem("events")) || []);
+
+  useEffect(() => {
+    localStorage.setItem("events", JSON.stringify(events))
+  },[events])
 
   const addEvent = (start, end, name) => {
     const newEvent = {

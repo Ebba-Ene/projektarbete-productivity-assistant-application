@@ -25,8 +25,10 @@ const EventEdit = ({ event, onCancel }) => {
         <div className={s.editcontainer}>
             <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName} isEdit={true} showLabels={false}/>
 
-            <button onClick={onCancel}>Ångra</button>
-            <button onClick={saveEdit}>Spara</button>
+            <div className={s.buttoncontainer}>
+                <button onClick={onCancel}>Ångra</button>
+                <button onClick={saveEdit}>Spara</button>
+            </div>
         </div>
     );
 };

@@ -26,13 +26,13 @@
 .homeitem li {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
+    align-items: baseline;
   background-color: #B253FF;
   list-style-type: none;
   padding: 1rem;
   border-radius: 15px;
   flex: 1;
-  min-height: 120px;
+  height:100%;
 }
 
 .homeitem a {

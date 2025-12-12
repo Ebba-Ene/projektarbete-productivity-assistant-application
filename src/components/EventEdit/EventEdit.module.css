@@ -1,18 +1,39 @@
+.editcontainer {
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .editcontainer button {
     font-size: 0.8rem;
     border: none;
-    border-radius: 25px;
+    border-radius: 5px;
     padding: 0.5rem 0.8rem;
     margin: 0 0 0 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .editcontainer button:last-of-type {
     background-color: #97FFBF;
     color: #222;
+    transition: 0.3s ease;
+}
+
+.editcontainer button:last-of-type:hover {
+    background-color: #87E2AA;
+    cursor: pointer;
 }
 
 .editcontainer button:first-of-type {
     background-color: #222;
     color: #EEE;
+    transition: 0.3s ease;
+}
+
+.editcontainer button:first-of-type:hover {
+    background-color: #000;
+    cursor: pointer;
 }
