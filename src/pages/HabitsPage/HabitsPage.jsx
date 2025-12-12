@@ -4,7 +4,7 @@ import s from "./HabitsPage.module.css"
 import HabitsForm from "../../components/HabitsForm.jsx/HabitsForm"
 
 const HabitsPage = () => {
-  const { habits, incrDecrReset } = useContext(HabitsContext)
+  const { habits, incrDecrReset, deleteHabit } = useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
   //added to communicate with select and set first value = ""
   const [filterClick, setFilterClick] = useState("")
@@ -77,7 +77,14 @@ const HabitsPage = () => {
       <div className={s.grid}>
         {display.map((item, i) => (
           <div className={s.habitCard} key={i}>
-            <button className={s.deletebtn}>X</button>
+            <button
+              className={s.deletebtn}
+              onClick={() => {
+                deleteHabit(item.habitId)
+              }}
+            >
+              X
+            </button>
             <h2>{item.title}</h2>
             <p>
               <strong>repetitioner:</strong>
