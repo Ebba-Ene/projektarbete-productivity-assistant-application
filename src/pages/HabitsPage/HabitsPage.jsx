@@ -13,9 +13,12 @@ const HabitsPage = () => {
   const [display, setDisplay] = useState(habits)
 
   useEffect(() => {
+    console.log("entered useeffect and saw that habits array updated")
     if (filterClick && filterClick !== "all") {
+      console.log("entered that click was made to all")
       setDisplay(habits.filter((item) => item.priority === filterClick))
     } else {
+      console.log("entered second if statement else")
       setDisplay(habits)
     }
   }, [filterClick, habits])
@@ -25,7 +28,7 @@ const HabitsPage = () => {
     const orderedArr = [...display]
     if (sortClick === "sortincrease") {
       setDisplay(orderedArr.sort((a, b) => a.repetitions - b.repetitions))
-    } else {
+    } else if (sortClick === "sortdecrease") {
       setDisplay(orderedArr.sort((a, b) => b.repetitions - a.repetitions))
     }
   }, [sortClick, habits])
