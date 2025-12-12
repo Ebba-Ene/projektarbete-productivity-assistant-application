@@ -52,7 +52,7 @@ const TodoFilter = () => {
         </select>
       }
         
-        <button type="submit">Filtrera</button>
+      <button type="submit">Filtrera</button>
 
       {showFilterBtn && 
         <button onClick={stopFilter}>Sluta filtrera</button>

@@ -12,8 +12,6 @@ const TodoProvider = ({children}) => {
   const[filter, setFilter] = useState("")
   const[whatToFilter, setWhatToFilter] = useState("")
 
-
-
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
@@ -24,7 +22,6 @@ const TodoProvider = ({children}) => {
   }
 
   const removeTodo = (id) => {
-
     const remainingTodos = todos.filter(todo => todo.id !== id)
     setTodos(remainingTodos)
 }
@@ -79,12 +76,14 @@ const TodoProvider = ({children}) => {
             const sorted = [...todos].sort((a, b) => new Date(b.deadline) - new Date(a.deadline))
             setTodos(sorted)
           }
+
+    
       }  else if (sorting == "Tidsestimat"){
           if(direction == "Fallande"){
-            const sorted = [...todos].sort((a, b) => timeToMinutes(a.timeEstimate) - timeToMinutes(b.timeEstimate))
+          const sorted = [...todos].sort((a, b) => timeToMinutes(`${a.timeEstimateNumber} ${a.timeEstimateUnit}`) - timeToMinutes(`${b.timeEstimateNumber} ${b.timeEstimateUnit}`))
             setTodos(sorted)
           }else if(direction == "Stigande"){
-            const sorted = [...todos].sort((a, b) => timeToMinutes(b.timeEstimate) - timeToMinutes(a.timeEstimate))
+            const sorted = [...todos].sort((a, b) => timeToMinutes(`${b.timeEstimateNumber} ${b.timeEstimateUnit}`) - timeToMinutes(`${a.timeEstimateNumber} ${a.timeEstimateUnit}`))
             setTodos(sorted)
         
       }
@@ -96,9 +95,16 @@ const TodoProvider = ({children}) => {
     setWhatToFilter(what)
     setShowFilterBtn(true)
   }
-  
+
+  const editTodo = (todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber) => {
+    const editedTodo = todos.map(todo => todo.id === todoId ? {...todo, title, description, category, deadline, timeEstimateNumber, timeEstimateUnit} : todo)
+
+    
+    setTodos(editedTodo)
+  }
+   
   return(
-    <TodoContext value={{todos, addTodo, show, setShow, completeTodo, removeTodo, sortTodo, filterTodo, filter, whatToFilter, showFilterBtn, setShowFilterBtn, setFilter}}>
+    <TodoContext value={{todos, addTodo, show, setShow, completeTodo, removeTodo, sortTodo, filterTodo, filter, whatToFilter, showFilterBtn, setShowFilterBtn, setFilter, editTodo}}>
       {children}
     </TodoContext>
   )

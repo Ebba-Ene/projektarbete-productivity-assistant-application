@@ -14,7 +14,7 @@ const TodoPage = () => {
 
   return(
     <>
-      <h2>Mina todos:</h2>
+      <h2>Mina ärenden & aktiviteter:</h2>
       <div className={todoCss.container}>
 
         <div className={todoCss.form}>
