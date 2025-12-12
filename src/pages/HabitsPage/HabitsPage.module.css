@@ -1,3 +1,7 @@
+.wrapper{
+    max-width:90%;
+    margin: 0 auto;
+}
 .habitCard{
     display:flex;
     padding:1.5rem;

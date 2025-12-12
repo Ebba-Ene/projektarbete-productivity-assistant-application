@@ -59,7 +59,7 @@ const HabitsPage = () => {
   // }
 
   return (
-    <>
+    <div className={s.wrapper}>
       <h2>Habits:</h2>
       {/* {showArray(habits)} */}
       <button
@@ -140,7 +140,7 @@ const HabitsPage = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -51,10 +51,6 @@ const HabitsProvider = ({ children }) => {
     } else if (change === "decrease" && newHabits[placement].repetitions > 0) {
       --newHabits[placement].repetitions
     } else if (change === "reset") {
-      console.log(
-        "sees newHabits placement in reset as " +
-          newHabits[placement].repetitions
-      )
       newHabits[placement].repetitions = 0
     } else {
       alert("Det går inte att göra färre än 0 repetitioner!")
