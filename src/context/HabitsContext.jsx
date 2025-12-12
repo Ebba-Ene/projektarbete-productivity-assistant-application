@@ -53,6 +53,9 @@ const HabitsProvider = ({ children }) => {
     }
     setHabits(newHabits)
   }
+  const deleteHabit = (id) => {
+    setHabits(habits.filter((item) => item.habitId !== id))
+  }
 
   return (
     <HabitsContext
@@ -61,6 +64,7 @@ const HabitsProvider = ({ children }) => {
         showArray,
         addHabit,
         incrDecrReset,
+        deleteHabit,
       }}
     >
       {children}
