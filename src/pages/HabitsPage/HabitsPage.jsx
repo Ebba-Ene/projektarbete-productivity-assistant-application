@@ -77,6 +77,7 @@ const HabitsPage = () => {
       <div className={s.grid}>
         {display.map((item, i) => (
           <div className={s.habitCard} key={i}>
+            <button className={s.deletebtn}>X</button>
             <h2>{item.title}</h2>
             <p>
               <strong>repetitioner:</strong>

@@ -49,15 +49,40 @@ html{
     box-shadow: 0.01rem 0.01rem 0.6rem 0.01rem rgb(22, 3, 67);
     
 }
+.deletebtn{
+    font-size: 2rem;
+    width:2.5rem;
+    border-radius: 3rem;
+    padding:0.06rem;
+    align-self:end;
+    text-align: center;
+    margin:-1rem -1rem 0 0;
+    color:white;
+    background-color: #F82797;
+    border:none;
+}
+.deletebtn:hover{
+    background-color:white;
+    color:#F82797;
+}
 .repbtn{
     padding:0.1rem;
+    height: 3rem;
+    width:3rem;
     background-color: rgb(255, 255, 255);
     font-size:1.5rem;
     border:none;
     border-radius:0.02rem;
 }
+.repbtn:hover{
+    background-color: #37ff84;
+}
 .resetbtn{
     margin:1rem;
+}
+.resetbtn:hover{
+    background-color: #F82797;
+    color:white;
 }
 .grid{
     display:grid;
