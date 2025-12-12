@@ -19,7 +19,7 @@
 .itemcontainer button:last-of-type {
     background-color: #F82797;
     color: #222;
-    transition: 0.3s ease;
+    transition: 0.15s ease;
 }
 
 .itemcontainer button:last-of-type:hover {
@@ -30,7 +30,7 @@
 .itemcontainer button:first-of-type {
     background-color: #222;
     color: #EEE;
-    transition: 0.3s ease;
+    transition: 0.15s ease;
 }
 
 .itemcontainer button:first-of-type:hover {

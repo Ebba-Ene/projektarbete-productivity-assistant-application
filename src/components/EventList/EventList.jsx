@@ -24,9 +24,9 @@ const EventList = () => {
 
            <div className={s.filterbutton}>
                 <span>Filter:</span>
-                <button onClick={() => setFilter("all")}>Alla</button>
-                <button onClick={() => setFilter("upcoming")}>Kommande</button>
-                <button onClick={() => setFilter("past")}>Tidigare</button>
+                <button onClick={() => setFilter("all")} className={filter === "all" ? s.active : ""}>Alla</button>
+                <button onClick={() => setFilter("upcoming")} className={filter === "upcoming" ? s.active : ""}>Kommande</button>
+                <button onClick={() => setFilter("past")} className={filter === "past" ? s.active : ""}>Tidigare</button>
             </div>
 
             <ul>

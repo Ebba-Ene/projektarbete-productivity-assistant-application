@@ -14,14 +14,22 @@
     border: none;
     border-radius: 25px;
     padding: 0.5rem 0.8rem;
-    margin: 1rem 0rem 0 0.5rem;
+    margin: 1rem 0 0 0.5rem;
     font-weight: 500;
-    transition: 0.3s ease;
+    transition: 0.15s ease;
 }
 
 .filterbutton button:hover {
     cursor: pointer;
     background-color: #000;
+}
+
+.filterbutton button.active {
+    background-color: #444;
+}
+
+.filterbutton button.active:hover {
+    background-color: #222;
 }
 
 .filterbutton span {

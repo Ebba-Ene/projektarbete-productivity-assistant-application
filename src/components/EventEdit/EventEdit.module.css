@@ -19,7 +19,7 @@
 .editcontainer button:last-of-type {
     background-color: #97FFBF;
     color: #222;
-    transition: 0.3s ease;
+    transition: 0.15s ease;
 }
 
 .editcontainer button:last-of-type:hover {
@@ -30,7 +30,7 @@
 .editcontainer button:first-of-type {
     background-color: #222;
     color: #EEE;
-    transition: 0.3s ease;
+    transition: 0.15s ease;
 }
 
 .editcontainer button:first-of-type:hover {
