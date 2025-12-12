@@ -15,12 +15,14 @@
     background-color: #97FFBF;
     color: #222;
     border: none;
-    border-radius: 25px;
+    border-radius: 5px;
     padding: 0.8rem;
     margin-top: 2rem;
-    font-weight: 600;
+    font-weight: 500;
+    transition: 0.3s ease;
 }
 
 .addbutton:hover {
     cursor: pointer;
+    background-color: #87E2AA;
 }

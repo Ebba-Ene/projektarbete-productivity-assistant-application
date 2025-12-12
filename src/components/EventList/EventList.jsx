@@ -23,6 +23,7 @@ const EventList = () => {
             <h3>Händelser</h3>
 
            <div className={s.filterbutton}>
+                <span>Filter:</span>
                 <button onClick={() => setFilter("all")}>Alla</button>
                 <button onClick={() => setFilter("upcoming")}>Kommande</button>
                 <button onClick={() => setFilter("past")}>Tidigare</button>
