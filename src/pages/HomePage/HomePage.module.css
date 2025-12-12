@@ -26,7 +26,7 @@
 .homeitem li {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
+    align-items: baseline;
   background-color: #B253FF;
   list-style-type: none;
   padding: 1rem;
