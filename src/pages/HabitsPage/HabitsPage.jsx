@@ -4,8 +4,7 @@ import s from "./HabitsPage.module.css"
 import HabitsForm from "../../components/HabitsForm.jsx/HabitsForm"
 
 const HabitsPage = () => {
-  const { habits, showArray, updateArray, incrDecrReset } =
-    useContext(HabitsContext)
+  const { habits, incrDecrReset } = useContext(HabitsContext)
   const [addMode, setAddMode] = useState(false)
   //added to communicate with select and set first value = ""
   const [filterClick, setFilterClick] = useState("")
@@ -30,46 +29,9 @@ const HabitsPage = () => {
     }
   }, [sortClick, habits])
 
-  /*   const checkFilterSort = () => {
-    if (filter) {
-      console.log(`jag ser filter: ${filter}`)
-      const newList = habits.filter((item) => item.priority === filter)
-      console.log(JSON.stringify(newList))
-    }
-    console.log("du klickade")
-  } */
-  /*   const checkFiltering = (value) => {
-    console.log("ändrade sort")
-    console.log(value)
-    if (value && value !== "all") {
-      setDisplay(habits.filter((item) => item.priority === value))
-    } else {
-      setDisplay(habits)
-    }
-  } */
-  // const checkSorting = (value) => {
-  //   console.log("value is seen as " + value)
-  //   const orderedArr = [...display]
-  //   if (value === "sortincrease") {
-  //     setDisplay(orderedArr.sort((a, b) => a.priority - b.priority))
-  //     /* console.log(JSON.stringify(result)) */
-  //   } else {
-  //     setDisplay(orderedArr.sort((a, b) => b.priority - a.priority))
-  //   }
-  // }
-
   return (
     <div className={s.wrapper}>
-      <h2>Habits:</h2>
-      {/* {showArray(habits)} */}
-      <button
-        onClick={() => {
-          setAddMode(!addMode)
-        }}
-      >
-        {!addMode ? "Lägg till" : "Ignorera"} ny vana
-      </button>
-      {addMode && <HabitsForm />}
+      <h2 className={s.pagetitle}>Rutiner</h2>
       <div className={s.filtersort}>
         <label htmlFor="filter">Filtrera efter:</label>
         <select
@@ -100,8 +62,18 @@ const HabitsPage = () => {
           <option value="sortincrease">Fallande</option>
           <option value="sortdecrease">Stigande</option>
         </select>
+      </div>{" "}
+      <div className={s.newhabit}>
+        <button
+          className={!addMode ? s.newbtn : s.cancelbtn}
+          onClick={() => {
+            setAddMode(!addMode)
+          }}
+        >
+          {!addMode ? "+" : "Avbryt"}
+        </button>
+        {addMode && <HabitsForm />}
       </div>
-      <h3>display:</h3>
       <div className={s.grid}>
         {display.map((item, i) => (
           <div className={s.habitCard} key={i}>
@@ -111,14 +83,16 @@ const HabitsPage = () => {
             </p>
             <div className={s.reps}>
               <button
+                className={s.repbtn}
                 onClick={() => {
                   incrDecrReset(item.habitId, "decrease")
                 }}
               >
                 -
               </button>
-              <p>{item.repetitions}</p>
+              <p className={s.repsnum}>{item.repetitions}</p>
               <button
+                className={s.repbtn}
                 onClick={() => {
                   incrDecrReset(item.habitId, "increase")
                 }}
@@ -127,6 +101,7 @@ const HabitsPage = () => {
               </button>
             </div>
             <button
+              className={s.resetbtn}
               onClick={(e) => {
                 incrDecrReset(item.habitId, "reset")
               }}

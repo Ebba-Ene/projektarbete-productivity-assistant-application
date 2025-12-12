@@ -1,14 +1,37 @@
+.habitscomponent{
+    margin: 1rem 0;
+}
+.titleform{
+    padding:0.5rem 0;
+    background-color: #B253FF;
+}
 .habitsform{
-    background-color: rgb(255, 255, 255);
-    padding: 1rem 0;
     display:flex;
+    background-color: #B253FF;
     justify-content: center;
+    padding:0 1rem 1rem 1rem;
     align-items: center;
+    gap:1rem;
 }
 h1{
     color:#222222;
 }
-
-.titleForm{
-    color:#222222;
+h2{
+    margin:0;
+    padding:0;
+}
+.repsinput, .titleinput, .priorityinput{
+    font-size: 0.8rem;
+    max-width: 90%;
+    padding:0.4rem;
+}
+.formbtn{
+    border:none;
+    background-color: #97FFBF;
+    padding:1rem;
+    align-self: end;
+}
+.formbtn:hover{
+    color:white;
+    background-color: #02ab42;
 }

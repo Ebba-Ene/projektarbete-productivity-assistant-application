@@ -1,28 +1,73 @@
+.pagetitle{
+    margin-bottom:1rem;
+}
+html{
+    overflow-y: 100%;
+}
+.newbtn{
+    background-color: #97FFBF;
+    font-size: 2rem;
+    border:none;
+    width:4rem;
+    height:4rem;
+    margin-bottom:1rem;
+}
+.newbtn:hover{
+    color:white;
+    background-color: #37ff84;
+}
+.cancelbtn{
+    align-self: start;
+    font-size: 2rem;
+    color:white;
+    height:4rem;
+    background-color:#F82797;
+    border:none;
+    padding:1rem;
+}
+.cancelbtn:hover{
+    background-color:white;
+    color:#F82797;
+}
+
 .wrapper{
-    max-width:90%;
+    max-width:75%;
     margin: 0 auto;
+    display:flex;
+    flex-direction: column;
 }
 .habitCard{
     display:flex;
     padding:1.5rem;
     flex-direction: column;
-    background-color:rgb(199, 199, 199);
+
+    background-color: #B253FF;
+    border: 0.2rem inset rgb(178, 69, 255);
     border-radius:1rem;
     align-items: center;
-    background: linear-gradient(#767676, #636363);  
+    background: linear-gradient(#B253FF, #420b9c);
+    box-shadow: 0.01rem 0.01rem 0.6rem 0.01rem rgb(22, 3, 67);
+    
+}
+.repbtn{
+    padding:0.1rem;
+    background-color: rgb(255, 255, 255);
+    font-size:1.5rem;
+    border:none;
+    border-radius:0.02rem;
+}
+.resetbtn{
+    margin:1rem;
 }
 .grid{
     display:grid;
-    max-width: 60%;
     grid-template-columns: repeat(3,1fr);
-    gap:1rem;
+    gap:1.5rem;
 }
 h2{
     color:white;
 }
-html{
-    background-color: #222222;
-}
+
 .reps{
     display:grid;
     grid-template-columns: repeat(3,1fr);
@@ -45,4 +90,15 @@ label{
     justify-content: end;
     gap:1rem;
     margin-bottom:1rem;
+}
+.output{
+    align-self: end;
+    display:flex;
+    width:60%;
+    flex-direction: column;
+}
+.repsnum{
+    font-size: 2rem;
+    text-shadow: 0.1rem 0.1rem 0.1rem  black;
+
 }

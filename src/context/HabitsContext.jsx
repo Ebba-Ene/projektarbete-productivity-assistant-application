@@ -36,10 +36,6 @@ const HabitsProvider = ({ children }) => {
   const addHabit = (newHabit) => {
     setHabits([...habits, newHabit])
   }
-  const updateArray = (newArray) => {
-    console.log("update sees the array as " + JSON.stringify(newArray))
-    setHabits(newArray)
-  }
 
   const incrDecrReset = (id, change) => {
     const foundObject = habits.filter((item) => item.habitId === id)
@@ -64,7 +60,6 @@ const HabitsProvider = ({ children }) => {
         habits,
         showArray,
         addHabit,
-        updateArray,
         incrDecrReset,
       }}
     >
