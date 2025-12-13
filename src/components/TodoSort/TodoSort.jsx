@@ -3,25 +3,31 @@ import { TodoContext } from "../../context/TodoContext"
 
 const TodoSort = () => {
 
-  const { sortTodo } = useContext(TodoContext)
-  const [sort, setSort] = useState("")
+  const { sortTodo, setSort } = useContext(TodoContext)
+  const [sorting, setSorting] = useState("")
   const [direction, setDirection] = useState("")
  
   const handleSubmit = (e) => {
     e.preventDefault()
-    sortTodo(sort, direction)
+    sortTodo(sorting, direction)
+  }
+
+  const stopSorting = () => {
+    setSorting("")
+    setDirection("")
+    setSort()
   }
 
   return(
     <form onSubmit={handleSubmit}>
-      <select value={sort} onChange={(e) => {setSort(e.target.value)}}>
+      <select value={sorting} onChange={(e) => {setSorting(e.target.value)}}>
         <option value="" disabled>Sortera</option>
         <option>Deadline</option>
         <option>Tidsestimat</option>
         <option>Status</option>
       </select>
 
-    {sort === "Deadline" && 
+    {sorting === "Deadline" && 
       <select value={direction} onChange={(e) => {setDirection(e.target.value)}}>
         <option value="" disabled>Välj</option>
         <option value="Fallande">Närmast</option>
@@ -29,7 +35,7 @@ const TodoSort = () => {
       </select>    
     }
 
-    {sort === "Tidsestimat" && 
+    {sorting === "Tidsestimat" && 
       <select value={direction} selected onChange={(e) => {setDirection(e.target.value)}}>
         <option value="" disabled>Välj</option>
         <option value="Fallande">Kortast</option>
@@ -37,7 +43,7 @@ const TodoSort = () => {
       </select>    
     }
 
-    {sort === "Status" && 
+    {sorting === "Status" && 
       <select value={direction} onChange={(e) => {setDirection(e.target.value)}}>
         <option value="" disabled>Välj</option>
         <option value="Fallande">Inte gjort</option>
@@ -46,6 +52,11 @@ const TodoSort = () => {
     }
 
       <button type="submit">Sortera</button>
+
+    {sorting !== "" &&
+      <button type="button" onClick={stopSorting}>Sluta sortera</button>
+    }
+
     </form>
   )
 }

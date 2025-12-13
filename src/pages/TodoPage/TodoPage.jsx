@@ -4,9 +4,6 @@ import TodoForm from "../../components/TodoForm.jsx/TodoForm"
 import { TodoContext } from "../../context/TodoContext"
 
 import todoCss from "./TodoPage.module.css"
-import TodoSort from "../../components/TodoSort/TodoSort"
-import TodoFilter from "../../components/TodoFilter/TodoFilter"
-
 
 const TodoPage = () => {
 
@@ -14,7 +11,7 @@ const TodoPage = () => {
 
   return(
     <>
-      <h2>Mina todos:</h2>
+      <h2>Mina ärenden & aktiviteter:</h2>
       <div className={todoCss.container}>
 
         <div className={todoCss.form}>
@@ -23,8 +20,6 @@ const TodoPage = () => {
           <TodoForm/>}
         </div>
         <div className={todoCss.list}>
-          <TodoSort/>
-          <TodoFilter/>
           <TodoList/>
         </div>
       </div>
