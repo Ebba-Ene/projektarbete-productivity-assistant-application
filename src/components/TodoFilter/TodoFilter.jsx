@@ -3,7 +3,7 @@ import { TodoContext } from "../../context/TodoContext"
 
 const TodoFilter = () => {
 
-  const { filterTodo, showFilterBtn, setShowFilterBtn, setFilter} = useContext(TodoContext)
+  const { filterTodo, setFilter} = useContext(TodoContext)
 
   const[filters, setFilters] = useState("")
   const[category, setCategory] = useState("")
@@ -22,7 +22,6 @@ const TodoFilter = () => {
     setFilters("")
     setCategory("")
     setDone("")
-    setShowFilterBtn(false)
     setFilter("")
   }
 
@@ -54,7 +53,7 @@ const TodoFilter = () => {
         
       <button type="submit">Filtrera</button>
 
-      {showFilterBtn && 
+      {filters !== "" && 
         <button onClick={stopFilter}>Sluta filtrera</button>
       }
     </form>

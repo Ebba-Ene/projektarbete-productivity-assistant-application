@@ -8,8 +8,6 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   const {addTodo, setShow, editTodo} = useContext(TodoContext)
   const now = new Date()
 
-  console.log("editedDeadline:", editedDeadline)
-
   const[title, setTitle] = useState("")
   const[description, setDescription] = useState("")
   
@@ -17,7 +15,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   const[deadline, setDeadline] = useState("")
   
   const[timeEstimateUnit, setTimeEstimateUnit] = useState("")
-  const[timeEstimateNumber, setTimeEstimateNumber] = useState(0)
+  const[timeEstimateNumber, setTimeEstimateNumber] = useState("")
 
   useEffect(() => {
   if (editingTodo) {
@@ -49,7 +47,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         description,
         status: false,
         timeEstimateUnit, 
-        timeEstimateNumber,
+        timeEstimateNumber: Number(timeEstimateNumber) || 0,
         category,
         deadline,
         id: crypto.randomUUID()
@@ -79,28 +77,44 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
 
   return(
     <form onSubmit={handleSubmit} className={todoCss.form}>
-      <input type="text" value={title} placeholder="Titel" onChange={(e) => {setTitle(e.target.value)}}/>
-      <input type="text" value={description} placeholder="Beskrivning" onChange={(e) => {setDescription(e.target.value)}}/>
-      
-      <input type="number" value={editingTodo ? timeEstimateNumber : ""} placeholder="Tidsestimat?" onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}/>
-  
-        {timeEstimateNumber !== 1 && 
-          <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
-            <option value="" disabled>Tidsform</option>
-            <option>minuter</option>
-            <option>timmar</option>
-            <option>dagar</option>
-          </select>
-        }
+      <input 
+        type="text" 
+        value={title} 
+        placeholder="Titel" 
+        onChange={(e) => {setTitle(e.target.value)}}
+      />
 
-        {timeEstimateNumber == 1 && 
+      <input 
+        type="text" 
+        value={description} 
+        placeholder="Beskrivning" 
+        onChange={(e) => {setDescription(e.target.value)}}
+      />
+      
+      <input 
+        type="number" 
+        value={editingTodo ? timeEstimateNumber : timeEstimateNumber || ""} 
+        placeholder="Tidsestimat?" 
+        onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}
+      />
+  
+      {timeEstimateNumber !== 1 && 
+        <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
+          <option value="" disabled>Tidsform</option>
+          <option>minuter</option>
+          <option>timmar</option>
+          <option>dagar</option>
+        </select>
+      }
+
+      {timeEstimateNumber == 1 && 
         <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
           <option value="" disabled>Tidsform</option>
           <option>minut</option>
           <option>timme</option>
           <option>dag</option>
         </select>
-        }
+      }
 
       <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
         <option value="" disabled>Kategori</option>

@@ -1,10 +1,10 @@
 
 import { useContext, useState } from "react"
-import todoCss from "./TodoItem.module.css"
+import todoCss from "./TodoListItem.module.css"
 import { TodoContext } from "../../context/TodoContext"
 import TodoForm from "../TodoForm.jsx/TodoForm"
 
-const TodoItem = ({todo}) => {
+const TodoListItem = ({todo}) => {
 
   const { completeTodo, removeTodo } = useContext(TodoContext)
 
@@ -42,5 +42,5 @@ const TodoItem = ({todo}) => {
   )
 }
 
-export default TodoItem
+export default TodoListItem
 
