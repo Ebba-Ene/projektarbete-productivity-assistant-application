@@ -36,7 +36,7 @@ const TodoListItem = ({todo}) => {
       </>
     )}
     {editingTodo && 
-    <TodoForm todoId={todo.id} editedTitle={todo.title} editedCategory={todo.category} editedDescription={todo.description} editedTimeEstimateUnit={todo.timeEstimateUnit} editedTimeEstimateNumber={todo.timeEstimateNumber} editedDeadline={todo.deadline} editingTodo={true} setEditingTodo={setEditingTodo}/>
+      <TodoForm todoId={todo.id} editedTitle={todo.title} editedCategory={todo.category} editedDescription={todo.description} editedTimeEstimateUnit={todo.timeEstimateUnit} editedTimeEstimateNumber={todo.timeEstimateNumber} editedDeadline={todo.deadline} editingTodo={true} setEditingTodo={setEditingTodo}/>
     }
     </li>
   )

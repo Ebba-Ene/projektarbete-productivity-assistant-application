@@ -2,33 +2,24 @@ import { useContext, useEffect, useState } from "react"
 import { TodoContext } from "../../context/TodoContext"
 
 import todoCss from "./TodoForm.module.css"
+import { UserContext } from "../../context/UserContext"
 
 const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, editedTimeEstimateUnit, editedTimeEstimateNumber, editedDeadline, editingTodo, setEditingTodo}) => {
 
   const {addTodo, setShow, editTodo} = useContext(TodoContext)
+  const {currentUser} = useContext(UserContext)
+
   const now = new Date()
 
-  const[title, setTitle] = useState("")
-  const[description, setDescription] = useState("")
+  const[title, setTitle] = useState(editedTitle || "")
+  const[description, setDescription] = useState(editedDescription || "")
   
-  const[category, setCategory] = useState("")
-  const[deadline, setDeadline] = useState("")
+  const[category, setCategory] = useState(editedCategory || "")
+  const[deadline, setDeadline] = useState(editedDeadline || "")
   
-  const[timeEstimateUnit, setTimeEstimateUnit] = useState("")
-  const[timeEstimateNumber, setTimeEstimateNumber] = useState("")
+  const[timeEstimateUnit, setTimeEstimateUnit] = useState(editedTimeEstimateUnit || "")
+  const[timeEstimateNumber, setTimeEstimateNumber] = useState(editedTimeEstimateNumber || "")
 
-  useEffect(() => {
-  if (editingTodo) {
-    setTitle(editedTitle || "")
-    setDescription(editedDescription || "")
-    setCategory(editedCategory || "")
-    setDeadline(editedDeadline || "")
-    setTimeEstimateUnit(editedTimeEstimateUnit || "")
-    setTimeEstimateNumber(editedTimeEstimateNumber || 0)
-  }
-}, [editingTodo])
-  
-  
   const formatDateTimeLocal = () => {
     const d = new Date()
     const pad = (v) => v.toString().padStart(2, "0")
@@ -44,13 +35,14 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
     if(category && title && timeEstimateUnit && timeEstimateNumber !== 0 && deadline && description){
       let newTodo = {
         title,
+        userId: currentUser.userId,
+        id: crypto.randomUUID(),
         description,
         status: false,
         timeEstimateUnit, 
-        timeEstimateNumber: Number(timeEstimateNumber) || 0,
+        timeEstimateNumber: Number(timeEstimateNumber),
         category,
-        deadline,
-        id: crypto.randomUUID()
+        deadline
       }
 
       if(editingTodo){
@@ -65,13 +57,14 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
     } else{alert("Fyll i alla tomma fält")}
   }
 
+//resetar värderna till de tidigare om man inte vill ändra längre
   const stopEditing = () => {
-    setTitle(editedTitle || "")
-    setDescription(editedDescription || "")
-    setCategory(editedCategory || "")
-    setDeadline(editedDeadline || "")
-    setTimeEstimateUnit(editedTimeEstimateUnit || "")
-    setTimeEstimateNumber(editedTimeEstimateNumber || 0)
+    setTitle(editedTitle)
+    setDescription(editedDescription)
+    setCategory(editedCategory)
+    setDeadline(editedDeadline)
+    setTimeEstimateUnit(editedTimeEstimateUnit)
+    setTimeEstimateNumber(editedTimeEstimateNumber)
     setEditingTodo(false)
   }
 
@@ -97,7 +90,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         placeholder="Tidsestimat?" 
         onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}
       />
-  
+
       {timeEstimateNumber !== 1 && 
         <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
           <option value="" disabled>Tidsform</option>
@@ -123,17 +116,17 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         <option>Jobbrelaterat</option>
         <option>Nöje</option>
       </select>
+
       <input type="date" value={deadline} min={formatDateTimeLocal(now)} onChange={(e) => setDeadline(e.target.value)}/>
 
 
     {editingTodo ? 
-    <>
-      <button type="submit"> <strong>Spara redigering</strong></button> 
-      <button type="button" onClick={() => {stopEditing()}}>Avsluta</button>
-    </> : 
-      <button type="submit"> <strong>Lägg till ny todo</strong> {title}</button>
+      <>
+        <button type="submit"> <strong>Spara redigering</strong></button> 
+        <button type="button" onClick={() => {stopEditing()}}>Avsluta</button>
+      </> 
+      : <button type="submit"> <strong>Lägg till ny todo</strong> {title}</button>
     }
-
     </form>
   )
 }

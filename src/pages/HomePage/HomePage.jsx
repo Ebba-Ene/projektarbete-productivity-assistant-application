@@ -21,6 +21,7 @@ const HomePage = () => {
           <h3>Senaste ej utförda ärenden</h3>
           <ul>
             {todos
+              .filter((todo) => todo.userId === currentUser.userId)
               .filter((todo) => todo.status === false)
               .slice(-3)
               .map((todo, key) => (
