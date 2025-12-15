@@ -3,8 +3,11 @@ import { EventContext } from "../../context/EventContext";
 import { formatDateTimeLocal, validateEvent } from "../helper";
 import EventInputs from "../EventInputs/EventInputs";
 import s from "./EventForm.module.css"
+import { UserContext } from "../../context/UserContext";
 
 const EventForm = () => {
+    const { currentUser } = useContext(UserContext)
+
     const { addEvent } = useContext(EventContext)
 
     const now = new Date();
@@ -19,7 +22,7 @@ const EventForm = () => {
             return alert(error);
         }
         
-        addEvent(start, end, name);
+        addEvent(currentUser.userId, start, end, name);
         setName("");
     };
     

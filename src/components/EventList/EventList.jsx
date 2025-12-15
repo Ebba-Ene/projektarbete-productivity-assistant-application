@@ -2,20 +2,26 @@ import { useContext, useState } from "react"
 import { EventContext } from "../../context/EventContext"
 import EventItem from "../EventItem/EventItem";
 import s from "./EventList.module.css"
+import { UserContext } from "../../context/UserContext";
 
 const EventList = () => {
-    const { events, upcomingEvents, pastEvents } = useContext(EventContext);
+    const { currentUser } = useContext(UserContext)
+
+    const { upcomingEvents, pastEvents } = useContext(EventContext);
     const [filter, setFilter] = useState("all")
     const now = new Date();
 
-    let sortedEvents = [...upcomingEvents, ...pastEvents]
+    const userUpcomingEvents = upcomingEvents.filter((event) => event.userId === currentUser.userId);
+    const userPastEvents = pastEvents.filter((event) => event.userId === currentUser.userId);
+
+    let sortedEvents = [...userUpcomingEvents, ...userPastEvents]
 
     if (filter === "upcoming") {
-        sortedEvents = upcomingEvents
+        sortedEvents = userUpcomingEvents
     }
 
     if (filter === "past") {
-        sortedEvents = pastEvents
+        sortedEvents = userPastEvents
     }
 
     return (

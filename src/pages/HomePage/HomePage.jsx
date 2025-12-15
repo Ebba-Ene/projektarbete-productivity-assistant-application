@@ -64,7 +64,10 @@ const HomePage = () => {
         <div className={s.homeitem}>
           <h3>Nästkommande händelser</h3>
           <ul>
-            {upcomingEvents.slice(0, 3).map((event, index) => (
+            {upcomingEvents
+            .filter((event) => event.userId === currentUser.userId)
+            .slice(0, 3)
+            .map((event, index) => (
               <li key={index}>
                 <span className={s.date}>{formatDisplayDate(event.start)}</span>
                 <span className={s.name}>{event.name}</span>

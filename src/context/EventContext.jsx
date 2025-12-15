@@ -9,8 +9,9 @@ const EventProvider = ({ children }) => {
     localStorage.setItem("events", JSON.stringify(events))
   },[events])
 
-  const addEvent = (start, end, name) => {
+  const addEvent = (userId, start, end, name) => {
     const newEvent = {
+      userId,
       id: crypto.randomUUID(),
       start,
       end,
