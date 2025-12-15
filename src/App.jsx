@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "./App.css"
 import HomePage from "./pages/HomePage/HomePage"
+import LoginPage from "./pages/LoginPage/LoginPage"
 import TodoPage from "./pages/TodoPage/TodoPage"
 import EventPlannerPage from "./pages/EventPlannerPage/EventPlannerPage"
 import HabitsPage from "./pages/HabitsPage/HabitsPage"
@@ -13,6 +14,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/todo" element={<TodoPage />} />
           <Route path="/eventplanner" element={<EventPlannerPage />} />
           <Route path="/habits" element={<HabitsPage />} />
