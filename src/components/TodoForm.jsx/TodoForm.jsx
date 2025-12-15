@@ -48,7 +48,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
       if(editingTodo){
         editTodo(todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber)
         setEditingTodo(false)
-      }else{
+      } else {
         addTodo(newTodo)
       }
       

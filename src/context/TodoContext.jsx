@@ -36,8 +36,7 @@ const TodoProvider = ({children}) => {
     if (newTodoList[placement].status === false) {
 
       newTodoList[placement].status = true
-
-      
+ 
     } else if (newTodoList[placement].status === true) {
 
       newTodoList[placement].status = false
@@ -57,7 +56,10 @@ const TodoProvider = ({children}) => {
   }
 
   const editTodo = (todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber) => {
-    const editedTodo = todos.map(todo => todo.id === todoId ? {...todo, title, description, category, deadline, timeEstimateNumber, timeEstimateUnit} : todo)
+    const editedTodo = todos.map(todo => todo.id === todoId 
+      ? {...todo, title, description, category, deadline, timeEstimateNumber, timeEstimateUnit} 
+      : todo
+    )
 
     setTodos(editedTodo)
   }

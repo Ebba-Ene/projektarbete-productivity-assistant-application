@@ -19,6 +19,7 @@ const TodoPage = () => {
           {show && 
           <TodoForm/>}
         </div>
+        
         <div className={todoCss.list}>
           <TodoList/>
         </div>

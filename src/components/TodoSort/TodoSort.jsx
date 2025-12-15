@@ -15,7 +15,7 @@ const TodoSort = () => {
   const stopSorting = () => {
     setSorting("")
     setDirection("")
-    setSort()
+    setSort("")
   }
 
   return(

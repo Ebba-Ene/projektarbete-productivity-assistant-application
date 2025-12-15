@@ -25,7 +25,6 @@ const TodoList = () => {
     return minutes*scalar
     }
 
-
     const userTodos = todos.filter(todo => todo.userId === currentUser.userId)
 
     const filterTodos = userTodos.filter(todo => {
