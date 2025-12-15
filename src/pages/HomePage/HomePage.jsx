@@ -5,18 +5,17 @@ import { Link } from "react-router-dom"
 import s from "./HomePage.module.css"
 import { TodoContext } from "../../context/TodoContext"
 import { HabitsContext } from "../../context/HabitsContext"
-
-import { UserContext } from "../../context/UserContext"
+import Quote from "../../components/Quote/Quote"
 
 const HomePage = () => {
   const { upcomingEvents } = useContext(EventContext)
   const { todos } = useContext(TodoContext)
   const { habits } = useContext(HabitsContext)
-  const { currentUser } = useContext(UserContext)
 
   return (
     <>
-      <h2>Hej {currentUser.name}!</h2>
+      <Quote />
+
       <div className={s.homecontainer}>
         <div className={s.homeitem}>
           <h3>Senaste ej utförda ärenden</h3>

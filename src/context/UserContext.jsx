@@ -43,10 +43,38 @@ const UserProvider = ({ children }) => {
   const logoutUser = () => {
     sessionStorage.clear()
     setCurrentUser(null)
+    setQuote(null)
   }
 
+  const [quote, setQuote] = useState(
+    JSON.parse(sessionStorage.getItem("quote") || null)
+  )
+
+  useEffect(() => {
+    sessionStorage.setItem("quote", JSON.stringify(quote))
+  }, [quote])
+
+  useEffect(() => {
+    if (!currentUser) {
+      setQuote(null)
+      return
+    }
+
+    if (!quote) {
+      const fetchQuote = async () => {
+        let response = await fetch("https://dummyjson.com/quotes/random")
+        let json = await response.json()
+        setQuote(json)
+      }
+
+      fetchQuote()
+    }
+  }, [currentUser])
+
   return (
-    <UserContext value={{ users, currentUser, addUser, loginUser, logoutUser }}>
+    <UserContext
+      value={{ users, currentUser, addUser, loginUser, logoutUser, quote }}
+    >
       {children}
     </UserContext>
   )
