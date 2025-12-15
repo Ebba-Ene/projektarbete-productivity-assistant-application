@@ -25,9 +25,20 @@ function App() {
             path="/login"
             element={currentUser ? <Navigate to="/" /> : <LoginPage />}
           />
-          <Route path="/todo" element={<TodoPage />} />
-          <Route path="/eventplanner" element={<EventPlannerPage />} />
-          <Route path="/habits" element={<HabitsPage />} />
+          <Route
+            path="/todo"
+            element={currentUser ? <TodoPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/eventplanner"
+            element={
+              currentUser ? <EventPlannerPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/habits"
+            element={currentUser ? <HabitsPage /> : <Navigate to="/login" />}
+          />
         </Routes>
       </BrowserRouter>
     </>
