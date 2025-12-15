@@ -6,11 +6,13 @@ import s from "./HomePage.module.css"
 import { TodoContext } from "../../context/TodoContext"
 import { HabitsContext } from "../../context/HabitsContext"
 import Quote from "../../components/Quote/Quote"
+import { UserContext } from "../../context/UserContext"
 
 const HomePage = () => {
   const { upcomingEvents } = useContext(EventContext)
   const { todos } = useContext(TodoContext)
   const { habits } = useContext(HabitsContext)
+  const { currentUser } = useContext(UserContext)
 
   return (
     <>
