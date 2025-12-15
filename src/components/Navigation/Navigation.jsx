@@ -1,19 +1,42 @@
 import { Link } from "react-router-dom"
 import s from "./Navigation.module.css"
+import { useContext } from "react"
+import { UserContext } from "../../context/UserContext"
 
 const Navigation = () => {
+  const { logoutUser, currentUser } = useContext(UserContext)
+
   return (
     <>
-      <div className={s.menu}>
-        <div className={s.left}>
-          <Link to="/"><h1>[ Livsplaneraren ]</h1></Link>
+      {!currentUser ? (
+        <div className={s.menu}>
+          <div className={s.left}>
+            <Link to="/">
+              <h1>[ Livsplaneraren ]</h1>
+            </Link>
+          </div>
         </div>
-        <div className={s.right}>
-          <Link to="/todo">Todos</Link>
-          <Link to="/habits">Habits</Link>
-          <Link to="/eventplanner">Events</Link>
+      ) : (
+        <div className={s.menu}>
+          <div className={s.left}>
+            <Link to="/">
+              <h1>[ Livsplaneraren ]</h1>
+            </Link>
+          </div>
+          <div className={s.right}>
+            <Link to="/todo">Todos</Link>
+            <Link to="/habits">Habits</Link>
+            <Link to="/eventplanner">Events</Link>
+          </div>
+          <button
+            onClick={() => {
+              logoutUser()
+            }}
+          >
+            Logga ut
+          </button>
         </div>
-      </div>
+      )}
     </>
   )
 }

@@ -1,15 +1,55 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const UserContext = createContext()
 
-const [userName, setUserName] = useState(null)
-const [passWord, setPassWord] = useState(null)
-const [firstName, setFirstName] = useState(null)
-const [currentUser, setCurrentUser] = useState(null)
-const [loggedIn, setLoggedIn] = useState(false)
+const UserProvider = ({ children }) => {
+  const [users, setUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || []
+  )
 
-const UserProvider = () => {
-  return <UserContext value={{}}>{children}</UserContext>
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("currentUser")) || null
+  )
+
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users))
+  }, [users])
+
+  useEffect(() => {
+    sessionStorage.setItem("currentUser", JSON.stringify(currentUser))
+  }, [currentUser])
+
+  const addUser = (name, username, password) => {
+    const newUser = {
+      userId: crypto.randomUUID(),
+      name,
+      username,
+      password,
+    }
+
+    setUsers([...users, newUser])
+  }
+
+  const loginUser = (username, password) => {
+    let loggedInUser = users.find(
+      (user) => user.username === username && user.password === password
+    )
+
+    if (loggedInUser) {
+      setCurrentUser(loggedInUser)
+    }
+  }
+
+  const logoutUser = () => {
+    sessionStorage.clear()
+    setCurrentUser(null)
+  }
+
+  return (
+    <UserContext value={{ users, currentUser, addUser, loginUser, logoutUser }}>
+      {children}
+    </UserContext>
+  )
 }
 
 export default UserProvider

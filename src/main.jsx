@@ -5,15 +5,18 @@ import App from "./App.jsx"
 import EventProvider from "./context/EventContext.jsx"
 import TodoProvider from "./context/TodoContext.jsx"
 import HabitsProvider from "./context/HabitsContext.jsx"
+import UserProvider from "./context/UserContext.jsx"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <TodoProvider>
-      <EventProvider>
-        <HabitsProvider>
-          <App />
-        </HabitsProvider>
-      </EventProvider>
-    </TodoProvider>
+    <UserProvider>
+      <TodoProvider>
+        <EventProvider>
+          <HabitsProvider>
+            <App />
+          </HabitsProvider>
+        </EventProvider>
+      </TodoProvider>
+    </UserProvider>
   </StrictMode>
 )
