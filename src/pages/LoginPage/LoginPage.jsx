@@ -62,8 +62,7 @@ const LoginPage = () => {
           )}
 
           <button
-            onClick={(e) => {
-              e.preventDefault()
+            onClick={() => {
               logOrReg === "register"
                 ? addUser(firstname, username, password)
                 : loginUser(username, password)
