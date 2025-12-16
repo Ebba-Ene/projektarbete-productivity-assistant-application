@@ -5,12 +5,12 @@
 }
 .titleform{
     padding:0.5rem 0;
-    background-color: #B253FF;
+    background-color: #CCD5AE;
 }
 .habitsform{
     display:flex;
     flex-direction: column;
-    background-color: #B253FF;
+    background-color: #CCD5AE;
     padding:1rem;
 }
 h1{
@@ -27,11 +27,10 @@ h2{
 }
 .formbtn{
     border:none;
-    background-color: #97FFBF;
+    background-color: #FEFAE0;
     padding:1rem;
     align-self: end;
 }
 .formbtn:hover{
-    color:white;
-    background-color: #02ab42;
+    background-color: #ECE1CF;
 }
