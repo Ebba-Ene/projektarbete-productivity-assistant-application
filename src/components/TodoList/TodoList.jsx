@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { TodoContext } from "../../context/TodoContext"
 
 import todoCss from "./TodoList.module.css"
+
 import TodoListItem from "../TodoListItem/TodoListItem"
 import TodoSort from "../TodoSort/TodoSort"
 import TodoFilter from "../TodoFilter/TodoFilter"
@@ -57,12 +58,12 @@ const TodoList = () => {
     return 0
   })
 
-  
-
   return(
     <div>
-      <TodoSort/>
-      <TodoFilter/>
+      <div className={todoCss.container}>
+        <TodoSort/>
+        <TodoFilter/>
+      </div>
       <ul className={todoCss.ul}>
         {sortedTodos.map(todo =>(
           <TodoListItem key={todo.id} todo={todo}/>
