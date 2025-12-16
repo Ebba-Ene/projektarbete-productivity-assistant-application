@@ -1,0 +1,25 @@
+.form{
+  background-color: rgba(214, 163, 255, 1);
+  display: flex;
+  justify-content: space-around;
+  width: fit-content;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  gap: 5px;
+}
+
+.sorting {
+  background-color: rgba(151, 255, 191, 1);
+  border: 1px solid rgba(7, 203, 138, 0.238);
+  padding: 2.5px;
+}
+
+.sorting:hover {
+  background-color: rgba(7, 203, 138, 1);
+  transition: 0.5s;
+}
+
+.stopSorting {
+  background-color: rgba(248, 39, 151, 1);
+}

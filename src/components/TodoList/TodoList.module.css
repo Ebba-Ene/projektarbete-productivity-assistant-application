@@ -13,3 +13,11 @@
   width: 30%;
   height: fit-content;
 }
+
+.container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  margin: 5px;
+}

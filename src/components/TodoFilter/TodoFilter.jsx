@@ -13,7 +13,7 @@ const TodoFilter = () => {
     e.preventDefault()
     if(category !== ""){
       filterTodo(filters, category)
-    }else{
+    } else {
       filterTodo(filters, done)
     }
   }

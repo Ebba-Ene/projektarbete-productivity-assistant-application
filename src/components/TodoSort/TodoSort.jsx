@@ -1,6 +1,9 @@
 import { useContext, useState } from "react"
 import { TodoContext } from "../../context/TodoContext"
 
+import todoCss from "./TodoSort.module.css"
+
+
 const TodoSort = () => {
 
   const { sortTodo, setSort } = useContext(TodoContext)
@@ -15,11 +18,11 @@ const TodoSort = () => {
   const stopSorting = () => {
     setSorting("")
     setDirection("")
-    setSort()
+    setSort("")
   }
 
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={todoCss.form}>
       <select value={sorting} onChange={(e) => {setSorting(e.target.value)}}>
         <option value="" disabled>Sortera</option>
         <option>Deadline</option>
@@ -51,10 +54,10 @@ const TodoSort = () => {
       </select>    
     }
 
-      <button type="submit">Sortera</button>
+      <button type="submit" className={todoCss.sorting}>Sortera</button>
 
     {sorting !== "" &&
-      <button type="button" onClick={stopSorting}>Sluta sortera</button>
+      <button type="button" onClick={stopSorting} className={todoCss.stopSorting} >Sluta sortera</button>
     }
 
     </form>

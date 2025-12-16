@@ -1,8 +1,15 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, use } from "react"
 
 export const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
+  
+  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userIds")) || [0])
+
+  useEffect(() => {
+    localStorage.setItem("userIds", JSON.stringify(userId))
+  }, [userId])
+  
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || []
   )
@@ -20,14 +27,19 @@ const UserProvider = ({ children }) => {
   }, [currentUser])
 
   const addUser = (name, username, password) => {
-    const newUser = {
-      userId: crypto.randomUUID(),
-      name,
-      username,
-      password,
-    }
 
+    const newUser = {
+        userId: userId[userId.length - 1],
+        name,
+        username,
+        password,
+    }
     setUsers([...users, newUser])
+
+    let newId = userId[userId.length -1] + 1
+    setUserId([...userId, newId])
+
+
   }
 
   const loginUser = (username, password) => {

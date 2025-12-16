@@ -38,25 +38,22 @@ html{
 }
 .habitCard{
     display:flex;
-    padding:1.5rem;
+/*     padding:1.5rem; */
+background-color: white;
     flex-direction: column;
-
-    background-color: #B253FF;
-    border: 0.2rem inset rgb(178, 69, 255);
     border-radius:1rem;
     align-items: center;
-    background: linear-gradient(#B253FF, #420b9c);
-    box-shadow: 0.01rem 0.01rem 0.6rem 0.01rem rgb(22, 3, 67);
+   
     
 }
 .deletebtn{
-    font-size: 2rem;
-    width:2.5rem;
+    font-size: 1rem;
+    width:1.3rem;
     border-radius: 3rem;
     padding:0.06rem;
     align-self:end;
     text-align: center;
-    margin:-1rem -1rem 0 0;
+    margin:0.5rem 0.1rem 0 0;
     color:white;
     background-color: #F82797;
     border:none;
@@ -85,9 +82,10 @@ html{
     color:white;
 }
 .grid{
+    max-width: 60%;
     display:grid;
     grid-template-columns: repeat(3,1fr);
-    gap:1.5rem;
+    gap:1%;
 }
 
 .reps{
@@ -104,9 +102,7 @@ html{
 .reps p{
     text-align: center;
 }
-label{
-    color:white;
-}
+
 .filtersort{
     display:flex;
     justify-content: end;
@@ -123,4 +119,8 @@ label{
     font-size: 2rem;
     text-shadow: 0.1rem 0.1rem 0.1rem  black;
 
+}
+.mainflex{
+    display:flex;
+    justify-content: space-between;
 }

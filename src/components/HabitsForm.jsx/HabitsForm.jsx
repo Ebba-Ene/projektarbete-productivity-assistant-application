@@ -38,8 +38,8 @@ const HabitsForm = () => {
 
   return (
     <div className={s.habitscomponent}>
-      <h2 className={s.titleform}>Ny rutin</h2>
       <div className={s.habitsform}>
+        <h2 className={s.titleform}>Ny rutin</h2>
         <label htmlFor="title">Titel:</label>
         <input
           className={s.titleinput}
