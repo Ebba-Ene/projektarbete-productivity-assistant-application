@@ -29,7 +29,7 @@
 }
 .logout{
     background-color: #9e27ff00;;
-    border:0.2rem solid #9E27FF;
+    border:0.13rem solid #9E27FF;
     border-radius: 0.5rem;
     padding:0.5rem;
     font-weight: bold;
@@ -37,4 +37,5 @@
 }
 .logout:hover{
     background-color:#9E27FF;
+    text-decoration: underline;
 }
