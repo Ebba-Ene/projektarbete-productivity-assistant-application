@@ -8,9 +8,9 @@
 }
 
 .filterbutton button {
-    background-color: #222;
+    background-color: #EEE;
     font-size: 0.8rem;
-    color: #EEE;
+    color: #222;
     border: none;
     border-radius: 25px;
     padding: 0.5rem 0.8rem;
@@ -21,15 +21,15 @@
 
 .filterbutton button:hover {
     cursor: pointer;
-    background-color: #000;
+    background-color: #CACACA;
 }
 
 .filterbutton button.active {
-    background-color: #444;
+    background-color: #CACACA;
 }
 
 .filterbutton button.active:hover {
-    background-color: #222;
+    background-color: #CACACA;
 }
 
 .filterbutton span {

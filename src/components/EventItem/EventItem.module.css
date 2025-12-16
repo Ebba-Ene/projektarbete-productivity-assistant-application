@@ -10,16 +10,15 @@ li {
 }
 
 .item.past {
-  background-color:#B253FF;
-  color: #632B91;
-  border: 2px solid #9E27FF;
+  background-color:#9E27FF;
 }
 
 .item.past button {
-  background-color: #B253FF;
-  color: #632B91;
+  border: 2px solid #8C00FF;
+  background-color: #9E27FF;
+  color: #222;
 }
 
 .item.past button:hover {
-  background-color: #A04AE5;
+  background-color: #8C00FF;
 }
