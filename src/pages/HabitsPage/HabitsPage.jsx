@@ -65,67 +65,69 @@ const HabitsPage = () => {
           <option value="sortdecrease">Stigande</option>
         </select>
       </div>{" "}
-      <div className={s.newhabit}>
-        <button
-          className={!addMode ? s.newbtn : s.cancelbtn}
-          onClick={() => {
-            setAddMode(!addMode)
-          }}
-        >
-          {!addMode ? "+" : "Avbryt"}
-        </button>
-        {addMode && <HabitsForm />}
-      </div>
-      <div className={s.grid}>
-        {display
-          .filter((habit) => habit.userId === currentUser.userId)
-          .map((item, i) => (
-            <div className={s.habitCard} key={i}>
-              <button
-                className={s.deletebtn}
-                onClick={() => {
-                  deleteHabit(item.habitId)
-                }}
-              >
-                X
-              </button>
-              <h2>{item.title}</h2>
-              <p>
-                <strong>repetitioner:</strong>
-              </p>
-              <div className={s.reps}>
+      <div className={s.mainflex}>
+        <div className={s.newhabit}>
+          <button
+            className={!addMode ? s.newbtn : s.cancelbtn}
+            onClick={() => {
+              setAddMode(!addMode)
+            }}
+          >
+            {!addMode ? "+" : "Avbryt"}
+          </button>
+          {addMode && <HabitsForm />}
+        </div>
+        <div className={s.grid}>
+          {display
+            .filter((habit) => habit.userId === currentUser.userId)
+            .map((item, i) => (
+              <div className={s.habitCard} key={i}>
                 <button
-                  className={s.repbtn}
+                  className={s.deletebtn}
                   onClick={() => {
-                    incrDecrReset(item.habitId, "decrease")
+                    deleteHabit(item.habitId)
                   }}
                 >
-                  -
+                  X
                 </button>
-                <p className={s.repsnum}>{item.repetitions}</p>
+                <h2>{item.title}</h2>
+                <p>
+                  <strong>repetitioner:</strong>
+                </p>
+                <div className={s.reps}>
+                  <button
+                    className={s.repbtn}
+                    onClick={() => {
+                      incrDecrReset(item.habitId, "decrease")
+                    }}
+                  >
+                    -
+                  </button>
+                  <p className={s.repsnum}>{item.repetitions}</p>
+                  <button
+                    className={s.repbtn}
+                    onClick={() => {
+                      incrDecrReset(item.habitId, "increase")
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
                 <button
-                  className={s.repbtn}
-                  onClick={() => {
-                    incrDecrReset(item.habitId, "increase")
+                  className={s.resetbtn}
+                  onClick={(e) => {
+                    incrDecrReset(item.habitId, "reset")
                   }}
                 >
-                  +
+                  återställ
                 </button>
-              </div>
-              <button
-                className={s.resetbtn}
-                onClick={(e) => {
-                  incrDecrReset(item.habitId, "reset")
-                }}
-              >
-                återställ
-              </button>
 
-              <p>
-                <strong>prioritet:</strong> {item.priority}{" "}
-              </p>
-            </div>
-          ))}
+                <p>
+                  <strong>prioritet:</strong> {item.priority}{" "}
+                </p>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   )
