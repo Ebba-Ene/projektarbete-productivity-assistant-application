@@ -67,7 +67,7 @@ const UserProvider = ({ children }) => {
     }
   }, [currentUser])
 
-    const logoutUser = () => {
+  const logoutUser = () => {
     sessionStorage.clear()
     setCurrentUser(null)
     setQuote(null)
