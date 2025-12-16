@@ -9,7 +9,6 @@ const EventList = () => {
 
     const { upcomingEvents, pastEvents } = useContext(EventContext);
     const [filter, setFilter] = useState("all")
-    const now = new Date();
 
     const userUpcomingEvents = upcomingEvents.filter((event) => event.userId === currentUser.userId);
     const userPastEvents = pastEvents.filter((event) => event.userId === currentUser.userId);
@@ -37,7 +36,7 @@ const EventList = () => {
 
             <ul>
                 {sortedEvents.map((event) => (
-                    <EventItem key={event.id} event={event} isPast={new Date(event.end) < now}/>
+                    <EventItem key={event.id} event={event} isPast={new Date(event.end) < new Date()}/>
                 ))}
             </ul>
         </div>

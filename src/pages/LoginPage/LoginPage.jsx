@@ -3,13 +3,12 @@ import { UserContext } from "../../context/UserContext"
 import s from "./LoginPage.module.css"
 
 const LoginPage = () => {
-  const { currentUser, addUser, loginUser, logoutUser } =
-    useContext(UserContext)
+  const { addUser, loginUser } = useContext(UserContext)
 
-  const [userName, setUserName] = useState(null)
-  const [passWord, setPassWord] = useState(null)
-  const [firstName, setFirstName] = useState(null)
-  const [logOrReg, setLogOrReg] = useState(null)
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("") 
+  const [firstname, setFirstname] = useState("")
+  const [logOrReg, setLogOrReg] = useState("login")
 
   return (
     <>
@@ -30,19 +29,19 @@ const LoginPage = () => {
       </button>
 
       {
-        <form>
+        <form onSubmit={(e) => {e.preventDefault}}>
           <input
             type="text"
             placeholder="Användarnamn"
             onChange={(e) => {
-              setUserName(e.target.value)
+              setUsername(e.target.value)
             }}
           />
           <input
             type="password"
             placeholder="Lösenord"
             onChange={(e) => {
-              setPassWord(e.target.value)
+              setPassword(e.target.value)
             }}
           />
           {logOrReg === "register" ? (
@@ -51,15 +50,15 @@ const LoginPage = () => {
                 type="text"
                 placeholder="Tilltalsnamn"
                 onChange={(e) => {
-                  setFirstName(e.target.value)
+                  setFirstname(e.target.value)
                 }}
               />
-              <button onClick={() => addUser(firstName, userName, passWord)}>
+              <button onClick={() => addUser(firstname, username, password)}>
                 Registrera
               </button>
             </>
           ) : (
-            <button onClick={() => loginUser(userName, passWord)}>
+            <button onClick={() => loginUser(username, password)}>
               Logga in
             </button>
           )}
