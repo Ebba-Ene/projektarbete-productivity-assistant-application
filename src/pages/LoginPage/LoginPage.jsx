@@ -29,7 +29,7 @@ const LoginPage = () => {
       </button>
 
       {
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form>
           <input
             type="text"
             placeholder="Användarnamn"
@@ -62,7 +62,8 @@ const LoginPage = () => {
           )}
 
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault()
               logOrReg === "register"
                 ? addUser(firstname, username, password)
                 : loginUser(username, password)
