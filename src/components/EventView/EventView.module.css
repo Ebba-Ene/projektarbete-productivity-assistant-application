@@ -17,24 +17,24 @@
 }
 
 .itemcontainer button:last-of-type {
-    background-color: #F82797;
+    background-color: #FBB7B7;
     color: #222;
     transition: 0.15s ease;
 }
 
 .itemcontainer button:last-of-type:hover {
-    background-color: #D71F81;
+    background-color: #EDABAB;
     cursor: pointer;
 }
 
 .itemcontainer button:first-of-type {
-    background-color: #eee;
+    background-color: #FEF3E0;
     color: #222;
     transition: 0.15s ease;
 }
 
 .itemcontainer button:first-of-type:hover {
-    background-color: #CACACA;
+    background-color: #ECE1CF;
     cursor: pointer;
 }
 

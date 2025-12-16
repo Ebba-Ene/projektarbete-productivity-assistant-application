@@ -1,14 +1,14 @@
 .eventlist {
     display: flex;
     flex-direction: column;
-    background-color:#B253FF;
+    background-color:#CCD5AE;
     padding: 2rem;
     border-radius: 25px;
     width: 100%;
 }
 
 .filterbutton button {
-    background-color: #EEE;
+    background-color: #FEF3E0;
     font-size: 0.8rem;
     color: #222;
     border: none;
@@ -21,15 +21,15 @@
 
 .filterbutton button:hover {
     cursor: pointer;
-    background-color: #CACACA;
+    background-color: #ECE1CF;
 }
 
 .filterbutton button.active {
-    background-color: #CACACA;
+    background-color: #ECE1CF;
 }
 
 .filterbutton button.active:hover {
-    background-color: #CACACA;
+    background-color: #ECE1CF;
 }
 
 .filterbutton span {

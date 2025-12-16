@@ -21,7 +21,7 @@ const HomePage = () => {
       <div className={s.homecontainer}>
         <div className={s.homeitem}>
           <div className={s.header}>
-            <h3>Senaste ej utförda ärenden</h3>
+            <h3>Ärenden</h3>
             <Link to="/todo">→ <span>Alla ärenden</span></Link>
           </div>
           <ul>
@@ -41,7 +41,7 @@ const HomePage = () => {
 
         <div className={s.homeitem}>
           <div className={s.header}>
-            <h3>Rutiner med högst antal repetitioner</h3>
+            <h3>Rutiner</h3>
             <Link to="/habits">→ <span>Alla rutiner</span></Link>
           </div>
           <ul>
@@ -64,7 +64,7 @@ const HomePage = () => {
 
         <div className={s.homeitem}>
           <div className={s.header}>
-            <h3>Nästkommande händelser</h3>
+            <h3>Händelser</h3>
             <Link to="/eventplanner">→ <span>Alla händelser</span></Link>
           </div>
           <ul>
@@ -74,7 +74,7 @@ const HomePage = () => {
               .map((event, index) => (
                 <li key={index}>
                   <span className={s.date}>
-                    <strong>{formatDisplayDate(event.start)}</strong>
+                    {formatDisplayDate(event.start)}
                   </span>
                   <span className={s.name}>{event.name}</span>
                 </li>

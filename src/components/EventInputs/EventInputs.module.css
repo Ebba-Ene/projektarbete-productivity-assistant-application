@@ -22,7 +22,7 @@
 .form input {
     padding: 0.8rem;
     border-radius: 5px;
-    background-color: #EEE;
+    background-color: #FFFDF4;
     color: #222;
     width: 100%;
     box-sizing: border-box;
@@ -30,12 +30,12 @@
 
 .form input[type="datetime-local"], .form input[type="text"] {
     font-family: "Noto Sans", sans-serif;
-    border: 2px solid #EEE;
+    border: 2px solid #FFFDF4;
 }
 
 .form input:focus {
     outline: none;
-    border-color: #9E27FF;
+    border-color: #DAE1BB;
 }
 
 .edit {
@@ -45,13 +45,13 @@
 .edit input {
     padding: 0.3rem;
     border-radius: 5px;
-    background-color: #EEE;
+    background-color: #FFFDF4;
     color: #222;
-    border: 2px solid #EEE;
+    border: 2px solid #FFFDF4;
     font-family: "Noto Sans", sans-serif;
 }
 
 .edit input:focus {
     outline: none;
-    border-color: #9E27FF;
+    border-color: #DAE1BB;
 }

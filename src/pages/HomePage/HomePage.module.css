@@ -1,7 +1,7 @@
 .homecontainer {
   display: flex;
   flex-direction: column;
-  background-color: #B253FF;
+  background-color: #CCD5AE;
   color: #222;
   padding: 1rem 2rem 0 2rem;
   border-radius: 25px;
@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  background-color: #CE91FF;
+  background-color: #E9EDC9;
   list-style-type: none;
   padding: 1rem;
   border-radius: 15px;
@@ -54,14 +54,13 @@
   margin-left: auto;
   transition: 0.15s ease;
   padding: 0.7rem 1rem;
-  background-color: #B253FF;
-  border: 2px solid #9E27FF;
+  background-color: #FEF3E0;
   border-radius: 5px;
   font-weight: 500;
 }
 
 .homeitem a:hover {
-  background-color: #9E27FF;
+  background-color: #ECE1CF;
 }
 
 .homeitem a span:hover {

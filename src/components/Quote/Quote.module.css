@@ -3,8 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 1rem;
+    margin: 0 auto;
     margin-bottom: 2rem;
+    width: 550px;
 }
 
 .welcometext p {
@@ -13,4 +16,9 @@
 
 .welcometext i {
     font-weight: bold;
+}
+
+.welcometext p span {
+    display: block;
+    margin-top: 0.5rem;
 }

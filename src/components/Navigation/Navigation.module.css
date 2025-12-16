@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 3rem;
-    background-color:#B253FF;
+    background-color:#CCD5AE;
     padding: 1rem 2rem;
     margin-bottom: 3rem;
 }
@@ -28,14 +28,16 @@
     text-decoration: underline;
 }
 .logout{
-    background-color: #9e27ff00;;
-    border:0.13rem solid #9E27FF;
-    border-radius: 0.5rem;
-    padding:0.5rem;
+    background-color: #FEF3E0;;
+    border:none;
+    border-radius: 5px;
+    padding: 0.7rem 1rem;
     font-weight: bold;
     transition: 300ms ease;
+    font-weight: 500;
 }
 .logout:hover{
-    background-color:#9E27FF;
+    background-color:#ECE1CF;
     text-decoration: underline;
+    cursor: pointer;
 }

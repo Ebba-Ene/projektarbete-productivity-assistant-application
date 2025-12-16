@@ -9,9 +9,11 @@ const Quote = () => {
     <div className={s.welcometext}>
       <h2>Hej {currentUser.name}!</h2>
       <p>
-        <i>"{quote && quote.quote}"</i> ― {quote && quote.author}
+        <i>"{quote && quote.quote}"</i>
+        <span>― {quote && quote.author}</span>
       </p>
     </div>
   )
 }
+
 export default Quote

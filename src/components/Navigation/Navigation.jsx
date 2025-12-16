@@ -24,9 +24,9 @@ const Navigation = () => {
             </Link>
           </div>
           <div className={s.right}>
-            <Link to="/todo">Todos</Link>
-            <Link to="/habits">Habits</Link>
-            <Link to="/eventplanner">Events</Link>
+            <Link to="/todo">Ärenden</Link>
+            <Link to="/habits">Rutiner</Link>
+            <Link to="/eventplanner">Händelser</Link>
           </div>
           <button
             className={s.logout}

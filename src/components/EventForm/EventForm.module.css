@@ -1,7 +1,7 @@
 .eventform {
     width: 400px;
     height: fit-content;
-    background-color: #B253FF;
+    background-color: #CCD5AE;
     padding: 2rem;
     border-radius: 25px;
 }
@@ -12,7 +12,7 @@
 }
 
 .addbutton {
-    background-color: #97FFBF;
+    background-color: #FEF3E0;
     color: #222;
     border: none;
     border-radius: 5px;
@@ -24,5 +24,5 @@
 
 .addbutton:hover {
     cursor: pointer;
-    background-color: #89E5AC;
+    background-color: #ECE1CF;
 }
