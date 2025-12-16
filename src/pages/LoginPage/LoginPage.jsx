@@ -29,10 +29,11 @@ const LoginPage = () => {
       </button>
 
       {
-        <form onSubmit={(e) => {e.preventDefault}}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             placeholder="Användarnamn"
+            value={username}
             onChange={(e) => {
               setUsername(e.target.value)
             }}
@@ -40,6 +41,7 @@ const LoginPage = () => {
           <input
             type="password"
             placeholder="Lösenord"
+            value={password}
             onChange={(e) => {
               setPassword(e.target.value)
             }}
@@ -49,6 +51,7 @@ const LoginPage = () => {
               <input
                 type="text"
                 placeholder="Tilltalsnamn"
+                value={firstname}
                 onChange={(e) => {
                   setFirstname(e.target.value)
                 }}
@@ -62,8 +65,12 @@ const LoginPage = () => {
             onClick={(e) => {
               e.preventDefault()
               logOrReg === "register"
-                ? addUser(firstName, userName, passWord)
-                : loginUser(userName, passWord)
+                ? addUser(firstname, username, password)
+                : loginUser(username, password)
+
+              setUsername("")
+              setPassword("")
+              setFirstname("")
             }}
           >
             {logOrReg === "register" ? "Registrera" : "Logga in"}
