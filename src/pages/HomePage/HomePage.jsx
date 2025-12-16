@@ -47,6 +47,7 @@ const HomePage = () => {
             {habits.length > 0 &&
               habits
                 .sort((a, b) => b.repetitions - a.repetitions)
+                .filter((habits) => habits.userId === currentUser.userId)
                 .slice(0, 3)
                 .map((item, i) => (
                   <li key={i}>
@@ -65,14 +66,16 @@ const HomePage = () => {
           <h3>Nästkommande händelser</h3>
           <ul>
             {upcomingEvents
-            .filter((event) => event.userId === currentUser.userId)
-            .slice(0, 3)
-            .map((event, index) => (
-              <li key={index}>
-                <span className={s.date}>{formatDisplayDate(event.start)}</span>
-                <span className={s.name}>{event.name}</span>
-              </li>
-            ))}
+              .filter((event) => event.userId === currentUser.userId)
+              .slice(0, 3)
+              .map((event, index) => (
+                <li key={index}>
+                  <span className={s.date}>
+                    {formatDisplayDate(event.start)}
+                  </span>
+                  <span className={s.name}>{event.name}</span>
+                </li>
+              ))}
           </ul>
           <Link to="/eventplanner">→ Alla händelser</Link>
         </div>
