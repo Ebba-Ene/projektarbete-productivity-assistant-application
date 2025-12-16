@@ -37,13 +37,9 @@ const UserProvider = ({ children }) => {
 
     if (loggedInUser) {
       setCurrentUser(loggedInUser)
+    } else {
+      alert('Användarnamn eller lösenord är fel.')
     }
-  }
-
-  const logoutUser = () => {
-    sessionStorage.clear()
-    setCurrentUser(null)
-    setQuote(null)
   }
 
   const [quote, setQuote] = useState(
@@ -70,6 +66,12 @@ const UserProvider = ({ children }) => {
       fetchQuote()
     }
   }, [currentUser])
+
+    const logoutUser = () => {
+    sessionStorage.clear()
+    setCurrentUser(null)
+    setQuote(null)
+  }
 
   return (
     <UserContext

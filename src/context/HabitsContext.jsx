@@ -1,38 +1,17 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const HabitsContext = createContext()
 
 const HabitsProvider = ({ children }) => {
-  const [repetitions, setRepetitions] = useState(0)
-  const [habits, setHabits] = useState([
-    {
-      habitId: crypto.randomUUID(),
-      title: "läsa",
-      repetitions,
-      priority: "låg",
-    },
-    {
-      habitId: crypto.randomUUID(),
-      title: "träna",
-      repetitions: 1,
-      priority: "medel",
-    },
-    {
-      habitId: crypto.randomUUID(),
-      title: "plugga",
-      repetitions: 5,
-      priority: "hög",
-    },
-    {
-      habitId: crypto.randomUUID(),
-      title: "sjunga",
-      repetitions: 8,
-      priority: "låg",
-    },
-  ])
-  const showArray = (habits) => {
-    console.log("showArray function sees habits as: " + JSON.stringify(habits))
-  }
+  /* const [repetitions, setRepetitions] = useState(0) */
+  const [habits, setHabits] = useState(
+    JSON.parse(localStorage.getItem("habits")) || []
+  )
+
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(habits))
+  }, [habits])
+
   const addHabit = (newHabit) => {
     setHabits([...habits, newHabit])
   }
@@ -53,6 +32,7 @@ const HabitsProvider = ({ children }) => {
     }
     setHabits(newHabits)
   }
+
   const deleteHabit = (id) => {
     setHabits(habits.filter((item) => item.habitId !== id))
   }
@@ -61,7 +41,6 @@ const HabitsProvider = ({ children }) => {
     <HabitsContext
       value={{
         habits,
-        showArray,
         addHabit,
         incrDecrReset,
         deleteHabit,
