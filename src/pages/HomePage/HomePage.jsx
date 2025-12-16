@@ -28,17 +28,13 @@ const HomePage = () => {
               .slice(-3)
               .map((todo, key) => (
                 <li key={key}>
-                  <h3>{todo.title}</h3>
-                  <p>{todo.category}</p>
-                  <p>{todo.description}</p>
-                  <p>
-                    {todo.timeEstimateNumber} {todo.timeEstimate}
-                  </p>
-                  <p>{todo.deadline}</p>
+                  <p className={s.date}><strong>Deadline: </strong>{todo.deadline}</p>
+                  <p className={s.name}>{todo.title}</p>
+                  <p className={s.desc}>{todo.description}</p>
                 </li>
               ))}
           </ul>
-          <Link to="/todo">→ Alla ärenden</Link>
+          <Link to="/todo">→ <span>Alla ärenden</span></Link>
         </div>
 
         <div className={s.homeitem}>
@@ -51,15 +47,15 @@ const HomePage = () => {
                 .slice(0, 3)
                 .map((item, i) => (
                   <li key={i}>
-                    <p className={s.name}>{item.title}</p>
-                    <p>
-                      <i>repetitioner: </i>
+                    <p className={s.date}>
+                      <strong>Repetitioner: </strong>
                       {item.repetitions}
                     </p>
+                    <p className={s.name}>{item.title}</p>
                   </li>
                 ))}
           </ul>
-          <Link to="/habits">→ Alla rutiner</Link>
+          <Link to="/habits">→ <span>Alla rutiner</span></Link>
         </div>
 
         <div className={s.homeitem}>
@@ -71,13 +67,13 @@ const HomePage = () => {
               .map((event, index) => (
                 <li key={index}>
                   <span className={s.date}>
-                    {formatDisplayDate(event.start)}
+                    <strong>{formatDisplayDate(event.start)}</strong>
                   </span>
                   <span className={s.name}>{event.name}</span>
                 </li>
               ))}
           </ul>
-          <Link to="/eventplanner">→ Alla händelser</Link>
+          <Link to="/eventplanner">→ <span>Alla händelser</span></Link>
         </div>
       </div>
     </>

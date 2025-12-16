@@ -1,11 +1,12 @@
 import { useContext } from "react"
 import { UserContext } from "../../context/UserContext"
+import s from "./Quote.module.css"
 
 const Quote = () => {
   const { currentUser, quote } = useContext(UserContext)
 
   return (
-    <div>
+    <div className={s.welcometext}>
       <h2>Hej {currentUser.name}!</h2>
       <p>
         <i>"{quote && quote.quote}"</i> ― {quote && quote.author}
