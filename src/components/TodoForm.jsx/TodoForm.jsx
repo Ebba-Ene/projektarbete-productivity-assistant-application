@@ -9,6 +9,8 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   const {addTodo, setShow, editTodo} = useContext(TodoContext)
   const {currentUser} = useContext(UserContext)
 
+  let userId = currentUser.userId
+
   const now = new Date()
 
   const[title, setTitle] = useState(editedTitle || "")
@@ -28,32 +30,21 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
     const day = pad(d.getDate())
     return `${year}-${month}-${day}`
   }
+
   
   const handleSubmit = (e) => {
     e.preventDefault()
     
     if(category && title && timeEstimateUnit && timeEstimateNumber !== 0 && deadline && description){
-      let newTodo = {
-        title,
-        userId: currentUser.userId,
-        id: crypto.randomUUID(),
-        description,
-        status: false,
-        timeEstimateUnit, 
-        timeEstimateNumber: Number(timeEstimateNumber),
-        category,
-        deadline
-      }
-
+      
       if(editingTodo){
         editTodo(todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber)
         setEditingTodo(false)
-      }else{
-        addTodo(newTodo)
+      } else {
+        addTodo(userId, title, description, timeEstimateUnit, timeEstimateNumber, category, deadline)
       }
-      
+
       setShow(false)
-      
     } else{alert("Fyll i alla tomma fält")}
   }
 
@@ -69,7 +60,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   }
 
   return(
-    <form onSubmit={handleSubmit} className={todoCss.form}>
+    <form className={todoCss.form} onSubmit={handleSubmit}>
       <input 
         type="text" 
         value={title} 

@@ -21,22 +21,43 @@ const TodoListItem = ({todo}) => {
         <form>
           <label htmlFor="done">{todo.status ? "Utförd" : "Ej utförd"}</label>
           {!todo.status &&
-            <input type="checkbox" id="done" checked={false} onChange={() => {completeTodo(todo.id)}}/>
+            <input 
+              type="checkbox" 
+              id="done" 
+              checked={false} 
+              onChange={() => {completeTodo(todo.id)}}/>
           }
           {todo.status &&
-            <input type="checkbox" id="done" checked={true} onChange={() => {completeTodo(todo.id)}}/>
+            <input 
+              type="checkbox" 
+              id="done" 
+              checked={true} 
+              onChange={() => {completeTodo(todo.id)}}/>
           }
         </form>
         
         <p>{todo.timeEstimateNumber} {todo.timeEstimateUnit}</p>
         <p>{todo.deadline}</p>
 
-        <button onClick={() => {removeTodo(todo.id)}}>Ta bort</button>
-        <button onClick={() => {setEditingTodo(true)}}>Redigera</button>   
+        <button 
+          onClick={() => {removeTodo(todo.id)}}>Ta bort</button>
+        <button 
+          onClick={() => {setEditingTodo(true)}}>Redigera</button>   
       </>
     )}
+
     {editingTodo && 
-      <TodoForm todoId={todo.id} editedTitle={todo.title} editedCategory={todo.category} editedDescription={todo.description} editedTimeEstimateUnit={todo.timeEstimateUnit} editedTimeEstimateNumber={todo.timeEstimateNumber} editedDeadline={todo.deadline} editingTodo={true} setEditingTodo={setEditingTodo}/>
+      <TodoForm 
+        todoId={todo.id} 
+        editedTitle={todo.title} 
+        editedCategory={todo.category} 
+        editedDescription={todo.description} 
+        editedTimeEstimateUnit={todo.timeEstimateUnit} 
+        editedTimeEstimateNumber={todo.timeEstimateNumber} 
+        editedDeadline={todo.deadline} 
+        editingTodo={true} 
+        setEditingTodo={setEditingTodo}
+      />
     }
     </li>
   )
