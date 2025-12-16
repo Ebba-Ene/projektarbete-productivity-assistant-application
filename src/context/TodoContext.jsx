@@ -6,20 +6,44 @@ const TodoProvider = ({children}) => {
   
   const [show, setShow] = useState(false)
 
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || [])
-
   const[filter, setFilter] = useState("")
   const[whatToFilter, setWhatToFilter] = useState("")
-
+  
   const[sort, setSort] = useState("")
   const[howToSort, setHowToSort] = useState("")
+  
+  const [todosId, setTodosId] = useState(JSON.parse(localStorage.getItem("todosId")) || [0])
+  
+  useEffect(() => {
+    localStorage.setItem("todosId", JSON.stringify(todosId))
+  }, [todosId])
+
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || [])
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
 
-  const addTodo = (todo) => {
-    setTodos([...todos, todo])
+
+  const addTodo = (userId, title, description, timeEstimateUnit, timeEstimateNumber, category, deadline) => {
+
+    if(todosId.length !== 0){
+      let newTodo = {
+        title,
+        userId,
+        todoId: todosId[todosId.length - 1],
+        description,
+        status: false,
+        timeEstimateUnit, 
+        timeEstimateNumber: Number(timeEstimateNumber),
+        category,
+        deadline
+      }
+      
+      setTodos([...todos, newTodo])
+    }
+      let newTodoId = todosId[todosId.length - 1] + 1
+      setTodosId([...todosId, newTodoId])
   }
 
   const removeTodo = (id) => {

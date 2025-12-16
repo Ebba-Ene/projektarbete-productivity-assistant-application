@@ -65,8 +65,8 @@ const TodoList = () => {
         <TodoFilter/>
       </div>
       <ul className={todoCss.ul}>
-        {sortedTodos.map(todo =>(
-          <TodoListItem key={todo.id} todo={todo}/>
+        {sortedTodos.map((todo, id) =>(
+          <TodoListItem key={id} todo={todo}/>
         ))}
       </ul>
     </div>
