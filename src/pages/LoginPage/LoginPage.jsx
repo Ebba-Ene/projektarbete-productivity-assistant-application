@@ -53,15 +53,21 @@ const LoginPage = () => {
                   setFirstname(e.target.value)
                 }}
               />
-              <button onClick={() => addUser(firstname, username, password)}>
-                Registrera
-              </button>
             </>
           ) : (
-            <button onClick={() => loginUser(username, password)}>
-              Logga in
-            </button>
+            ""
           )}
+
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              logOrReg === "register"
+                ? addUser(firstName, userName, passWord)
+                : loginUser(userName, passWord)
+            }}
+          >
+            {logOrReg === "register" ? "Registrera" : "Logga in"}
+          </button>
         </form>
       }
     </>

@@ -1,9 +1,12 @@
 import { useState, useContext } from "react"
 import { HabitsContext } from "../../context/HabitsContext"
 import s from "./HabitsForm.module.css"
+import { UserContext } from "../../context/UserContext"
 
 const HabitsForm = () => {
+  const { currentUser } = useContext(UserContext)
   const { addHabit } = useContext(HabitsContext)
+
   const [priority, setPriority] = useState(null)
   const [reps, setReps] = useState(null)
   const [title, setTitle] = useState(null)
@@ -22,12 +25,13 @@ const HabitsForm = () => {
       )
     } else if (title && reps && priority) {
       const newHabit = {
+        userId: currentUser.userId,
         habitId: crypto.randomUUID(),
         title,
         repetitions: +reps,
         priority,
       }
-      /* setIsError(false) */
+
       addHabit(newHabit)
     }
   }

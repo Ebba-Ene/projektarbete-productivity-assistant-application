@@ -1,10 +1,12 @@
 import { useContext, useState, useEffect } from "react"
 import { HabitsContext } from "../../context/HabitsContext"
+import { UserContext } from "../../context/UserContext"
 import s from "./HabitsPage.module.css"
 import HabitsForm from "../../components/HabitsForm.jsx/HabitsForm"
 
 const HabitsPage = () => {
   const { habits, incrDecrReset, deleteHabit } = useContext(HabitsContext)
+  const { currentUser } = useContext(UserContext)
   const [addMode, setAddMode] = useState(false)
   //added to communicate with select and set first value = ""
   const [filterClick, setFilterClick] = useState("")
@@ -75,53 +77,55 @@ const HabitsPage = () => {
         {addMode && <HabitsForm />}
       </div>
       <div className={s.grid}>
-        {display.map((item, i) => (
-          <div className={s.habitCard} key={i}>
-            <button
-              className={s.deletebtn}
-              onClick={() => {
-                deleteHabit(item.habitId)
-              }}
-            >
-              X
-            </button>
-            <h2>{item.title}</h2>
-            <p>
-              <strong>repetitioner:</strong>
-            </p>
-            <div className={s.reps}>
+        {display
+          .filter((habit) => habit.userId === currentUser.userId)
+          .map((item, i) => (
+            <div className={s.habitCard} key={i}>
               <button
-                className={s.repbtn}
+                className={s.deletebtn}
                 onClick={() => {
-                  incrDecrReset(item.habitId, "decrease")
+                  deleteHabit(item.habitId)
                 }}
               >
-                -
+                X
               </button>
-              <p className={s.repsnum}>{item.repetitions}</p>
+              <h2>{item.title}</h2>
+              <p>
+                <strong>repetitioner:</strong>
+              </p>
+              <div className={s.reps}>
+                <button
+                  className={s.repbtn}
+                  onClick={() => {
+                    incrDecrReset(item.habitId, "decrease")
+                  }}
+                >
+                  -
+                </button>
+                <p className={s.repsnum}>{item.repetitions}</p>
+                <button
+                  className={s.repbtn}
+                  onClick={() => {
+                    incrDecrReset(item.habitId, "increase")
+                  }}
+                >
+                  +
+                </button>
+              </div>
               <button
-                className={s.repbtn}
-                onClick={() => {
-                  incrDecrReset(item.habitId, "increase")
+                className={s.resetbtn}
+                onClick={(e) => {
+                  incrDecrReset(item.habitId, "reset")
                 }}
               >
-                +
+                återställ
               </button>
-            </div>
-            <button
-              className={s.resetbtn}
-              onClick={(e) => {
-                incrDecrReset(item.habitId, "reset")
-              }}
-            >
-              återställ
-            </button>
 
-            <p>
-              <strong>prioritet:</strong> {item.priority}{" "}
-            </p>
-          </div>
-        ))}
+              <p>
+                <strong>prioritet:</strong> {item.priority}{" "}
+              </p>
+            </div>
+          ))}
       </div>
     </div>
   )
