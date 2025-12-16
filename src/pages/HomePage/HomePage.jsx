@@ -20,7 +20,10 @@ const HomePage = () => {
 
       <div className={s.homecontainer}>
         <div className={s.homeitem}>
-          <h3>Senaste ej utförda ärenden</h3>
+          <div className={s.header}>
+            <h3>Senaste ej utförda ärenden</h3>
+            <Link to="/todo">→ <span>Alla ärenden</span></Link>
+          </div>
           <ul>
             {todos
               .filter((todo) => todo.userId === currentUser.userId)
@@ -34,11 +37,13 @@ const HomePage = () => {
                 </li>
               ))}
           </ul>
-          <Link to="/todo">→ <span>Alla ärenden</span></Link>
         </div>
 
         <div className={s.homeitem}>
-          <h3>Rutiner med högst antal repetitioner</h3>
+          <div className={s.header}>
+            <h3>Rutiner med högst antal repetitioner</h3>
+            <Link to="/habits">→ <span>Alla rutiner</span></Link>
+          </div>
           <ul>
             {habits.length > 0 &&
               habits
@@ -55,11 +60,13 @@ const HomePage = () => {
                   </li>
                 ))}
           </ul>
-          <Link to="/habits">→ <span>Alla rutiner</span></Link>
         </div>
 
         <div className={s.homeitem}>
-          <h3>Nästkommande händelser</h3>
+          <div className={s.header}>
+            <h3>Nästkommande händelser</h3>
+            <Link to="/eventplanner">→ <span>Alla händelser</span></Link>
+          </div>
           <ul>
             {upcomingEvents
               .filter((event) => event.userId === currentUser.userId)
@@ -73,7 +80,6 @@ const HomePage = () => {
                 </li>
               ))}
           </ul>
-          <Link to="/eventplanner">→ <span>Alla händelser</span></Link>
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 li {
   display: flex;
   align-items: center;
-  background-color: #B253FF;
+  background-color: #CE91FF;
   padding: 1.5rem;
   border-radius: 15px;
   list-style-type: none;
@@ -10,8 +10,9 @@ li {
 }
 
 .item.past {
-  background-color:#bd6dff;
+  background-color:#B253FF;
   color: #632B91;
+  border: 2px solid #9E27FF;
 }
 
 .item.past button {

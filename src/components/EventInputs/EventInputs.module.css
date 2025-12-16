@@ -15,8 +15,8 @@
 
 .form label {
     margin: 1rem 0 0.5rem 0;
-    font-weight: 700;
-    color: #EEE;
+    font-weight: 500;
+    color: #222;
 }
 
 .form input {
@@ -35,7 +35,7 @@
 
 .form input:focus {
     outline: none;
-    border-color: #222;
+    border-color: #9E27FF;
 }
 
 .edit {
@@ -53,5 +53,5 @@
 
 .edit input:focus {
     outline: none;
-    border-color: #222;
+    border-color: #9E27FF;
 }

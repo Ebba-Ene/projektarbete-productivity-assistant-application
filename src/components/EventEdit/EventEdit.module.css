@@ -23,17 +23,17 @@
 }
 
 .editcontainer button:last-of-type:hover {
-    background-color: #87E2AA;
+    background-color: #89E5AC;
     cursor: pointer;
 }
 
 .editcontainer button:first-of-type {
-    background-color: #222;
-    color: #EEE;
+    background-color: #eee;
+    color: #222;
     transition: 0.15s ease;
 }
 
 .editcontainer button:first-of-type:hover {
-    background-color: #000;
+    background-color: #CACACA;
     cursor: pointer;
 }
