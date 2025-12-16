@@ -9,11 +9,9 @@
 }
 .habitsform{
     display:flex;
+    flex-direction: column;
     background-color: #B253FF;
-    justify-content: center;
-    padding:0 1rem 1rem 1rem;
-    align-items: center;
-    gap:1rem;
+    padding:1rem;
 }
 h1{
     color:#222222;
