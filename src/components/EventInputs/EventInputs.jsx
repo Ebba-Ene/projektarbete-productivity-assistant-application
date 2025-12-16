@@ -26,8 +26,8 @@ const EventInputs = ({ start, end, name, setStart, setEnd, setName, isEdit, show
 
             {!showLabels && <span> : </span>}
             
-            {showLabels && <label>Händelsenamn</label>}
-            <input type="text" value={name} placeholder="Event name" onChange={(e) => setName(e.target.value)}/>
+            {showLabels && <label>Händelse</label>}
+            <input type="text" value={name} placeholder="Händelsenamn" onChange={(e) => setName(e.target.value)}/>
         </div>
     );
 };

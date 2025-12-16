@@ -11,22 +11,24 @@ const LoginPage = () => {
   const [logOrReg, setLogOrReg] = useState("login")
 
   return (
-    <>
+    <div className={s.container}>
       <h2>Inloggningssida</h2>
-      <button
-        onClick={() => {
-          setLogOrReg("login")
-        }}
-      >
-        Logga in
-      </button>
-      <button
-        onClick={() => {
-          setLogOrReg("register")
-        }}
-      >
-        Registrera dig
-      </button>
+      <div>
+        <button
+          onClick={() => {
+            setLogOrReg("login")
+          }}
+        >
+          Logga in
+        </button>
+        <button
+          onClick={() => {
+            setLogOrReg("register")
+          }}
+        >
+          Registrera dig
+        </button>
+      </div>
 
       {
         <form>
@@ -77,7 +79,7 @@ const LoginPage = () => {
           </button>
         </form>
       }
-    </>
+    </div>
   )
 }
 
