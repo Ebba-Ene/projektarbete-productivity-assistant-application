@@ -5,6 +5,12 @@
     align-items: center;
 }
 
+.formcontainer {
+    background-color: #CCD5AE;
+    padding: 1rem 2rem 1rem 2rem;
+    height: 100%;
+}
+
 form {
     display:flex;
     flex-direction: column;

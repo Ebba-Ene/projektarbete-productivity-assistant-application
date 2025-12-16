@@ -13,6 +13,7 @@ const LoginPage = () => {
   return (
     <div className={s.container}>
       <h2>Inloggningssida</h2>
+      <div className={s.formcontainer}>
       <div>
         <button
           onClick={() => {
@@ -79,6 +80,7 @@ const LoginPage = () => {
           </button>
         </form>
       }
+    </div>
     </div>
   )
 }
