@@ -29,6 +29,7 @@ const Navigation = () => {
             <Link to="/eventplanner">Events</Link>
           </div>
           <button
+            className={s.logout}
             onClick={() => {
               logoutUser()
             }}

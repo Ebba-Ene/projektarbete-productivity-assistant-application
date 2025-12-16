@@ -15,15 +15,26 @@
 
 .menu h1 {
     font-size: 1rem;
-    color: #EEE;
 }
 
 .menu a {
     text-decoration: none;
     font-weight: 700;
-    color: #EEE;
+    color: #222;
+
 }
 
 .menu a:hover {
     text-decoration: underline;
+}
+.logout{
+    background-color: #9e27ff00;;
+    border:0.2rem solid #9E27FF;
+    border-radius: 0.5rem;
+    padding:0.5rem;
+    font-weight: bold;
+    transition: 300ms ease;
+}
+.logout:hover{
+    background-color:#9E27FF;
 }
