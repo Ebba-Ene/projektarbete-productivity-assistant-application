@@ -44,10 +44,13 @@
   margin-top: 1rem;
   margin-left: auto;
   transition: 300ms ease;
+  padding: 0.8rem 1rem;
+  background-color: #9f29ff;
+  border-radius: 1rem;
 }
 
 .homeitem a:hover {
-  color: #97FFBF;
+  background-color: #9411FF;
 }
 
 .homeitem a span:hover {
