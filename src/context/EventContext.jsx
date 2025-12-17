@@ -9,16 +9,23 @@ const EventProvider = ({ children }) => {
     localStorage.setItem("events", JSON.stringify(events))
   },[events])
 
+  const [eventId, setEventId] = useState(JSON.parse(localStorage.getItem("eventIdCounter")) || 0);
+
+  useEffect(() => {
+    localStorage.setItem("eventIdCounter", JSON.stringify(eventId))
+  }, [eventId])
+
   const addEvent = (userId, start, end, name) => {
     const newEvent = {
       userId,
-      id: crypto.randomUUID(),
+      id: eventId,
       start,
       end,
       name,
     };
 
     setEvents([...events, newEvent]);
+    setEventId(eventId + 1);
   };
 
   const removeEvent = (id) => {

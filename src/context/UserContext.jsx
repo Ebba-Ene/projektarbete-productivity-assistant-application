@@ -4,10 +4,10 @@ export const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
   
-  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userIds")) || [0])
+  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userIdCounter")) || 0)
 
   useEffect(() => {
-    localStorage.setItem("userIds", JSON.stringify(userId))
+    localStorage.setItem("userIdCounter", JSON.stringify(userId))
   }, [userId])
   
   const [users, setUsers] = useState(
@@ -29,17 +29,13 @@ const UserProvider = ({ children }) => {
   const addUser = (name, username, password) => {
 
     const newUser = {
-        userId: userId[userId.length - 1],
+        userId: userId,
         name,
         username,
         password,
     }
     setUsers([...users, newUser])
-
-    let newId = userId[userId.length -1] + 1
-    setUserId([...userId, newId])
-
-
+    setUserId(userId + 1)
   }
 
   const loginUser = (username, password) => {

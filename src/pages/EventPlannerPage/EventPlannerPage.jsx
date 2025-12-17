@@ -5,7 +5,7 @@ import s from "./EventPlannerPage.module.css"
 const EventPlannerPage = () => {
   return (
     <>
-      <h2>Event Planner</h2>
+      <h2>Händelseplanerare</h2>
       <div className={s.container}>
         <EventForm/>
         <EventList/>
