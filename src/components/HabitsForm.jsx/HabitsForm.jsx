@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { HabitsContext } from "../../context/HabitsContext"
 import s from "./HabitsForm.module.css"
 import { UserContext } from "../../context/UserContext"
@@ -7,11 +7,17 @@ const HabitsForm = () => {
   const { currentUser } = useContext(UserContext)
   const { addHabit } = useContext(HabitsContext)
 
+  const [habitId, setHabitId] = useState(
+    JSON.parse(localStorage.getItem("habitIdCounter")) || 0
+  )
+
+  useEffect(() => {
+    localStorage.setItem("habitIdCounter", JSON.stringify(habitId))
+  }, [habitId])
+
   const [priority, setPriority] = useState(null)
   const [reps, setReps] = useState(null)
   const [title, setTitle] = useState(null)
-  /*     const [isError, setIsError] = useState(null)
-  const [typeError, setTypeError] = useState(null) */
 
   const checkInput = () => {
     priority
@@ -26,13 +32,13 @@ const HabitsForm = () => {
     } else if (title && reps && priority) {
       const newHabit = {
         userId: currentUser.userId,
-        habitId: crypto.randomUUID(),
+        habitId: habitId,
         title,
         repetitions: +reps,
         priority,
       }
-
       addHabit(newHabit)
+      setHabitId(habitId + 1)
     }
   }
 
