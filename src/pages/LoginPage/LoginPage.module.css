@@ -9,6 +9,8 @@
     background-color: #CCD5AE;
     padding: 1rem 2rem 1rem 2rem;
     height: 100%;
+    border-radius: 25px;
+    width: 400px;
 }
 
 form {
