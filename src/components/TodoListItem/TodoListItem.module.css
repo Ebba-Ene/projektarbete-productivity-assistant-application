@@ -1,11 +1,41 @@
 .complete{
-  color: gold;
+  text-decoration: line-through;
 }
 
-.ul li {
+.buttons{
   display: flex;
-  flex-direction: column;
-  background-color: rgba(78, 78, 78, 1);
-  width: 30%;
-  height: fit-content;
+  gap: 5px;
+  margin: 2px;
+}
+
+.removeBtn{
+  background-color: #FBB7B7;
+  border-color: #FBB7B7;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.editBtn{
+  background-color: #FEF3E0;
+  border-color: #FEF3E0;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.smaller {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.form{
+  display: flex;
+  gap: 4px;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.form input{
+  width: fit-content;
 }

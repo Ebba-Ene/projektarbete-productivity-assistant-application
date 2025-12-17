@@ -1,21 +1,21 @@
 .form{
-  background-color: rgba(214, 163, 255, 1);
+  background-color: #E9EDC9;
   width: 20%;
   display: flex;
   justify-content: center;
 }
 
 .list{
-  background-color: rgba(178, 83, 255, 1);
+  background-color: #CCD5AE;
   width: 70%;
+  border-radius: 50px;
+  padding: 15px 40px;
 }
 
 .container{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
-  justify-content: center;
-  align-items: baseline;
-  /* padding: 10px; */
+  align-items: center;
   margin: 20px;
 }

@@ -15,10 +15,10 @@ const TodoListItem = ({todo}) => {
     {!editingTodo && (
       <>
         <h3>{todo.title}</h3>
-        <p>{todo.category}</p>
+        <p className={todoCss.smaller}>{todo.category}</p>
         <p>{todo.description}</p>
 
-        <form>
+        <form className={todoCss.form}>
           <label htmlFor="done">{todo.status ? "Utförd" : "Ej utförd"}</label>
             <input 
               type="checkbox" 
@@ -26,16 +26,15 @@ const TodoListItem = ({todo}) => {
               checked={todo.status} 
               onChange={() => {completeTodo(todo.id)}}
             />
-
         </form>
         
         <p>{todo.timeEstimateNumber} {todo.timeEstimateUnit}</p>
-        <p>{todo.deadline}</p>
+        <p className={todoCss.deadline}>{todo.deadline}</p>
 
-        <button 
-          onClick={() => {removeTodo(todo.id)}}>Ta bort</button>
-        <button 
-          onClick={() => {setEditingTodo(true)}}>Redigera</button>   
+        <div className={todoCss.buttons}>
+          <button onClick={() => {removeTodo(todo.id)}} className={todoCss.removeBtn}>Ta bort</button>
+          <button onClick={() => {setEditingTodo(true)}} className={todoCss.editBtn}>Redigera</button>   
+        </div>
       </>
     )}
 

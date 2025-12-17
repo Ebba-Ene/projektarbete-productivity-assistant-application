@@ -13,7 +13,6 @@ const TodoPage = () => {
     <>
       <h2>Mina ärenden & aktiviteter:</h2>
       <div className={todoCss.container}>
-
         <div className={todoCss.form}>
           <button onClick={() => {setShow(!show)}}>{!show ? "Skapa ny todo" : "Avsluta"}</button>
           {show && 
