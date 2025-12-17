@@ -1,4 +1,4 @@
-li {
+.item {
   display: flex;
   align-items: center;
   background-color: #E9EDC9;
