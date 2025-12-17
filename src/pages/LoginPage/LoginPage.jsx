@@ -13,18 +13,23 @@ const LoginPage = () => {
 
   return (
     <div className={s.container}>
-      <h2>Inloggningssida</h2>
+      <h2>[ Livsplaneraren ]</h2>
       <div className={s.formcontainer}>
         <div className={s.formbuttons}>
-          <button onClick={() => {setLogOrReg("login")}}>Logga in</button>
-          <button onClick={() => {setLogOrReg("register")}}>Registrera dig</button>
+          <button className={`${s.tab} ${logOrReg === "login" ? s.active : ""}`} onClick={() => {setLogOrReg("login")}}>Logga in</button>
+          <button className={`${s.tab} ${logOrReg === "register" ? s.active : ""}`} onClick={() => {setLogOrReg("register")}}>Registrera dig</button>
         </div>
 
         {<form>
+          <label>Användarnamn</label>
           <input type="text" placeholder="Användarnamn" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
+          <label>Lösenord</label>
           <input type="password" placeholder="Lösenord" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
           {logOrReg === "register" ? (
-            <input type="text" placeholder="Tilltalsnamn" value={firstname} onChange={(e) => {setFirstname(e.target.value)}}/>
+            <>
+              <label>Tilltalsnamn</label>
+              <input type="text" placeholder="Tilltalsnamn" value={firstname} onChange={(e) => {setFirstname(e.target.value)}}/>
+            </>
           ) : (
             ""
           )}
