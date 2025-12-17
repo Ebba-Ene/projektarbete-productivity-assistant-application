@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 .container {
     display:flex;
     flex-direction: column;
@@ -7,13 +9,96 @@
 
 .formcontainer {
     background-color: #CCD5AE;
-    padding: 1rem 2rem 1rem 2rem;
     height: 100%;
+    border-radius: 25px;
+    width: 400px;
+    height: 500px;
+    margin-top: 2rem;
+}
+
+.formbuttons {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.tab {
+    width: 50%;
+    padding: 1rem 1rem;
+    border: none;
+    cursor: pointer;
+    background-color: #B7C19A;
+    font-weight: 500;
+    font-size: 1rem;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    transition: 0.15s ease;
+}
+
+.tab:first-child {
+    border-top-right-radius: 0;
+}
+
+.tab:last-child {
+    border-top-left-radius: 0;
+}
+
+.active {
+    background-color: #CCD5AE;
+}
+
+.tab:hover:not(.active) {
+    background-color: #AEB890;
 }
 
 form {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.formcontainer label {
+    font-size: 0.8rem;
+    color: #222;
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 500;
+    color: #222;
+}
+
+form input {
+    padding: 0.8rem;
+    border-radius: 5px;
+    background-color: #FFFDF4;
+    color: #222;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Noto Sans", sans-serif;
+    border: 2px solid #FFFDF4;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #DAE1BB;
+}
+
+form button {
+    width: 100%;
+    font-size: 1rem;
+    background-color: #FEF3E0;
+    color: #222;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem;
+    margin-top: 2rem;
+    font-weight: 500;
+    transition: 0.15s ease;
+}
+
+form button:hover {
+    cursor: pointer;
+    background-color: #ECE1CF;
 }
