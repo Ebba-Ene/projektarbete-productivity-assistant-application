@@ -12,11 +12,11 @@ const TodoProvider = ({children}) => {
   const[sort, setSort] = useState("")
   const[howToSort, setHowToSort] = useState("")
   
-  const [todosId, setTodosId] = useState(JSON.parse(localStorage.getItem("todosId")) || [0])
+  const [todoId, setTodoId] = useState(JSON.parse(localStorage.getItem("todoIdCounter")) || 0)
   
   useEffect(() => {
-    localStorage.setItem("todosId", JSON.stringify(todosId))
-  }, [todosId])
+    localStorage.setItem("todoIdCounter", JSON.stringify(todoId))
+  }, [todoId])
 
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || [])
 
@@ -27,23 +27,21 @@ const TodoProvider = ({children}) => {
 
   const addTodo = (userId, title, description, timeEstimateUnit, timeEstimateNumber, category, deadline) => {
 
-    if(todosId.length !== 0){
-      let newTodo = {
-        title,
-        userId,
-        todoId: todosId[todosId.length - 1],
-        description,
-        status: false,
-        timeEstimateUnit, 
-        timeEstimateNumber: Number(timeEstimateNumber),
-        category,
-        deadline
-      }
-      
-      setTodos([...todos, newTodo])
+    let newTodo = {
+      title,
+      userId,
+      todoId,
+      description,
+      status: false,
+      timeEstimateUnit, 
+      timeEstimateNumber: Number(timeEstimateNumber),
+      category,
+      deadline
     }
-      let newTodoId = todosId[todosId.length - 1] + 1
-      setTodosId([...todosId, newTodoId])
+      
+    setTodos([...todos, newTodo])
+  
+    setTodoId(todoId + 1)
   }
 
   const removeTodo = (id) => {
@@ -51,9 +49,9 @@ const TodoProvider = ({children}) => {
     setTodos(remainingTodos)
 }
 
-  const completeTodo = (todoId) => {
+  const completeTodo = (id) => {
 
-    const foundObject = todos.filter((todo) => todo.id === todoId)
+    const foundObject = todos.filter((todo) => todo.id === id)
     const placement = todos.indexOf(foundObject[0])
     const newTodoList = [...todos]
     
@@ -79,8 +77,8 @@ const TodoProvider = ({children}) => {
     setWhatToFilter(what)
   }
 
-  const editTodo = (todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber) => {
-    const editedTodo = todos.map(todo => todo.id === todoId 
+  const editTodo = (id, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber) => {
+    const editedTodo = todos.map(todo => todo.id === id 
       ? {...todo, title, description, category, deadline, timeEstimateNumber, timeEstimateUnit} 
       : todo
     )
