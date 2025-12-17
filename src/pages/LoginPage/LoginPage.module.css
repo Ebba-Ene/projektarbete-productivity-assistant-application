@@ -101,4 +101,5 @@ form button {
 form button:hover {
     cursor: pointer;
     background-color: #ECE1CF;
+    text-decoration: underline;
 }
