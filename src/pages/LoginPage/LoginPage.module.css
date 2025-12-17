@@ -69,7 +69,7 @@ form {
     color: #222;
 }
 
-form input {
+.formcontainer input {
     padding: 0.8rem;
     border-radius: 5px;
     background-color: #FFFDF4;
@@ -80,12 +80,12 @@ form input {
     border: 2px solid #FFFDF4;
 }
 
-form input:focus {
+.formcontainer input:focus {
     outline: none;
     border-color: #DAE1BB;
 }
 
-form button {
+.formcontainer form button {
     width: 100%;
     font-size: 1rem;
     background-color: #FEF3E0;
@@ -98,7 +98,7 @@ form button {
     transition: 0.15s ease;
 }
 
-form button:hover {
+.formcontainer form button:hover {
     cursor: pointer;
     background-color: #ECE1CF;
     text-decoration: underline;
