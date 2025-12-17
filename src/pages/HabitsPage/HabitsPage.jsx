@@ -19,17 +19,26 @@ const HabitsPage = () => {
     } else {
       setDisplay(habits)
     }
-  }, [filterClick, habits])
+  }, [filterClick])
+
+  console.log([filterClick])
 
   useEffect(() => {
-    /* setFilterClick("all") */
     const orderedArr = [...display]
     if (sortClick === "sortincrease") {
       setDisplay(orderedArr.sort((a, b) => a.repetitions - b.repetitions))
     } else if (sortClick === "sortdecrease") {
       setDisplay(orderedArr.sort((a, b) => b.repetitions - a.repetitions))
     }
-  }, [sortClick, habits])
+  }, [sortClick])
+
+  console.log([sortClick])
+  useEffect(() => {
+    /* setFilterClick("all") */
+    console.log("saw change in habit state")
+    setDisplay(habits)
+  }, [habits])
+  console.log([habits])
 
   return (
     <div className={s.wrapper}>
@@ -122,7 +131,7 @@ const HabitsPage = () => {
                   återställ
                 </button>
 
-                <p>
+                <p className={`${item.priority}`}>
                   <strong>prioritet:</strong> {item.priority}{" "}
                 </p>
               </div>

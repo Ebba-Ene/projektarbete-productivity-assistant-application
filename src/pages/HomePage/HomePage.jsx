@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { EventContext } from "../../context/EventContext"
 import { formatDisplayDate } from "../../components/helper"
 import { Link } from "react-router-dom"
@@ -13,6 +13,7 @@ const HomePage = () => {
   const { todos } = useContext(TodoContext)
   const { habits } = useContext(HabitsContext)
   const { currentUser } = useContext(UserContext)
+  const [habitsDisplay, setHabitsDisplay] = useState([...habits])
 
   return (
     <>
@@ -22,7 +23,9 @@ const HomePage = () => {
         <div className={s.homeitem}>
           <div className={s.header}>
             <h3>Ärenden</h3>
-            <Link to="/todo">→ <span>Alla ärenden</span></Link>
+            <Link to="/todo">
+              → <span>Alla ärenden</span>
+            </Link>
           </div>
           <ul>
             {todos
@@ -31,7 +34,10 @@ const HomePage = () => {
               .slice(-3)
               .map((todo, key) => (
                 <li key={key}>
-                  <p className={s.date}><strong>Deadline: </strong>{todo.deadline}</p>
+                  <p className={s.date}>
+                    <strong>Deadline: </strong>
+                    {todo.deadline}
+                  </p>
                   <p className={s.name}>{todo.title}</p>
                   <p className={s.desc}>{todo.description}</p>
                 </li>
@@ -42,11 +48,13 @@ const HomePage = () => {
         <div className={s.homeitem}>
           <div className={s.header}>
             <h3>Rutiner</h3>
-            <Link to="/habits">→ <span>Alla rutiner</span></Link>
+            <Link to="/habits">
+              → <span>Alla rutiner</span>
+            </Link>
           </div>
           <ul>
             {habits.length > 0 &&
-              habits
+              habitsDisplay
                 .sort((a, b) => b.repetitions - a.repetitions)
                 .filter((habits) => habits.userId === currentUser.userId)
                 .slice(0, 3)
@@ -65,7 +73,9 @@ const HomePage = () => {
         <div className={s.homeitem}>
           <div className={s.header}>
             <h3>Händelser</h3>
-            <Link to="/eventplanner">→ <span>Alla händelser</span></Link>
+            <Link to="/eventplanner">
+              → <span>Alla händelser</span>
+            </Link>
           </div>
           <ul>
             {upcomingEvents
