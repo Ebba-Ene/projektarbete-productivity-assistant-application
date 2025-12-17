@@ -30,7 +30,7 @@ const TodoProvider = ({children}) => {
     let newTodo = {
       title,
       userId,
-      todoId,
+      id: todoId,
       description,
       status: false,
       timeEstimateUnit, 
@@ -38,20 +38,20 @@ const TodoProvider = ({children}) => {
       category,
       deadline
     }
-      
-    setTodos([...todos, newTodo])
-  
+    
     setTodoId(todoId + 1)
+    setTodos([...todos, newTodo])
+
   }
 
-  const removeTodo = (id) => {
-    const remainingTodos = todos.filter(todo => todo.id !== id)
+  const removeTodo = (todoId) => {
+    const remainingTodos = todos.filter(todo => todo.id !== todoId)
     setTodos(remainingTodos)
 }
 
-  const completeTodo = (id) => {
+  const completeTodo = (todoId) => {
 
-    const foundObject = todos.filter((todo) => todo.id === id)
+    const foundObject = todos.filter((todo) => todo.id === todoId)
     const placement = todos.indexOf(foundObject[0])
     const newTodoList = [...todos]
     
@@ -77,8 +77,8 @@ const TodoProvider = ({children}) => {
     setWhatToFilter(what)
   }
 
-  const editTodo = (id, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber) => {
-    const editedTodo = todos.map(todo => todo.id === id 
+  const editTodo = (todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber) => {
+    const editedTodo = todos.map(todo => todo.id === todoId 
       ? {...todo, title, description, category, deadline, timeEstimateNumber, timeEstimateUnit} 
       : todo
     )
