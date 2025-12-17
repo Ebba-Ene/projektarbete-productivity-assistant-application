@@ -5,7 +5,7 @@ html{
     overflow-y: 100%;
 }
 .newbtn{
-    background-color: #97FFBF;
+    background-color: #CCD5AE;
     font-size: 2rem;
     border:none;
     width:4rem;
@@ -19,15 +19,13 @@ html{
 .cancelbtn{
     align-self: start;
     font-size: 2rem;
-    color:white;
     height:4rem;
-    background-color:#F82797;
+    background-color: #FBB7B7;
     border:none;
     padding:1rem;
 }
 .cancelbtn:hover{
-    background-color:white;
-    color:#F82797;
+    background-color: #EDABAB;
 }
 
 .wrapper{
@@ -39,7 +37,7 @@ html{
 .habitCard{
     display:flex;
 /*     padding:1.5rem; */
-background-color: white;
+    background-color: #CCD5AE;
     flex-direction: column;
     border-radius:1rem;
     align-items: center;
@@ -55,7 +53,7 @@ background-color: white;
     text-align: center;
     margin:0.5rem 0.1rem 0 0;
     color:white;
-    background-color: #F82797;
+    background-color: #FBB7B7;
     border:none;
 }
 .deletebtn:hover{
@@ -82,7 +80,7 @@ background-color: white;
     color:white;
 }
 .grid{
-    max-width: 60%;
+    max-width: 1fr;
     display:grid;
     grid-template-columns: repeat(3,1fr);
     gap:1%;
@@ -108,6 +106,7 @@ background-color: white;
     justify-content: end;
     gap:1rem;
     margin-bottom:1rem;
+    background-color: #CCD5AE;
 }
 .output{
     align-self: end;
@@ -122,5 +121,8 @@ background-color: white;
 }
 .mainflex{
     display:flex;
-    justify-content: space-between;
+    gap:1%;
+}
+.newhabit{
+    min-width: 39%;
 }
