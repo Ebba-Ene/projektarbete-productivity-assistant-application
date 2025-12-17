@@ -1,5 +1,5 @@
 .habitscomponent{
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
     display: flex;
     flex-direction: column;
 }
@@ -12,10 +12,11 @@
     flex-direction: column;
     background-color: #CCD5AE;
     padding:1rem;
+    gap:0.7rem;
 }
-h1{
+/* h1{
     color:#222222;
-}
+} */
 h2{
     margin:0;
     padding:0;
@@ -24,7 +25,11 @@ h2{
     font-size: 0.8rem;
     min-width: 10%;
     padding:0.4rem;
+    background-color:#FFFDF4;
+    color:rgb(80, 33, 0);
+    border:none;
 }
+
 .formbtn{
     border:none;
     background-color: #FEFAE0;

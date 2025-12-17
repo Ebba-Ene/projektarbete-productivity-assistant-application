@@ -35,48 +35,48 @@ const HabitsPage = () => {
     <div className={s.wrapper}>
       <h2 className={s.pagetitle}>Rutiner</h2>
       <div className={s.filtersort}>
-        <label htmlFor="filter">Filtrera efter:</label>
-        <select
-          value={filterClick}
-          name="filter"
-          id="filter"
-          onChange={(e) => {
-            setFilterClick(e.target.value)
-            // checkFiltering(filterClick)
+        <button
+          className={!addMode ? s.newbtn : s.cancelbtn}
+          onClick={() => {
+            setAddMode(!addMode)
           }}
         >
-          <option value="">Välj prioriteringsnivå...</option>
-          <option value="all">Visa alla</option>
-          <option value="låg">Låg</option>
-          <option value="medel">Medel</option>
-          <option value="hög">Hög</option>
-        </select>
-        <label htmlFor="sort">Sortera efter:</label>
-        <select
-          value={sortClick}
-          name="sort"
-          id="sort"
-          onChange={(e) => {
-            setSortClick(e.target.value)
-          }}
-        >
-          <option value="">Sortera efter...</option>
-          <option value="sortincrease">Fallande</option>
-          <option value="sortdecrease">Stigande</option>
-        </select>
-      </div>{" "}
-      <div className={s.mainflex}>
-        <div className={s.newhabit}>
-          <button
-            className={!addMode ? s.newbtn : s.cancelbtn}
-            onClick={() => {
-              setAddMode(!addMode)
+          {!addMode ? "+" : "x"}
+        </button>
+        <div className={s.filterdiv}>
+          <label htmlFor="filter">Filtrera efter:</label>
+          <select
+            value={filterClick}
+            name="filter"
+            id="filter"
+            onChange={(e) => {
+              setFilterClick(e.target.value)
+              // checkFiltering(filterClick)
             }}
           >
-            {!addMode ? "+" : "Avbryt"}
-          </button>
-          {addMode && <HabitsForm />}
+            <option value="">Välj prioriteringsnivå...</option>
+            <option value="all">Visa alla</option>
+            <option value="låg">Låg</option>
+            <option value="medel">Medel</option>
+            <option value="hög">Hög</option>
+          </select>
+          <label htmlFor="sort">Sortera efter:</label>
+          <select
+            value={sortClick}
+            name="sort"
+            id="sort"
+            onChange={(e) => {
+              setSortClick(e.target.value)
+            }}
+          >
+            <option value="">Sortera efter...</option>
+            <option value="sortincrease">Fallande</option>
+            <option value="sortdecrease">Stigande</option>
+          </select>
         </div>
+      </div>{" "}
+      <div className={s.mainflex}>
+        <div className={s.newhabit}>{addMode && <HabitsForm />}</div>
         <div className={s.grid}>
           {display
             .filter((habit) => habit.userId === currentUser.userId)
@@ -90,11 +90,11 @@ const HabitsPage = () => {
                 >
                   X
                 </button>
-                <h2>{item.title}</h2>
+                <h2 className={s.cardtitle}>{item.title}</h2>
                 <p>
                   <strong>repetitioner:</strong>
                 </p>
-                <div className={s.reps}>
+                <div className={s.repsflex}>
                   <button
                     className={s.repbtn}
                     onClick={() => {
