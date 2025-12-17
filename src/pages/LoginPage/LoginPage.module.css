@@ -14,6 +14,9 @@
     width: 400px;
     height: 500px;
     margin-top: 2rem;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .formbuttons {
@@ -54,9 +57,10 @@
 .formcontainer form {
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    flex: 1;
     align-items: stretch;
-    padding: 1rem;
+    padding: 0 2rem 2rem;
+    height: 100%;
     width: 100%;
     box-sizing: border-box;
 }
@@ -86,6 +90,7 @@
 }
 
 .formcontainer form button {
+    margin-top: auto;
     width: 100%;
     font-size: 1rem;
     background-color: #FEF3E0;
@@ -93,7 +98,6 @@
     border: none;
     border-radius: 5px;
     padding: 0.8rem;
-    margin-top: 2rem;
     font-weight: 500;
     transition: 0.15s ease;
 }
