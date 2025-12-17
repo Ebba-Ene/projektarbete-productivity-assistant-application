@@ -51,7 +51,7 @@
     background-color: #AEB890;
 }
 
-form {
+.formcontainer form {
     display:flex;
     flex-direction: column;
     justify-content: center;
