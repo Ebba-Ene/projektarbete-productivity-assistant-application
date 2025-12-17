@@ -27,6 +27,17 @@ const UserProvider = ({ children }) => {
   }, [currentUser])
 
   const addUser = (name, username, password) => {
+    if (!name.trim() || !username.trim() || !password.trim()) {
+      alert("Alla fält måste fyllas i.")
+      return
+    }
+
+    const userExists = users.some((user) => user.username === username.trim())
+
+    if (userExists) {
+      alert("Användarnamnet är redan taget.")
+      return
+    }
 
     const newUser = {
         userId: userId,
@@ -34,6 +45,7 @@ const UserProvider = ({ children }) => {
         username,
         password,
     }
+
     setUsers([...users, newUser])
     setUserId(userId + 1)
   }
