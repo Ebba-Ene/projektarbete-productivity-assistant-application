@@ -32,8 +32,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   }
 
   
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = () => {
     
     if(category && title && timeEstimateUnit && timeEstimateNumber !== 0 && deadline && description){
       
@@ -60,7 +59,9 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   }
 
   return(
-    <form className={todoCss.form} onSubmit={handleSubmit}>
+  
+    <form className={editingTodo ? todoCss.editForm : todoCss.form } onSubmit={handleSubmit}>
+      {editingTodo ? "" : <h3>Skapa ny todo</h3> }
       <input 
         type="text" 
         value={title} 

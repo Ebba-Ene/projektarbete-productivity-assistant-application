@@ -2,18 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px;
+  margin-left: -15px;
 }
-
-.ul li {
-  display: flex;
-  background-color: #E9EDC9;
-  flex-direction: column;
-  height: fit-content;
-}
-
-/* .ul li .complete{
-  background-color: black;
-} */
 
 .complete{
   background-color: rgba(233, 237, 201, 0.5);
@@ -21,8 +11,6 @@
 
 .container {
   display: flex;
-  justify-content: left;
-  align-items: center;
   gap: 10px;
-  margin: 5px;
+  /* margin: 2.5px; */
 }

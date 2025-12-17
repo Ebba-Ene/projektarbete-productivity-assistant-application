@@ -11,25 +11,27 @@ const TodoListItem = ({todo}) => {
   const[editingTodo, setEditingTodo] = useState(false)
 
   return(
-    <li className={todo.status ? todoCss.complete : todoCss.notComplete}>
+    <li className={todo.status ? todoCss.completeLi : todoCss.notComplete}>
     {!editingTodo && (
       <>
-        <h3>{todo.title}</h3>
-        <p className={todoCss.smaller}>{todo.category}</p>
-        <p>{todo.description}</p>
+        <div className={todo.status ? todoCss.complete : ""}>
+          <h3>{todo.title}</h3>
+          <p className={todoCss.smaller}>{todo.category}</p>
+          <p>{todo.description}</p>
 
-        <form className={todoCss.form}>
-          <label htmlFor="done">{todo.status ? "Utförd" : "Ej utförd"}</label>
-            <input 
-              type="checkbox" 
-              id="done" 
-              checked={todo.status} 
-              onChange={() => {completeTodo(todo.id)}}
-            />
-        </form>
-        
-        <p>{todo.timeEstimateNumber} {todo.timeEstimateUnit}</p>
-        <p className={todoCss.deadline}>{todo.deadline}</p>
+          <form className={todoCss.form}>
+            <label htmlFor="done">{todo.status ? "Utförd" : "Ej utförd"}</label>
+              <input 
+                type="checkbox" 
+                id="done" 
+                checked={todo.status} 
+                onChange={() => {completeTodo(todo.id)}}
+              />
+          </form>
+          
+          <p>{todo.timeEstimateNumber} {todo.timeEstimateUnit}</p>
+          <p className={todoCss.smaller}>{todo.deadline}</p>
+        </div>
 
         <div className={todoCss.buttons}>
           <button onClick={() => {removeTodo(todo.id)}} className={todoCss.removeBtn}>Ta bort</button>

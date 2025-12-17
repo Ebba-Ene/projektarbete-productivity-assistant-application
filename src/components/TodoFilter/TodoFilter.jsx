@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import { TodoContext } from "../../context/TodoContext"
 
+import todoCss from "./TodoFilter.module.css"
+
 const TodoFilter = () => {
 
   const { filterTodo, setFilter} = useContext(TodoContext)
@@ -26,7 +28,7 @@ const TodoFilter = () => {
   }
 
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={todoCss.form}>
       <select value={filters} onChange={(e) => {setFilters(e.target.value)}}>
         <option value="" disabled>Filtrera</option>
         <option>Status</option>
@@ -51,10 +53,10 @@ const TodoFilter = () => {
         </select>
       }
         
-      <button type="submit">Filtrera</button>
+      <button type="submit" className={todoCss.filter}>Filtrera</button>
 
       {filters !== "" && 
-        <button onClick={stopFilter}>Sluta filtrera</button>
+        <button onClick={stopFilter} className={todoCss.stopFilter}>Sluta filtrera</button>
       }
     </form>
   )

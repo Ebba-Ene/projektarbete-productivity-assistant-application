@@ -1,0 +1,94 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 5px;
+  height: fit-content;
+}
+
+.form input{
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #FFFDF4;
+  color: #222;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form select{
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #FFFDF4;
+  color: #222;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #DAE1BB;
+}
+
+.form button {
+    background-color: #FEF3E0;
+    color: #222;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    transition: 0.15s ease;
+}
+
+.form button:hover {
+    cursor: pointer;
+    background-color: #ECE1CF;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.editForm input {
+    padding: 2px;
+    border-radius: 5px;
+    background-color: #FFFDF4;
+    color: #222;
+    border: 2px solid #FFFDF4;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.editForm select{
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #FFFDF4;
+  color: #222;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.editForm input:focus {
+    outline: none;
+    border-color: #DAE1BB;
+}
+
+.editForm button {
+    background-color: #FEF3E0;
+    color: #222;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    transition: 0.15s ease;
+}
+
+.editForm button:hover {
+    cursor: pointer;
+    background-color: #ECE1CF;
+}
