@@ -37,8 +37,6 @@
 }
 .habitCard{
     display:flex;
-    /* max-width:15rem; */
-/*     padding:1.5rem; */
     background-color: #CCD5AE;
     flex-direction: column;
     border-radius:1rem;
@@ -48,6 +46,7 @@
 }
 .cardtitle{
     font-weight: bold;
+    text-transform: uppercase;
     margin-bottom:1rem;
 }
 .deletebtn{
@@ -58,15 +57,16 @@
     align-self:end;
     text-align: center;
     margin:0.5rem 0.5rem 0 0;
-    color:white;
     background-color: #FBB7B7;
     border:none;
 }
 .deletebtn:hover{
-    background-color:white;
-    color:#F82797;
+    background-color: #EDABAB;
 }
 .repbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding:0.1rem;
     height: 1.5rem;
     width:1.5rem;
@@ -76,7 +76,7 @@
     border-radius:0.02rem;
 }
 .repbtn:hover{
-    background-color: #37ff84;
+    background-color: #ECE1CF;
 }
 .resetbtn{
     border:none;
