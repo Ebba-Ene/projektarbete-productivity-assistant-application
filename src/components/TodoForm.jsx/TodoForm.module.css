@@ -57,6 +57,11 @@
   width: fit-content;
 }
 
+.createBtns{
+  display: flex;
+  flex-direction: column;
+}
+
 .editForm {
   display: flex;
   flex-direction: column;

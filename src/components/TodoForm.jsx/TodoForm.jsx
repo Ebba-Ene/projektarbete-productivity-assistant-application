@@ -17,11 +17,10 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   const[description, setDescription] = useState(editedDescription || "")
   
   const[category, setCategory] = useState(editedCategory || "")
-  const[deadline, setDeadline] = useState(editedDeadline || "")
   
   const[timeEstimateUnit, setTimeEstimateUnit] = useState(editedTimeEstimateUnit || "")
   const[timeEstimateNumber, setTimeEstimateNumber] = useState(editedTimeEstimateNumber || "")
-
+  
   const formatDateTimeLocal = () => {
     const d = new Date()
     const pad = (v) => v.toString().padStart(2, "0")
@@ -30,7 +29,8 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
     const day = pad(d.getDate())
     return `${year}-${month}-${day}`
   }
-
+  
+  const[deadline, setDeadline] = useState(editedDeadline || formatDateTimeLocal(now))
   
   const handleSubmit = () => {
     
@@ -54,14 +54,23 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   }
 
 //resetar värderna till de tidigare om man inte vill ändra längre
-  const stopEditing = () => {
-    setTitle(editedTitle)
-    setDescription(editedDescription)
-    setCategory(editedCategory)
-    setDeadline(editedDeadline)
-    setTimeEstimateUnit(editedTimeEstimateUnit)
-    setTimeEstimateNumber(editedTimeEstimateNumber)
-    setEditingTodo(false)
+  const stop = () => {
+    if(editingTodo){
+      setTitle(editedTitle)
+      setDescription(editedDescription)
+      setCategory(editedCategory)
+      setDeadline(editedDeadline)
+      setTimeEstimateUnit(editedTimeEstimateUnit)
+      setTimeEstimateNumber(editedTimeEstimateNumber)
+      setEditingTodo(false)
+    } else {
+        setTitle("")
+        setDescription("")
+        setTimeEstimateNumber("")
+        setTimeEstimateUnit("")
+        setCategory("")
+        setDeadline("")
+    }
   }
 
   return(
@@ -122,14 +131,10 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
 
       <input type="date" value={deadline} min={formatDateTimeLocal(now)} onChange={(e) => setDeadline(e.target.value)}/>
 
-
-    {editingTodo ? 
-      <div className={todoCss.editBtns}>
-        <button type="submit"> <strong>Spara</strong></button> 
-        <button type="button" onClick={() => {stopEditing()}}>Avsluta</button>
+      <div className={editingTodo ? todoCss.editBtns : todoCss.createBtns}>
+        <button type="submit">{editingTodo ? "Spara" : "Lägg till ny todo"}</button> 
+        <button type="button" onClick={() => {stop()}}>Avsluta</button>
       </div> 
-      : <button type="submit"> <strong>Lägg till ny todo</strong> {title}</button>
-    }
     </form>
   )
 }
