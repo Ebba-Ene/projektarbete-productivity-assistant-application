@@ -87,6 +87,14 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         onChange={(e) => {setTitle(e.target.value)}}
       />
 
+      <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
+        <option value="" disabled>Kategori</option>
+        <option>Hälsa</option>
+        <option>Hushåll</option>
+        <option>Jobbrelaterat</option>
+        <option>Nöje</option>
+      </select>
+
       <input 
         type="text" 
         value={description} 
@@ -120,14 +128,6 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
             </select>
           }
       </div>
-
-      <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
-        <option value="" disabled>Kategori</option>
-        <option>Hälsa</option>
-        <option>Hushåll</option>
-        <option>Jobbrelaterat</option>
-        <option>Nöje</option>
-      </select>
 
       <input type="date" value={deadline} min={formatDateTimeLocal(now)} onChange={(e) => setDeadline(e.target.value)}/>
 
