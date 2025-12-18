@@ -15,13 +15,13 @@ const HabitsForm = () => {
     localStorage.setItem("habitIdCounter", JSON.stringify(habitId))
   }, [habitId])
 
-  const [priority, setPriority] = useState(null)
-  const [reps, setReps] = useState(null)
-  const [title, setTitle] = useState(null)
+  const [priority, setPriority] = useState("")
+  const [reps, setReps] = useState(0)
+  const [title, setTitle] = useState("")
 
   const checkInput = () => {
     priority
-    if (!title || !reps || !priority) {
+    if (title === "" || priority === "") {
       alert(
         "Var vänlig fyll i alla rutor med information innan du skapar en ny vana!"
       )
@@ -29,7 +29,7 @@ const HabitsForm = () => {
       alert(
         "Antalet genomförda repetitioner kan inte vara färre än noll gånger!"
       )
-    } else if (title && reps && priority) {
+    } else if (title !== "" && priority !== "") {
       const newHabit = {
         userId: currentUser.userId,
         habitId: habitId,
@@ -39,6 +39,9 @@ const HabitsForm = () => {
       }
       addHabit(newHabit)
       setHabitId(habitId + 1)
+      setTitle("")
+      setPriority("")
+      setReps(0)
     }
   }
 
@@ -48,6 +51,7 @@ const HabitsForm = () => {
         <h2 className={s.titleform}>Ny rutin</h2>
         <label htmlFor="title">Titel:</label>
         <input
+          value={title}
           className={s.titleinput}
           type="text"
           name="title"
@@ -59,17 +63,18 @@ const HabitsForm = () => {
         />
         <label htmlFor="repetitions">Repetitioner:</label>
         <input
+          value={reps}
           className={s.repsinput}
           type="number"
           name="repetitions"
           id="repetitions"
-          placeholder="antal utförda repetitioner"
           onChange={(e) => {
             setReps(e.target.value)
           }}
         />
         <label htmlFor="priority">Prioriteringsnivå:</label>
         <select
+          value={priority}
           className={s.priorityinput}
           name="priority"
           id="priority"
