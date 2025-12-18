@@ -11,38 +11,32 @@ const TodoListItem = ({todo}) => {
   const[editingTodo, setEditingTodo] = useState(false)
 
   return(
-    <li className={todo.status ? todoCss.complete : todoCss.notComplete}>
+    <li className={todo.status ? todoCss.completeLi : todoCss.notComplete}>
     {!editingTodo && (
       <>
-        <h3>{todo.title}</h3>
-        <p>{todo.category}</p>
-        <p>{todo.description}</p>
+        <div className={todo.status ? todoCss.complete : ""}>
+          <h3>{todo.title}</h3>
+          <p className={todoCss.smaller}>{todo.category}</p>
+          <p>{todo.description}</p>
 
-        <form>
-          <label htmlFor="done">{todo.status ? "Utförd" : "Ej utförd"}</label>
-          {!todo.status &&
-            <input 
-              type="checkbox" 
-              id="done" 
-              checked={false} 
-              onChange={() => {completeTodo(todo.id)}}/>
-          }
-          {todo.status &&
-            <input 
-              type="checkbox" 
-              id="done" 
-              checked={true} 
-              onChange={() => {completeTodo(todo.id)}}/>
-          }
-        </form>
-        
-        <p>{todo.timeEstimateNumber} {todo.timeEstimateUnit}</p>
-        <p>{todo.deadline}</p>
+          <form className={todoCss.form}>
+            <label htmlFor="done">{todo.status ? "Utförd" : "Ej utförd"}</label>
+              <input 
+                type="checkbox" 
+                id="done" 
+                checked={todo.status} 
+                onChange={() => {completeTodo(todo.id)}}
+              />
+          </form>
+          
+          <p>{todo.timeEstimateNumber} {todo.timeEstimateUnit}</p>
+          <p className={todoCss.smaller}>{todo.deadline}</p>
+        </div>
 
-        <button 
-          onClick={() => {removeTodo(todo.id)}}>Ta bort</button>
-        <button 
-          onClick={() => {setEditingTodo(true)}}>Redigera</button>   
+        <div className={todoCss.buttons}>
+          <button onClick={() => {removeTodo(todo.id)}} className={todoCss.removeBtn}>Ta bort</button>
+          <button onClick={() => {setEditingTodo(true)}} className={todoCss.editBtn}>Redigera</button>   
+        </div>
       </>
     )}
 

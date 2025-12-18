@@ -59,7 +59,7 @@ const TodoList = () => {
   })
 
   return(
-    <div>
+    <div className={todoCss.bigContainer}>
       <div className={todoCss.container}>
         <TodoSort/>
         <TodoFilter/>

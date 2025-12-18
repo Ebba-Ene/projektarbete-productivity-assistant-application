@@ -20,7 +20,7 @@
   box-sizing: border-box;
 }
 
-.sorting {
+.filter {
   background-color: #FEF3E0;
   color: #222;
   border: none;
@@ -30,12 +30,12 @@
   transition: 0.15s ease;
 }
 
-.sorting:hover {
+.filter:hover {
   cursor: pointer;
   background-color: #ECE1CF;
 }
 
-.stopSorting {
+.stopFilter {
   background-color: #FBB7B7;
   color: #222;
   border: none;
