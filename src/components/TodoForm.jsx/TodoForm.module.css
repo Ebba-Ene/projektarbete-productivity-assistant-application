@@ -54,7 +54,11 @@
 }
 
 .timeEstimateDiv select{
-  width: fit-content;
+  width: 50%;
+}
+
+.timeEstimateDiv input{
+  width: 50%;
 }
 
 .createBtns{
