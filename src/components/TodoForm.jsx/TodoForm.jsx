@@ -41,6 +41,12 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         setEditingTodo(false)
       } else {
         addTodo(userId, title, description, timeEstimateUnit, timeEstimateNumber, category, deadline)
+        setTitle("")
+        setDescription("")
+        setTimeEstimateNumber("")
+        setTimeEstimateUnit("")
+        setCategory("")
+        setDeadline("")
       }
 
       setShow(false)
@@ -60,7 +66,10 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
 
   return(
   
-    <form className={editingTodo ? todoCss.editForm : todoCss.form } onSubmit={handleSubmit}>
+    <form className={editingTodo ? todoCss.editForm : todoCss.form } onSubmit={(e) => {
+      e.preventDefault()
+      handleSubmit()
+      }}>
       {editingTodo ? "" : <h3>Skapa ny todo</h3> }
       <input 
         type="text" 
