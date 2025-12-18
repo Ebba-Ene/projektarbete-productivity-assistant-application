@@ -133,7 +133,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
 
       <div className={editingTodo ? todoCss.editBtns : todoCss.createBtns}>
         <button type="submit">{editingTodo ? "Spara" : "Lägg till ny todo"}</button> 
-        <button type="button" onClick={() => {stop()}}>Avsluta</button>
+        {editingTodo ? <button type="button" onClick={() => {stop()}}>Avsluta</button> : null }
       </div> 
     </form>
   )

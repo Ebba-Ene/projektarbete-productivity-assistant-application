@@ -5,8 +5,7 @@
   height: fit-content;
   border-radius: 5px;
   align-items: center;
-  margin: 20px;
-  padding: 10px;
+  padding: 1.5rem;
   text-align: center;
 }
 
@@ -21,7 +20,6 @@
   border-radius: 15px;
   align-items: center;
   justify-content: center;
-  margin-top: 0.5rem;
   padding: 1.5rem;
   text-align: center;
   min-height: 280px;
@@ -36,7 +34,7 @@
 }
 
 .notComplete p, .completeLi p{
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .buttons{
@@ -82,6 +80,7 @@
   display: block;
   font-size: 0.8rem;
   opacity: 0.7;
+  margin-bottom: 0.5rem !important;
 }
 
 .form{
