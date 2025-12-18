@@ -41,7 +41,7 @@ const HabitsForm = () => {
       setHabitId(habitId + 1)
       setTitle("")
       setPriority("")
-      setPriority(0)
+      setReps(0)
     }
   }
 
