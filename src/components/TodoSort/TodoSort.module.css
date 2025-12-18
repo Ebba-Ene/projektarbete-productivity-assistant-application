@@ -36,6 +36,7 @@
 }
 
 .stopSorting {
+  width: fit-content;
   background-color: #FBB7B7;
   color: #222;
   border: none;

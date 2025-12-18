@@ -17,11 +17,10 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   const[description, setDescription] = useState(editedDescription || "")
   
   const[category, setCategory] = useState(editedCategory || "")
-  const[deadline, setDeadline] = useState(editedDeadline || "")
   
   const[timeEstimateUnit, setTimeEstimateUnit] = useState(editedTimeEstimateUnit || "")
   const[timeEstimateNumber, setTimeEstimateNumber] = useState(editedTimeEstimateNumber || "")
-
+  
   const formatDateTimeLocal = () => {
     const d = new Date()
     const pad = (v) => v.toString().padStart(2, "0")
@@ -30,11 +29,12 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
     const day = pad(d.getDate())
     return `${year}-${month}-${day}`
   }
-
+  
+  const[deadline, setDeadline] = useState(editedDeadline || formatDateTimeLocal(now))
   
   const handleSubmit = () => {
     
-    if(category && title && timeEstimateUnit && timeEstimateNumber !== 0 && deadline && description){
+    if(category && title && timeEstimateUnit && timeEstimateNumber > 0 && deadline && description){
       
       if(editingTodo){
         editTodo(todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber)
@@ -54,14 +54,23 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   }
 
 //resetar värderna till de tidigare om man inte vill ändra längre
-  const stopEditing = () => {
-    setTitle(editedTitle)
-    setDescription(editedDescription)
-    setCategory(editedCategory)
-    setDeadline(editedDeadline)
-    setTimeEstimateUnit(editedTimeEstimateUnit)
-    setTimeEstimateNumber(editedTimeEstimateNumber)
-    setEditingTodo(false)
+  const stop = () => {
+    if(editingTodo){
+      setTitle(editedTitle)
+      setDescription(editedDescription)
+      setCategory(editedCategory)
+      setDeadline(editedDeadline)
+      setTimeEstimateUnit(editedTimeEstimateUnit)
+      setTimeEstimateNumber(editedTimeEstimateNumber)
+      setEditingTodo(false)
+    } else {
+        setTitle("")
+        setDescription("")
+        setTimeEstimateNumber("")
+        setTimeEstimateUnit("")
+        setCategory("")
+        setDeadline("")
+    }
   }
 
   return(
@@ -85,30 +94,32 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         onChange={(e) => {setDescription(e.target.value)}}
       />
       
-      <input 
-        type="number" 
-        value={editingTodo ? timeEstimateNumber : timeEstimateNumber || ""} 
-        placeholder="Tidsestimat?" 
-        onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}
-      />
+      <div className={todoCss.timeEstimateDiv}>
+        <input 
+          type="number" 
+          value={editingTodo ? timeEstimateNumber : timeEstimateNumber || ""} 
+          placeholder="Tidsestimat?" 
+          onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}
+          />
 
-      {timeEstimateNumber !== 1 && 
-        <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
-          <option value="" disabled>Tidsform</option>
-          <option>minuter</option>
-          <option>timmar</option>
-          <option>dagar</option>
-        </select>
-      }
-
-      {timeEstimateNumber == 1 && 
-        <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
-          <option value="" disabled>Tidsform</option>
-          <option>minut</option>
-          <option>timme</option>
-          <option>dag</option>
-        </select>
-      }
+          {timeEstimateNumber !== 1 && 
+            <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
+              <option value="" disabled>Tidsform</option>
+              <option>minuter</option>
+              <option>timmar</option>
+              <option>dagar</option>
+            </select>
+          }
+    
+          {timeEstimateNumber == 1 && 
+            <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
+              <option value="" disabled>Tidsform</option>
+              <option>minut</option>
+              <option>timme</option>
+              <option>dag</option>
+            </select>
+          }
+      </div>
 
       <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
         <option value="" disabled>Kategori</option>
@@ -120,14 +131,10 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
 
       <input type="date" value={deadline} min={formatDateTimeLocal(now)} onChange={(e) => setDeadline(e.target.value)}/>
 
-
-    {editingTodo ? 
-      <>
-        <button type="submit"> <strong>Spara redigering</strong></button> 
-        <button type="button" onClick={() => {stopEditing()}}>Avsluta</button>
-      </> 
-      : <button type="submit"> <strong>Lägg till ny todo</strong> {title}</button>
-    }
+      <div className={editingTodo ? todoCss.editBtns : todoCss.createBtns}>
+        <button type="submit">{editingTodo ? "Spara" : "Lägg till ny todo"}</button> 
+        <button type="button" onClick={() => {stop()}}>Avsluta</button>
+      </div> 
     </form>
   )
 }
