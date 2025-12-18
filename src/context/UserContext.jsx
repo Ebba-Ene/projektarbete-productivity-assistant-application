@@ -3,13 +3,14 @@ import { createContext, useState, useEffect, use } from "react"
 export const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
-  
-  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userIdCounter")) || 0)
+  const [userId, setUserId] = useState(
+    JSON.parse(localStorage.getItem("userIdCounter")) || 0
+  )
 
   useEffect(() => {
     localStorage.setItem("userIdCounter", JSON.stringify(userId))
   }, [userId])
-  
+
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || []
   )
@@ -40,10 +41,10 @@ const UserProvider = ({ children }) => {
     }
 
     const newUser = {
-        userId: userId,
-        name,
-        username,
-        password,
+      userId: userId,
+      name,
+      username,
+      password,
     }
 
     setUsers([...users, newUser])
@@ -58,7 +59,7 @@ const UserProvider = ({ children }) => {
     if (loggedInUser) {
       setCurrentUser(loggedInUser)
     } else {
-      alert('Användarnamn eller lösenord är fel.')
+      alert("Användarnamn eller lösenord är fel.")
     }
   }
 
