@@ -41,7 +41,15 @@ const EventProvider = ({ children }) => {
     setEvents(editedEventList);
   };
   
-  const now = new Date();
+  const [now, setNow] = useState(new Date())
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(new Date())
+    }, 1000);
+
+    return () => clearInterval(interval)
+  }, []);
 
   const upcomingEvents = events
     .filter(e => new Date(e.end) >= now)
