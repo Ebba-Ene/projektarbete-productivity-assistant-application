@@ -29,11 +29,14 @@ const EventForm = () => {
     return (
         <div className={s.eventform}>
             <h3>Skapa händelse</h3>
-            <div className={s.form}>
+            <form className={s.form} onSubmit={(e) => {
+                e.preventDefault()
+                handleAdd()
+                }}>
                 <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName} isEdit={false} showLabels={true}/>
 
-                <button className={s.addbutton} onClick={handleAdd}>Lägg till</button>
-            </div>
+                <button type="submit" className={s.addbutton}>Lägg till</button>
+            </form>
         </div>
     );
 };

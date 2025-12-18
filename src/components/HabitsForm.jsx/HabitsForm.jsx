@@ -44,7 +44,7 @@ const HabitsForm = () => {
 
   return (
     <div className={s.habitscomponent}>
-      <div className={s.habitsform}>
+      <form onSubmit={(e) => e.preventDefault()} className={s.habitsform}>
         <h2 className={s.titleform}>Ny rutin</h2>
         <label htmlFor="title">Titel:</label>
         <input
@@ -89,7 +89,7 @@ const HabitsForm = () => {
         >
           Lägg till
         </button>
-      </div>
+      </form>
     </div>
   )
 }

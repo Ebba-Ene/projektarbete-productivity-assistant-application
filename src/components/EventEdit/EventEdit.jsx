@@ -22,14 +22,17 @@ const EventEdit = ({ event, onCancel }) => {
     }
 
     return (
-        <div className={s.editcontainer}>
+        <form className={s.editcontainer} onSubmit={(e) => {
+            e.preventDefault()
+            saveEdit()
+            }}>
             <EventInputs start={start} end={end} name={name} setStart={setStart} setEnd={setEnd} setName={setName} isEdit={true} showLabels={false}/>
 
             <div className={s.buttoncontainer}>
-                <button onClick={onCancel}>Ångra</button>
-                <button onClick={saveEdit}>Spara</button>
+                <button type="button" onClick={onCancel}>Ångra</button>
+                <button type="submit">Spara</button>
             </div>
-        </div>
+        </form>
     );
 };
 

@@ -12,7 +12,7 @@ const EventInputs = ({ start, end, name, setStart, setEnd, setName, isEdit, show
         if (endDate < startDate) {
           setEnd(start);
         }
-    }, [start, end]);
+    }, [start]);
     
     return (
         <div className={`${s.inputcontainer} ${isEdit ? s.edit : s.form}`}>
