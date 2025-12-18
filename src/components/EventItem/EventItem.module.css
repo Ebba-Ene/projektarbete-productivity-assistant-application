@@ -1,7 +1,7 @@
 .item {
   display: flex;
   align-items: center;
-  background-color: #E9EDC9;
+  background-color: #e9edc9;
   padding: 1.5rem;
   border-radius: 15px;
   list-style-type: none;
@@ -10,14 +10,14 @@
 }
 
 .item.past {
-  background-color:#DAE1BB;
+  background-color: #dae1bb;
 }
 
 .item.past button {
-  background-color: #FBB7B7;
-  color: #222;
+  background-color: #fbb7b7;
+  color: #502100;
 }
 
 .item.past button:hover {
-  background-color: #EDABAB;
+  background-color: #edabab;
 }

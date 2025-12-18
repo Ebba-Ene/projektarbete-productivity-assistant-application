@@ -1,19 +1,19 @@
-import { useContext, useState } from "react"
-import { EventContext } from "../../context/EventContext"
-import { formatDisplayDate } from "../../components/helper"
-import { Link } from "react-router-dom"
-import s from "./HomePage.module.css"
-import { TodoContext } from "../../context/TodoContext"
-import { HabitsContext } from "../../context/HabitsContext"
-import Quote from "../../components/Quote/Quote"
-import { UserContext } from "../../context/UserContext"
+import { useContext, useState } from "react";
+import { EventContext } from "../../context/EventContext";
+import { formatDisplayDate } from "../../components/helper";
+import { Link } from "react-router-dom";
+import s from "./HomePage.module.css";
+import { TodoContext } from "../../context/TodoContext";
+import { HabitsContext } from "../../context/HabitsContext";
+import Quote from "../../components/Quote/Quote";
+import { UserContext } from "../../context/UserContext";
 
 const HomePage = () => {
-  const { upcomingEvents } = useContext(EventContext)
-  const { todos } = useContext(TodoContext)
-  const { habits } = useContext(HabitsContext)
-  const { currentUser } = useContext(UserContext)
-  const [habitsDisplay, setHabitsDisplay] = useState([...habits])
+  const { upcomingEvents } = useContext(EventContext);
+  const { todos } = useContext(TodoContext);
+  const { habits } = useContext(HabitsContext);
+  const { currentUser } = useContext(UserContext);
+  const [habitsDisplay, setHabitsDisplay] = useState([...habits]);
 
   return (
     <>
@@ -22,11 +22,12 @@ const HomePage = () => {
       <div className={s.homecontainer}>
         <div className={s.homeitem}>
           <div className={s.header}>
-            <h3>Ärenden</h3>
+            <h3>Ärenden och aktiviteter</h3>
             <Link to="/todo">
               → <span>Alla ärenden</span>
             </Link>
           </div>
+
           <div className={s.listcontainer}>
             <ul>
               {todos
@@ -54,6 +55,7 @@ const HomePage = () => {
               → <span>Alla rutiner</span>
             </Link>
           </div>
+
           <div className={s.listcontainer}>
             <ul>
               {habits.length > 0 &&
@@ -81,6 +83,7 @@ const HomePage = () => {
               → <span>Alla händelser</span>
             </Link>
           </div>
+          
           <div className={s.listcontainer}>
             <ul>
               {upcomingEvents
@@ -99,7 +102,7 @@ const HomePage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

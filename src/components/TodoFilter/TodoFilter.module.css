@@ -4,28 +4,36 @@
   justify-content: space-around;
   align-items: center;
   width: fit-content;
-  border-radius: 5px;
-  margin: 5px;
-  padding: 5px;
+  border-radius: 25px;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  padding: 0.5rem 0.8rem;
   gap: 5px;
 }
 
 .form select{
-  padding: 5px;
-  border-radius: 5px;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 25px;
   border: none;
   background-color: #FFFDF4;
-  color: #222;
+  color: #502100;
   width: 100%;
   box-sizing: border-box;
+  font-weight: 500;
+  transition: 0.15s ease;
+}
+
+.form select:hover { 
+  cursor: pointer;
+  background-color: #F3F1E8;
 }
 
 .filter {
   background-color: #FEF3E0;
-  color: #222;
+  color: #502100;
   border: none;
   border-radius: 5px;
-  padding: .2rem;
+  padding: 0.5rem 0.8rem;
   font-weight: 500;
   transition: 0.15s ease;
 }
@@ -37,10 +45,16 @@
 
 .stopFilter {
   background-color: #FBB7B7;
-  color: #222;
+  color: #502100;
   border: none;
   border-radius: 5px;
-  padding: .2rem;
+  padding: 0.5rem 0.8rem;
   font-weight: 500;
   transition: 0.15s ease;
+  white-space: nowrap;
+}
+
+.stopFilter:hover {
+  cursor: pointer;
+  background-color: #EDABAB;
 }

@@ -12,20 +12,20 @@ export const formatDateTimeLocal = (date) => {
 export const formatDisplayDate = (date) =>
   new Date(date).toLocaleString("sv-SE", {
     dateStyle: "long",
-    timeStyle: "short"
+    timeStyle: "short",
   });
 
 export const validateEvent = (start, end, name) => {
-    const startDate = new Date(start);
-    const endDate = new Date(end);
+  const startDate = new Date(start);
+  const endDate = new Date(end);
 
-    if (!start|| !end || !name.trim()) {
-      return "Alla fält måste fyllas i."
-    }
+  if (!start || !end || !name.trim()) {
+    return "Alla fält måste fyllas i.";
+  }
 
-    if (endDate <= startDate) {
-      return "Sluttiden måste vara efter starttiden.";
-    }
+  if (endDate <= startDate) {
+    return "Sluttiden måste vara efter starttiden.";
+  }
 
-    return null;
-}
+  return null;
+};

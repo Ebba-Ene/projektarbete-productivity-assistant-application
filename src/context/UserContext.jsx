@@ -1,114 +1,127 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect } from "react";
 
-export const UserContext = createContext()
+export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  
-  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userIdCounter")) || 0)
+  const [userId, setUserId] = useState(
+    JSON.parse(localStorage.getItem("userIdCounter")) || 0
+  );
 
   useEffect(() => {
-    localStorage.setItem("userIdCounter", JSON.stringify(userId))
-  }, [userId])
-  
+    localStorage.setItem("userIdCounter", JSON.stringify(userId));
+  }, [userId]);
+
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || []
-  )
+  );
 
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("currentUser")) || null
-  )
+  );
 
   useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users))
-  }, [users])
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
 
   useEffect(() => {
-    sessionStorage.setItem("currentUser", JSON.stringify(currentUser))
-  }, [currentUser])
+    sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+  }, [currentUser]);
 
   const addUser = (name, username, password, setUsername, setPassword, setFirstname) => {
     if (!name.trim() || !username.trim() || !password.trim()) {
-      alert("Alla fält måste fyllas i.")
-      return
+      alert("Alla fält måste fyllas i.");
+      return;
     }
 
-    const userExists = users.some((user) => user.username === username.trim())
+    const userExists = users.some((user) => user.username === username.trim());
 
     if (userExists) {
-      alert("Användarnamnet är redan taget.")
-      return
+      alert("Användarnamnet är redan taget.");
+      return;
     }
 
     const newUser = {
-        userId: userId,
-        name,
-        username,
-        password,
-    }
+      userId: userId,
+      name,
+      username,
+      password,
+    };
 
-    setUsers([...users, newUser])
-    setUserId(userId + 1)
+    setUsers([...users, newUser]);
+    setUserId(userId + 1);
 
-    setUsername("")
-    setPassword("")
-    setFirstname("")
-  }
+    setUsername("");
+    setPassword("");
+    setFirstname("");
+  };
 
   const loginUser = (username, password) => {
     if (!username.trim() || !password.trim()) {
-      alert("Alla fält måste fyllas i.")
-      return
+      alert("Alla fält måste fyllas i.");
+      return;
     }
 
     let loggedInUser = users.find(
       (user) => user.username === username && user.password === password
-    )
+    );
 
     if (loggedInUser) {
-      setCurrentUser(loggedInUser)
+      setCurrentUser(loggedInUser);
     } else {
-      alert('Användarnamn eller lösenord är fel.')
+      alert("Användarnamn eller lösenord är fel.");
     }
-  }
+  };
 
   const [quote, setQuote] = useState(
     JSON.parse(sessionStorage.getItem("quote") || null)
-  )
+  );
 
   useEffect(() => {
-    sessionStorage.setItem("quote", JSON.stringify(quote))
-  }, [quote])
+    sessionStorage.setItem("quote", JSON.stringify(quote));
+  }, [quote]);
 
   useEffect(() => {
     if (!currentUser) {
-      setQuote(null)
-      return
+      setQuote(null);
+      return;
     }
 
     if (!quote) {
       const fetchQuote = async () => {
-        let response = await fetch("https://dummyjson.com/quotes/random")
-        let json = await response.json()
-        setQuote(json)
-      }
+        try {
+          let response = await fetch("https://dummyjson.com/quotes/random");
 
-      fetchQuote()
+          if (!response.ok) {
+            throw new Error("Kunde inte hämta citat.");
+          }
+
+          let json = await response.json();
+          setQuote(json);
+        } catch (error) {
+          console.error("Fetch error:", error);
+          setQuote({
+            id: 404,
+            quote: "Citatet kunde inte hämtas.",
+            author: "Error 404",
+          });
+        }
+      };
+
+      fetchQuote();
     }
-  }, [currentUser])
+  }, [currentUser]);
 
   const logoutUser = () => {
-    sessionStorage.clear()
-    setCurrentUser(null)
-    setQuote(null)
-  }
+    sessionStorage.clear();
+    setCurrentUser(null);
+    setQuote(null);
+  };
 
   return (
-    <UserContext
-      value={{ users, currentUser, addUser, loginUser, logoutUser, quote }}
-    >
+    <UserContext value={{ users, currentUser, addUser, loginUser, logoutUser, quote }}>
       {children}
     </UserContext>
-  )
-}
+  );
+};
 
-export default UserProvider
+export default UserProvider;

@@ -1,8 +1,6 @@
 .ul{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px;
-  margin-left: -15px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .complete{
@@ -11,6 +9,5 @@
 
 .container {
   display: flex;
-  gap: 10px;
   /* margin: 2.5px; */
 }

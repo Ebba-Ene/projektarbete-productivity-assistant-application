@@ -1,28 +1,28 @@
 .eventform {
-    width: 400px;
-    height: fit-content;
-    background-color: #CCD5AE;
-    padding: 2rem;
-    border-radius: 25px;
+  width: 400px;
+  height: fit-content;
+  background-color: #ccd5ae;
+  padding: 2rem;
+  border-radius: 25px;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .addbutton {
-    background-color: #FEF3E0;
-    color: #222;
-    border: none;
-    border-radius: 5px;
-    padding: 0.8rem;
-    margin-top: 2rem;
-    font-weight: 500;
-    transition: 0.15s ease;
+  background-color: #fef3e0;
+  color: #502100;
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem;
+  margin-top: 2rem;
+  font-weight: 500;
+  transition: 0.15s ease;
 }
 
 .addbutton:hover {
-    cursor: pointer;
-    background-color: #ECE1CF;
+  cursor: pointer;
+  background-color: #ece1cf;
 }

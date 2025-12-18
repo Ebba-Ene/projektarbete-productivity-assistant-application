@@ -3,17 +3,21 @@ import { createContext, useEffect, useState } from "react";
 export const EventContext = createContext();
 
 const EventProvider = ({ children }) => {
-  const [events, setEvents] = useState(JSON.parse(localStorage.getItem("events")) || []);
+  const [events, setEvents] = useState(
+    JSON.parse(localStorage.getItem("events")) || []
+  );
 
   useEffect(() => {
-    localStorage.setItem("events", JSON.stringify(events))
-  },[events])
+    localStorage.setItem("events", JSON.stringify(events));
+  }, [events]);
 
-  const [eventId, setEventId] = useState(JSON.parse(localStorage.getItem("eventIdCounter")) || 0);
+  const [eventId, setEventId] = useState(
+    JSON.parse(localStorage.getItem("eventIdCounter")) || 0
+  );
 
   useEffect(() => {
-    localStorage.setItem("eventIdCounter", JSON.stringify(eventId))
-  }, [eventId])
+    localStorage.setItem("eventIdCounter", JSON.stringify(eventId));
+  }, [eventId]);
 
   const addEvent = (userId, start, end, name) => {
     const newEvent = {
@@ -34,31 +38,31 @@ const EventProvider = ({ children }) => {
   };
 
   const editEvent = (id, start, end, name) => {
-    const editedEventList = events.map((event) => 
-      event.id === id ? {...event, start, end, name} : event
+    const editedEventList = events.map((event) =>
+      event.id === id ? { ...event, start, end, name } : event
     );
-    
+
     setEvents(editedEventList);
   };
-  
-  const [now, setNow] = useState(new Date())
+
+  const [now, setNow] = useState(new Date());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setNow(new Date())
+      setNow(new Date());
     }, 1000);
 
-    return () => clearInterval(interval)
+    return () => clearInterval(interval);
   }, []);
 
   const upcomingEvents = events
-    .filter(e => new Date(e.end) >= now)
-    .sort((a, b) => new Date(a.start) - new Date(b.start))
+    .filter((e) => new Date(e.end) >= now)
+    .sort((a, b) => new Date(a.start) - new Date(b.start));
 
   const pastEvents = events
-    .filter(e => new Date(e.end) < now)
-    .sort((a, b) => new Date(b.start) - new Date(a.start))
-  
+    .filter((e) => new Date(e.end) < now)
+    .sort((a, b) => new Date(b.start) - new Date(a.start));
+
   return (
     <EventContext value={{ events, addEvent, removeEvent, editEvent, upcomingEvents, pastEvents }}>
       {children}

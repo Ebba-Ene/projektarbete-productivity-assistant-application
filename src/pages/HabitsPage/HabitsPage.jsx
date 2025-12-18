@@ -95,7 +95,7 @@ const HabitsPage = () => {
                 </button>
                 <h2 className={s.cardtitle}>{item.title}</h2>
                 <p>
-                  <strong>repetitioner:</strong>
+                  <strong>Repetitioner:</strong>
                 </p>
                 <div className={s.repsflex}>
                   <button
@@ -122,11 +122,11 @@ const HabitsPage = () => {
                     incrDecrReset(item.habitId, "reset")
                   }}
                 >
-                  återställ
+                  Återställ
                 </button>
 
-                <p className={`${item.priority}`}>
-                  <strong>prioritet:</strong> {item.priority}{" "}
+                <p className={s[item.priority]}>
+                  <strong>Prioritet:</strong> {item.priority}{" "}
                 </p>
               </div>
             ))}

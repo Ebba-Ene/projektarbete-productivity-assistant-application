@@ -1,46 +1,47 @@
-import { useContext, useState } from "react"
-import { EventContext } from "../../context/EventContext"
+import { useContext, useState } from "react";
+import { EventContext } from "../../context/EventContext";
 import EventItem from "../EventItem/EventItem";
-import s from "./EventList.module.css"
+import s from "./EventList.module.css";
 import { UserContext } from "../../context/UserContext";
 
 const EventList = () => {
-    const { currentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext);
 
-    const { upcomingEvents, pastEvents } = useContext(EventContext);
-    const [filter, setFilter] = useState("all")
+  const { upcomingEvents, pastEvents } = useContext(EventContext);
+  const [filter, setFilter] = useState("all");
 
-    const userUpcomingEvents = upcomingEvents.filter((event) => event.userId === currentUser.userId);
-    const userPastEvents = pastEvents.filter((event) => event.userId === currentUser.userId);
+  const userUpcomingEvents = upcomingEvents.filter((event) => event.userId === currentUser.userId);
 
-    let sortedEvents = [...userUpcomingEvents, ...userPastEvents]
+  const userPastEvents = pastEvents.filter((event) => event.userId === currentUser.userId);
 
-    if (filter === "upcoming") {
-        sortedEvents = userUpcomingEvents
-    }
+  let sortedEvents = [...userUpcomingEvents, ...userPastEvents];
 
-    if (filter === "past") {
-        sortedEvents = userPastEvents
-    }
+  if (filter === "upcoming") {
+    sortedEvents = userUpcomingEvents;
+  }
 
-    return (
-        <div className={s.eventlist}>
-            <h3>Händelser</h3>
+  if (filter === "past") {
+    sortedEvents = userPastEvents;
+  }
 
-           <div className={s.filterbutton}>
-                <span>Filter:</span>
-                <button onClick={() => setFilter("all")} className={filter === "all" ? s.active : ""}>Alla</button>
-                <button onClick={() => setFilter("upcoming")} className={filter === "upcoming" ? s.active : ""}>Kommande</button>
-                <button onClick={() => setFilter("past")} className={filter === "past" ? s.active : ""}>Tidigare</button>
-            </div>
+  return (
+    <div className={s.eventlist}>
+      <h3>Händelser</h3>
 
-            <ul>
-                {sortedEvents.map((event) => (
-                    <EventItem key={event.id} event={event} isPast={new Date(event.end) < new Date()}/>
-                ))}
-            </ul>
-        </div>
-    );
+      <div className={s.filterbutton}>
+        <span>Filter:</span>
+        <button onClick={() => setFilter("all")} className={filter === "all" ? s.active : ""}>Alla</button>
+        <button onClick={() => setFilter("upcoming")} className={filter === "upcoming" ? s.active : ""}>Kommande</button>
+        <button onClick={() => setFilter("past")} className={filter === "past" ? s.active : ""}>Tidigare</button>
+      </div>
+
+      <ul>
+        {sortedEvents.map((event) => (
+          <EventItem key={event.id} event={event} isPast={new Date(event.end) < new Date()} />
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default EventList;

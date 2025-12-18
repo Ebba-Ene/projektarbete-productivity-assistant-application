@@ -70,7 +70,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
       e.preventDefault()
       handleSubmit()
       }}>
-      {editingTodo ? "" : <h3>Skapa ny todo</h3> }
+      {editingTodo ? "" : <h3>Skapa nytt ärende</h3> }
       <input 
         type="text" 
         value={title} 

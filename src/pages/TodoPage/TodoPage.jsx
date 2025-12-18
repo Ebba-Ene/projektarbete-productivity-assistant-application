@@ -8,7 +8,7 @@ const TodoPage = () => {
 
   return(
     <>
-      <h2>Mina ärenden & aktiviteter:</h2>
+      <h2>Ärenden och aktiviteter</h2>
       <div className={todoCss.container}>
         <div className={todoCss.form}>
           <TodoForm/>

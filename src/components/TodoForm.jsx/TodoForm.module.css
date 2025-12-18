@@ -1,29 +1,33 @@
 .form {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  gap: 5px;
   height: fit-content;
 }
 
 .form input{
-  padding: 5px;
+  margin-top: 1rem;
+  padding: 0.8rem;
   border-radius: 5px;
   border: none;
   background-color: #FFFDF4;
-  color: #222;
+  color: #502100;
   width: 100%;
   box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+  border: 2px solid #fffdf4;
 }
 
 .form select{
-  padding: 5px;
+  margin-top: 1rem;
+  padding: 0.8rem;
   border-radius: 5px;
   border: none;
   background-color: #FFFDF4;
-  color: #222;
+  color: #502100;
   width: 100%;
   box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+  border: 2px solid #fffdf4;
 }
 
 .form input:focus {
@@ -31,13 +35,17 @@
     border-color: #DAE1BB;
 }
 
+.form select:focus {
+    outline: none;
+    border-color: #DAE1BB;
+}
+
 .form button {
     background-color: #FEF3E0;
-    color: #222;
+    color: #502100;
     border: none;
     border-radius: 5px;
-    padding: .5rem;
-    margin-top: 0.5rem;
+    padding: 0.8rem;
     font-weight: 500;
     transition: 0.15s ease;
 }
@@ -47,29 +55,57 @@
     background-color: #ECE1CF;
 }
 
+.timeEstimateDiv{
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.timeEstimateDiv select{
+  width: 50%;
+}
+
+.timeEstimateDiv input{
+  width: 50%;
+}
+
+.createBtns{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
 .editForm {
+  padding: 0.3rem;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .editForm input {
-    padding: 2px;
-    border-radius: 5px;
-    background-color: #FFFDF4;
-    color: #222;
-    border: 2px solid #FFFDF4;
-    font-family: "Noto Sans", sans-serif;
+  padding: 0.3rem;
+  border-radius: 5px;
+  background-color: #FFFDF4;
+  color: #502100;
+  border: 2px solid #FFFDF4;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.8rem;
 }
 
 .editForm select{
-  padding: 5px;
+  padding: 0.3rem;
   border-radius: 5px;
   border: none;
   background-color: #FFFDF4;
-  color: #222;
+  color: #502100;
   width: 100%;
   box-sizing: border-box;
+  border: 2px solid #FFFDF4;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.8rem;
 }
 
 .editForm input:focus {
@@ -77,15 +113,21 @@
     border-color: #DAE1BB;
 }
 
+.editForm select:focus {
+  outline: none;
+  border-color: #DAE1BB;
+}
+
 .editForm button {
-    background-color: #FEF3E0;
-    color: #222;
-    border: none;
-    border-radius: 5px;
-    padding: .5rem;
-    margin-top: 0.5rem;
-    font-weight: 500;
-    transition: 0.15s ease;
+  background-color: #FEF3E0;
+  color: #502100;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 0.8rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  transition: 0.15s ease;
+  font-size: 0.8rem;
 }
 
 .editForm button:hover {

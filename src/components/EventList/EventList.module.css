@@ -1,42 +1,42 @@
 .eventlist {
-    display: flex;
-    flex-direction: column;
-    background-color:#CCD5AE;
-    padding: 2rem;
-    border-radius: 25px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ccd5ae;
+  padding: 2rem;
+  border-radius: 25px;
+  width: 100%;
 }
 
 .filterbutton button {
-    background-color: #FEF3E0;
-    font-size: 0.8rem;
-    color: #222;
-    border: none;
-    border-radius: 25px;
-    padding: 0.5rem 0.8rem;
-    margin: 1rem 0 0 0.5rem;
-    font-weight: 500;
-    transition: 0.15s ease;
+  background-color: #fef3e0;
+  font-size: 0.8rem;
+  color: #502100;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 0.8rem;
+  margin: 1rem 0 0 0.5rem;
+  font-weight: 500;
+  transition: 0.15s ease;
 }
 
 .filterbutton button:hover {
-    cursor: pointer;
-    background-color: #ECE1CF;
+  cursor: pointer;
+  background-color: #ece1cf;
 }
 
 .filterbutton button.active {
-    background-color: #ECE1CF;
+  background-color: #ece1cf;
 }
 
 .filterbutton button.active:hover {
-    background-color: #ECE1CF;
+  background-color: #ece1cf;
 }
 
 .filterbutton span {
-    font-weight: 500;
-    font-size: 0.8rem;
+  font-weight: 500;
+  font-size: 0.8rem;
 }
 
 .eventlist ul {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
