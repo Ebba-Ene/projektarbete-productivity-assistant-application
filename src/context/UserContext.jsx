@@ -88,9 +88,19 @@ const UserProvider = ({ children }) => {
 
     if (!quote) {
       const fetchQuote = async () => {
-        let response = await fetch("https://dummyjson.com/quotes/random")
-        let json = await response.json()
-        setQuote(json)
+        try {
+          let response = await fetch("https://dummyjson.com/quotes/random")
+
+          if (!response.ok) {
+            throw new Error("Kunde inte hämta citat.")
+          }
+
+          let json = await response.json()
+          setQuote(json)
+        } catch (error) {
+          console.error("Fetch error:", error)
+          setQuote({id: 404, quote: "Citatet kunde inte hämtas.", author: "Error 404"})
+        }
       }
 
       fetchQuote()
