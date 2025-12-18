@@ -125,7 +125,7 @@ const HabitsPage = () => {
                   återställ
                 </button>
 
-                <p className={`${item.priority}`}>
+                <p className={s[item.priority]}>
                   <strong>prioritet:</strong> {item.priority}{" "}
                 </p>
               </div>

@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, use } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const UserContext = createContext()
 
@@ -27,7 +27,7 @@ const UserProvider = ({ children }) => {
     sessionStorage.setItem("currentUser", JSON.stringify(currentUser))
   }, [currentUser])
 
-  const addUser = (name, username, password) => {
+  const addUser = (name, username, password, setUsername, setPassword, setFirstname) => {
     if (!name.trim() || !username.trim() || !password.trim()) {
       alert("Alla fält måste fyllas i.")
       return
@@ -49,9 +49,18 @@ const UserProvider = ({ children }) => {
 
     setUsers([...users, newUser])
     setUserId(userId + 1)
+
+    setUsername("")
+    setPassword("")
+    setFirstname("")
   }
 
   const loginUser = (username, password) => {
+    if (!username.trim() || !password.trim()) {
+      alert("Alla fält måste fyllas i.")
+      return
+    }
+
     let loggedInUser = users.find(
       (user) => user.username === username && user.password === password
     )

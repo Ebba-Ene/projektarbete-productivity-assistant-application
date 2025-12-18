@@ -86,8 +86,8 @@ const HomePage = () => {
               {upcomingEvents
                 .filter((event) => event.userId === currentUser.userId)
                 .slice(0, 3)
-                .map((event, index) => (
-                  <li key={index}>
+                .map((event) => (
+                  <li key={event.id}>
                     <span className={s.date}>
                       {formatDisplayDate(event.start)}
                     </span>

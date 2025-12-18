@@ -19,12 +19,12 @@ export const validateEvent = (start, end, name) => {
     const startDate = new Date(start);
     const endDate = new Date(end);
 
-    if (!name) {
-        return "Eventet måste ha ett namn.";
+    if (!start|| !end || !name.trim()) {
+      return "Alla fält måste fyllas i."
     }
 
-    if (endDate < startDate) {
-        return "Sluttiden kan inte vara före starttiden.";
+    if (endDate <= startDate) {
+      return "Sluttiden måste vara efter starttiden.";
     }
 
     return null;

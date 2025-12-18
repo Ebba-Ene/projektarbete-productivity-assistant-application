@@ -45,15 +45,13 @@
     padding:0.5rem 0;
 }
 .låg{
-    background-color: red;
+    background-color: rgb(207, 254, 255);
 }
 .medel{
-    background-color:blue;
-    font-size:4rem;
-    color:purple;
+    background-color:#ecf798;
 }
 .hög{
-    background-color: yellow;
+    background-color: rgb(255, 183, 183);
 }
 .cardtitle{
     font-weight: bold;

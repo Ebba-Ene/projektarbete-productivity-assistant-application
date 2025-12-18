@@ -19,17 +19,20 @@ const EventForm = () => {
     const handleAdd = () => {
         const error = validateEvent(start, end, name);
         if (error) {
-            return alert(error);
+            alert(error);
+            return;
         }
         
         addEvent(currentUser.userId, start, end, name);
+        setStart(formatDateTimeLocal(new Date()))
+        setEnd(formatDateTimeLocal(new Date()))
         setName("");
     };
     
     return (
         <div className={s.eventform}>
             <h3>Skapa händelse</h3>
-            <form className={s.form} onSubmit={(e) => {
+            <form noValidate className={s.form} onSubmit={(e) => {
                 e.preventDefault()
                 handleAdd()
                 }}>
