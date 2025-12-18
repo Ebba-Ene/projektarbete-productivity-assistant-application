@@ -23,14 +23,6 @@ export const validateEvent = (start, end, name) => {
       return "Alla fält måste fyllas i."
     }
 
-    if (!name.trim()) {
-      return "Händelsen måste ha ett namn.";
-    }
-
-    if (!start || !end) {
-      return "Start- och sluttid krävs."
-    }
-
     if (endDate <= startDate) {
       return "Sluttiden måste vara efter starttiden.";
     }

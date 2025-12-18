@@ -24,6 +24,8 @@ const EventForm = () => {
         }
         
         addEvent(currentUser.userId, start, end, name);
+        setStart(formatDateTimeLocal(new Date()))
+        setEnd(formatDateTimeLocal(new Date()))
         setName("");
     };
     

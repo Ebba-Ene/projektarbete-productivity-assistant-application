@@ -12,12 +12,12 @@ const EventInputs = ({ start, end, name, setStart, setEnd, setName, isEdit, show
         if (endDate < startDate) {
           setEnd(start);
         }
-    }, [start]);
+    }, [start, end, setEnd]);
     
     return (
         <div className={`${s.inputcontainer} ${isEdit ? s.edit : s.form}`}>
             {showLabels && <label>Starttid</label>}
-            <input type="datetime-local" value={start} min={formatDateTimeLocal(now)} onChange={(e) => setStart(e.target.value)}/>
+            <input type="datetime-local" value={start} min={isEdit ? undefined : formatDateTimeLocal(now)} onChange={(e) => setStart(e.target.value)}/>
 
             {!showLabels && <span> – </span>}
             
