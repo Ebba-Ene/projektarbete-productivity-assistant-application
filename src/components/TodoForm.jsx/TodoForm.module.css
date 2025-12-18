@@ -48,6 +48,7 @@
     padding: 0.8rem;
     font-weight: 500;
     transition: 0.15s ease;
+    margin-top: 2rem;
 }
 
 .form button:hover {
