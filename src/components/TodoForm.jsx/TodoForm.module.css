@@ -110,8 +110,8 @@
 }
 
 .editForm input:focus {
-    outline: none;
-    border-color: #DAE1BB;
+  outline: none;
+  border-color: #DAE1BB;
 }
 
 .editForm select:focus {
@@ -132,6 +132,16 @@
 }
 
 .editForm button:hover {
-    cursor: pointer;
-    background-color: #ECE1CF;
+  cursor: pointer;
+  background-color: #ECE1CF;
+}
+
+.editBtns{
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.editBtns button{
+  width: 50%;
 }
