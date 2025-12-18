@@ -34,7 +34,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   
   const handleSubmit = () => {
     
-    if(category && title && timeEstimateUnit && timeEstimateNumber !== 0 && deadline && description){
+    if(category && title && timeEstimateUnit && timeEstimateNumber > 0 && deadline && description){
       
       if(editingTodo){
         editTodo(todoId, title, description, category, deadline, timeEstimateUnit, timeEstimateNumber)
@@ -61,7 +61,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   return(
   
     <form className={editingTodo ? todoCss.editForm : todoCss.form } onSubmit={handleSubmit}>
-      {editingTodo ? "" : <h3>Skapa ny todo</h3> }
+      {editingTodo ? "" : <h3>Skapa nytt ärende/aktivitet</h3> }
       <input 
         type="text" 
         value={title} 
@@ -76,30 +76,32 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         onChange={(e) => {setDescription(e.target.value)}}
       />
       
-      <input 
-        type="number" 
-        value={editingTodo ? timeEstimateNumber : timeEstimateNumber || ""} 
-        placeholder="Tidsestimat?" 
-        onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}
-      />
+      <div className={todoCss.timeEstimateDiv}>
+        <input 
+          type="number" 
+          value={editingTodo ? timeEstimateNumber : timeEstimateNumber || ""} 
+          placeholder="Tidsestimat?" 
+          onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}
+          />
 
-      {timeEstimateNumber !== 1 && 
-        <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
-          <option value="" disabled>Tidsform</option>
-          <option>minuter</option>
-          <option>timmar</option>
-          <option>dagar</option>
-        </select>
-      }
-
-      {timeEstimateNumber == 1 && 
-        <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
-          <option value="" disabled>Tidsform</option>
-          <option>minut</option>
-          <option>timme</option>
-          <option>dag</option>
-        </select>
-      }
+          {timeEstimateNumber !== 1 && 
+            <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
+              <option value="" disabled>Tidsform</option>
+              <option>minuter</option>
+              <option>timmar</option>
+              <option>dagar</option>
+            </select>
+          }
+    
+          {timeEstimateNumber == 1 && 
+            <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
+              <option value="" disabled>Tidsform</option>
+              <option>minut</option>
+              <option>timme</option>
+              <option>dag</option>
+            </select>
+          }
+      </div>
 
       <select value={category} onChange={(e) => {setCategory(e.target.value)}}>
         <option value="" disabled>Kategori</option>
@@ -113,10 +115,10 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
 
 
     {editingTodo ? 
-      <>
-        <button type="submit"> <strong>Spara redigering</strong></button> 
+      <div className={todoCss.editBtns}>
+        <button type="submit"> <strong>Spara</strong></button> 
         <button type="button" onClick={() => {stopEditing()}}>Avsluta</button>
-      </> 
+      </div> 
       : <button type="submit"> <strong>Lägg till ny todo</strong> {title}</button>
     }
     </form>

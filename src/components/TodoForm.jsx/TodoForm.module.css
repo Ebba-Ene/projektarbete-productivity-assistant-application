@@ -47,6 +47,16 @@
     background-color: #ECE1CF;
 }
 
+.timeEstimateDiv{
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.timeEstimateDiv select{
+  width: fit-content;
+}
+
 .editForm {
   display: flex;
   flex-direction: column;
@@ -54,12 +64,12 @@
 }
 
 .editForm input {
-    padding: 2px;
-    border-radius: 5px;
-    background-color: #FFFDF4;
-    color: #222;
-    border: 2px solid #FFFDF4;
-    font-family: "Noto Sans", sans-serif;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: #FFFDF4;
+  color: #222;
+  border: 2px solid #FFFDF4;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .editForm select{
@@ -73,22 +83,32 @@
 }
 
 .editForm input:focus {
-    outline: none;
-    border-color: #DAE1BB;
+  outline: none;
+  border-color: #DAE1BB;
 }
 
 .editForm button {
-    background-color: #FEF3E0;
-    color: #222;
-    border: none;
-    border-radius: 5px;
-    padding: .5rem;
-    margin-top: 0.5rem;
-    font-weight: 500;
-    transition: 0.15s ease;
+  background-color: #FEF3E0;
+  color: #222;
+  border: none;
+  border-radius: 5px;
+  padding: .5rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  transition: 0.15s ease;
 }
 
 .editForm button:hover {
-    cursor: pointer;
-    background-color: #ECE1CF;
+  cursor: pointer;
+  background-color: #ECE1CF;
+}
+
+.editBtns{
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.editBtns button{
+  width: 50%;
 }
