@@ -21,8 +21,6 @@ const HabitsPage = () => {
     }
   }, [filterClick])
 
-  console.log([filterClick])
-
   useEffect(() => {
     const orderedArr = [...display]
     if (sortClick === "sortincrease") {
@@ -32,13 +30,9 @@ const HabitsPage = () => {
     }
   }, [sortClick])
 
-  console.log([sortClick])
   useEffect(() => {
-    /* setFilterClick("all") */
-    console.log("saw change in habit state")
     setDisplay(habits)
   }, [habits])
-  console.log([habits])
 
   return (
     <div className={s.wrapper}>
