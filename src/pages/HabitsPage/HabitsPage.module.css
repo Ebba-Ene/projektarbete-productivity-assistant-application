@@ -44,6 +44,17 @@
     height:fit-content;
     padding:0.5rem 0;
 }
+.låg{
+    background-color: red;
+}
+.medel{
+    background-color:blue;
+    font-size:4rem;
+    color:purple;
+}
+.hög{
+    background-color: yellow;
+}
 .cardtitle{
     font-weight: bold;
     text-transform: uppercase;
