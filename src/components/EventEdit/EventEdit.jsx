@@ -22,7 +22,7 @@ const EventEdit = ({ event, onCancel }) => {
     }
 
     return (
-        <form className={s.editcontainer} onSubmit={(e) => {
+        <form noValidate className={s.editcontainer} onSubmit={(e) => {
             e.preventDefault()
             saveEdit()
             }}>

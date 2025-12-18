@@ -37,12 +37,8 @@ const LoginPage = () => {
           <button onClick={(e) => {
             e.preventDefault()
             logOrReg === "register"
-              ? addUser(firstname, username, password)
+              ? addUser(firstname, username, password, setUsername, setPassword, setFirstname)
               : loginUser(username, password)
-
-            setUsername("")
-            setPassword("")
-            setFirstname("")
           }}>
             {logOrReg === "register" ? "Registrera" : "Logga in"}
           </button>
