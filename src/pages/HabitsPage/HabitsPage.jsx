@@ -77,7 +77,7 @@ const HabitsPage = () => {
             <option value="sortdecrease">Stigande</option>
           </select>
         </div>
-      </div>{" "}
+      </div>
       <div className={s.mainflex}>
         <div className={s.newhabit}>{addMode && <HabitsForm />}</div>
         <div className={s.grid}>
