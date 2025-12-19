@@ -77,6 +77,10 @@
 .cardtitle{
     font-weight: bold;
     margin-bottom:1rem;
+    text-transform: lowercase;
+}
+.cardtitle:first-letter{
+    text-transform: uppercase;
 }
 .deletebtn{
     font-size: 1rem;
