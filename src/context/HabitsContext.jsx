@@ -3,7 +3,6 @@ import { createContext, useState, useEffect } from "react"
 export const HabitsContext = createContext()
 
 const HabitsProvider = ({ children }) => {
-  /* const [repetitions, setRepetitions] = useState(0) */
   const [habits, setHabits] = useState(
     JSON.parse(localStorage.getItem("habits")) || []
   )

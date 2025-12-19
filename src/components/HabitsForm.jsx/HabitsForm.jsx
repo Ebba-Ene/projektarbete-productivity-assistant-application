@@ -63,11 +63,13 @@ const HabitsForm = () => {
         />
         <label htmlFor="repetitions">Repetitioner:</label>
         <input
-          value={reps}
+          //to show placeholder until reps has been set with number
+          value={reps || ""}
           className={s.repsinput}
           type="number"
           name="repetitions"
           id="repetitions"
+          placeholder="Ange antal"
           onChange={(e) => {
             setReps(e.target.value)
           }}
