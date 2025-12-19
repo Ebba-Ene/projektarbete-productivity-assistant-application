@@ -2,7 +2,7 @@
 import { useContext, useState } from "react"
 import todoCss from "./TodoListItem.module.css"
 import { TodoContext } from "../../context/TodoContext"
-import TodoForm from "../TodoForm.jsx/TodoForm"
+import TodoForm from "../TodoForm/TodoForm"
 
 const TodoListItem = ({todo}) => {
 
@@ -12,7 +12,7 @@ const TodoListItem = ({todo}) => {
 
   return(
     <li className={todo.status ? todoCss.completeLi : todoCss.notComplete}>
-    {!editingTodo && (
+    {!editingTodo ? (
       <>
         <div className={todo.status ? todoCss.complete : ""}>
           <h3>{todo.title}</h3>
@@ -38,9 +38,7 @@ const TodoListItem = ({todo}) => {
           <button onClick={() => {setEditingTodo(true)}} className={todoCss.editBtn}>Redigera</button>   
         </div>
       </>
-    )}
-
-    {editingTodo && 
+    ) : 
       <TodoForm 
         todoId={todo.id} 
         editedTitle={todo.title} 
@@ -53,6 +51,8 @@ const TodoListItem = ({todo}) => {
         setEditingTodo={setEditingTodo}
       />
     }
+
+
     </li>
   )
 }
