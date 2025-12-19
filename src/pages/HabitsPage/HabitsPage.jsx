@@ -73,8 +73,8 @@ const HabitsPage = () => {
             }}
           >
             <option value="">Sortera efter...</option>
-            <option value="sortincrease">Fallande</option>
-            <option value="sortdecrease">Stigande</option>
+            <option value="sortincrease">Stigande</option>
+            <option value="sortdecrease">Fallande</option>
           </select>
         </div>
       </div>{" "}
@@ -94,9 +94,7 @@ const HabitsPage = () => {
                   X
                 </button>
                 <h2 className={s.cardtitle}>{item.title}</h2>
-                <p className={s.reptitle}>
-                  Repetitioner:
-                </p>
+                <p className={s.reptitle}>Repetitioner:</p>
                 <div className={s.repsflex}>
                   <button
                     className={s.repbtn}
