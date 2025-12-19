@@ -122,7 +122,7 @@ const HabitsPage = () => {
                 >
                   Återställ
                 </button>
-
+                {/*To create module.css className based on value in item.priority */}
                 <p className={s[item.priority]}>
                   <strong>Prioritet:</strong> {item.priority}{" "}
                 </p>
