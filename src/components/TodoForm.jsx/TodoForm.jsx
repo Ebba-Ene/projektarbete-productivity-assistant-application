@@ -106,7 +106,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
           type="number" 
           value={editingTodo ? timeEstimateNumber : timeEstimateNumber || ""} 
           placeholder="Tidsestimat?" 
-          onChange={(e) => {setTimeEstimateNumber(Number(e.target.value))}}
+          onChange={(e) => {setTimeEstimateNumber(e.target.value)}}
           />
 
           {timeEstimateNumber !== 1 && 
