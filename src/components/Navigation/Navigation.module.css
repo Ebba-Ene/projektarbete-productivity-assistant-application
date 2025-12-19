@@ -27,6 +27,7 @@
 .menu a:hover {
   text-decoration: underline;
 }
+
 .logout {
   background-color: #fef3e0;
   color: #502100;
@@ -37,6 +38,7 @@
   transition: 0.15s ease;
   font-weight: 500;
 }
+
 .logout:hover {
   background-color: #ece1cf;
   text-decoration: underline;
