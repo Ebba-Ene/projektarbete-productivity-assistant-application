@@ -24,7 +24,6 @@
     border:none;
     border-radius: 5px;
     transition: 0.15s ease;
-
 }
 .cancelbtn:hover{
     background-color: #EDABAB;
@@ -49,7 +48,7 @@
     border-radius:25px;
     align-items: center;
     height:fit-content;
-    padding:0.5rem 0.5rem 1rem 0.5rem;
+    padding:0.5rem 0.5rem 1.5rem 0.5rem;
 }
 .låg{
     font-size: 0.8rem;
@@ -77,7 +76,6 @@
 }
 .cardtitle{
     font-weight: bold;
-    text-transform:capitalize;
     margin-bottom:1rem;
 }
 .deletebtn{
@@ -94,6 +92,10 @@
 .deletebtn:hover{
     background-color: #EDABAB;
     cursor:pointer;
+}
+.reptitle {
+    opacity: 0.7;
+    font-size: 0.8rem;
 }
 .repbtn{
     display: flex;

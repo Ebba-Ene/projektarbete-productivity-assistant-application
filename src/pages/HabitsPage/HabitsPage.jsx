@@ -94,8 +94,8 @@ const HabitsPage = () => {
                   X
                 </button>
                 <h2 className={s.cardtitle}>{item.title}</h2>
-                <p>
-                  <strong>Repetitioner:</strong>
+                <p className={s.reptitle}>
+                  Repetitioner:
                 </p>
                 <div className={s.repsflex}>
                   <button
