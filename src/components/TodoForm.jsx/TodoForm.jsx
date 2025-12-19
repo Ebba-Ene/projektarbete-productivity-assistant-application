@@ -6,7 +6,7 @@ import { UserContext } from "../../context/UserContext"
 
 const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, editedTimeEstimateUnit, editedTimeEstimateNumber, editedDeadline, editingTodo, setEditingTodo}) => {
 
-  const {addTodo, setShow, editTodo} = useContext(TodoContext)
+  const {addTodo, editTodo} = useContext(TodoContext)
   const {currentUser} = useContext(UserContext)
 
   let userId = currentUser.userId
@@ -49,7 +49,6 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
         setDeadline("")
       }
 
-      setShow(false)
     } else{alert("Fyll i alla tomma fält")}
   }
 
