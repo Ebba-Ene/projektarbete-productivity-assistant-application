@@ -3,8 +3,6 @@ import { createContext, useEffect, useState } from "react";
 export const TodoContext = createContext()
 
 const TodoProvider = ({children}) => {
-  
-  const [show, setShow] = useState(false)
 
   const[filter, setFilter] = useState("")
   const[whatToFilter, setWhatToFilter] = useState("")
@@ -90,8 +88,6 @@ const TodoProvider = ({children}) => {
     <TodoContext value={{
       todos, 
       addTodo, 
-      show, 
-      setShow, 
       completeTodo, 
       removeTodo, 
       editTodo,
