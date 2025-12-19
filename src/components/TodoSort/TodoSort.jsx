@@ -39,7 +39,7 @@ const TodoSort = () => {
     }
 
     {sorting === "Tidsestimat" && 
-      <select value={direction} selected onChange={(e) => {setDirection(e.target.value)}}>
+      <select value={direction} onChange={(e) => {setDirection(e.target.value)}}>
         <option value="" disabled>Välj</option>
         <option value="Fallande">Kortast</option>
         <option value="Stigande">Längst</option>

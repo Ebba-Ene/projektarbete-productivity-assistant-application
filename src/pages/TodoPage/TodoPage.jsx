@@ -1,6 +1,6 @@
 
 import TodoList from "../../components/TodoList/TodoList"
-import TodoForm from "../../components/TodoForm.jsx/TodoForm"
+import TodoForm from "../../components/TodoForm/TodoForm"
 
 import todoCss from "./TodoPage.module.css"
 

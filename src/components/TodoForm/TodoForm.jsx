@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { TodoContext } from "../../context/TodoContext"
 
 import todoCss from "./TodoForm.module.css"
@@ -9,9 +9,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
   const {addTodo, editTodo} = useContext(TodoContext)
   const {currentUser} = useContext(UserContext)
 
-  let userId = currentUser.userId
-
-  const now = new Date()
+  const userId = currentUser.userId
 
   const[title, setTitle] = useState(editedTitle || "")
   const[description, setDescription] = useState(editedDescription || "")
@@ -30,7 +28,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
     return `${year}-${month}-${day}`
   }
   
-  const[deadline, setDeadline] = useState(editedDeadline || formatDateTimeLocal(now))
+  const[deadline, setDeadline] = useState(editedDeadline || formatDateTimeLocal())
   
   const handleSubmit = () => {
     
@@ -52,7 +50,6 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
     } else{alert("Fyll i alla tomma fält")}
   }
 
-//resetar värderna till de tidigare om man inte vill ändra längre
   const stop = () => {
     if(editingTodo){
       setTitle(editedTitle)
@@ -104,7 +101,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
       <div className={todoCss.timeEstimateDiv}>
         <input 
           type="number" 
-          value={editingTodo ? timeEstimateNumber : timeEstimateNumber || ""} 
+          value={timeEstimateNumber} 
           placeholder="Tidsestimat?" 
           onChange={(e) => {setTimeEstimateNumber(e.target.value)}}
           />
@@ -128,7 +125,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
           }
       </div>
 
-      <input type="date" value={deadline} min={formatDateTimeLocal(now)} onChange={(e) => setDeadline(e.target.value)}/>
+      <input type="date" value={deadline} min={formatDateTimeLocal()} onChange={(e) => setDeadline(e.target.value)}/>
 
       <div className={editingTodo ? todoCss.editBtns : todoCss.createBtns}>
         <button type="submit">{editingTodo ? "Spara" : "Lägg till"}</button> 

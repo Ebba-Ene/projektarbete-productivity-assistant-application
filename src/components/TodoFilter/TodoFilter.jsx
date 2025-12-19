@@ -13,9 +13,9 @@ const TodoFilter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(category !== ""){
+    if(filters === "Kategori"){
       filterTodo(filters, category)
-    } else {
+    } else if (filters === "Status"){
       filterTodo(filters, done)
     }
   }
