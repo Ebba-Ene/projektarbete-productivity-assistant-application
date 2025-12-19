@@ -14,12 +14,14 @@ const TodoList = () => {
   const {currentUser} = useContext(UserContext)
 
   const timeToMinutes = (time) => {
+
     const units = {minut: 1, minuter: 1, timme: 60, timmar: 60, dag: 1440, dagar: 1440}
 
     const parts = time.match(/^(\d+)\s(minut|minuter|timme|timmar|dag|dagar)$/)
 
-    if(!parts)
+    if(!parts){
       throw new Error(`'${time}' - Unexpected time format`)
+    }
       const scalar = parseInt(parts[1])
       const minutes = units[parts[2]]
 
