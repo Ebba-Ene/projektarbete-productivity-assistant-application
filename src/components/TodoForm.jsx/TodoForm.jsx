@@ -78,7 +78,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
       e.preventDefault()
       handleSubmit()
       }}>
-      {editingTodo ? "" : <h3>Skapa nytt ärende</h3> }
+      {editingTodo ? "" : <h3>Skapa ärende</h3> }
       <input 
         type="text" 
         value={title} 
@@ -131,8 +131,8 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
       <input type="date" value={deadline} min={formatDateTimeLocal(now)} onChange={(e) => setDeadline(e.target.value)}/>
 
       <div className={editingTodo ? todoCss.editBtns : todoCss.createBtns}>
-        <button type="submit">{editingTodo ? "Spara" : "Lägg till ny todo"}</button> 
-        {editingTodo ? <button type="button" onClick={() => {stop()}}>Avsluta</button> : null }
+        <button type="submit">{editingTodo ? "Spara" : "Lägg till"}</button> 
+        {editingTodo ? <button type="button" onClick={() => {stop()}}>Ångra</button> : null }
       </div> 
     </form>
   )
