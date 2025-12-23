@@ -13,28 +13,6 @@ const HabitsPage = () => {
   const [sortClick, setSortClick] = useState("")
   const [display, setDisplay] = useState([])
 
-  /* Old code for useffect */
-  /*   useEffect(() => {
-    if (filterClick && filterClick !== "all") {
-      setDisplay(habits.filter((item) => item.priority === filterClick))
-    } else {
-      setDisplay(habits)
-    }
-  }, [filterClick, habits])
-
-  useEffect(() => {
-    setSortClick("")
-  }, [filterClick])
-
-  useEffect(() => {
-    const sortArray = [...display]
-    if (sortClick === "sortincrease") {
-      setDisplay(sortArray.sort((a, b) => a.repetitions - b.repetitions))
-    } else if (sortClick === "sortdecrease") {
-      setDisplay(sortArray.sort((a, b) => b.repetitions - a.repetitions))
-    }
-  }, [sortClick, habits]) */
-
   useEffect(() => {
     console.log("useffect from latest try is running")
     const currentHabits = [...habits]
