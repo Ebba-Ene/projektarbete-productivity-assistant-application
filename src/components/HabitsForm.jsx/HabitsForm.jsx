@@ -3,7 +3,7 @@ import { HabitsContext } from "../../context/HabitsContext"
 import s from "./HabitsForm.module.css"
 import { UserContext } from "../../context/UserContext"
 
-const HabitsForm = () => {
+const HabitsForm = ({ resetChoices }) => {
   const { currentUser } = useContext(UserContext)
   const { addHabit } = useContext(HabitsContext)
 
@@ -92,6 +92,7 @@ const HabitsForm = () => {
           className={s.formbtn}
           onClick={() => {
             checkInput()
+            resetChoices()
           }}
         >
           Lägg till

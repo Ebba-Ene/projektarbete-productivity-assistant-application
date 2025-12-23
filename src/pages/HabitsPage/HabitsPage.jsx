@@ -11,9 +11,10 @@ const HabitsPage = () => {
   //added to communicate with select and set first value = ""
   const [filterClick, setFilterClick] = useState("")
   const [sortClick, setSortClick] = useState("")
-  const [display, setDisplay] = useState(habits)
+  const [display, setDisplay] = useState([])
 
-  useEffect(() => {
+  /* Old code for useffect */
+  /*   useEffect(() => {
     if (filterClick && filterClick !== "all") {
       setDisplay(habits.filter((item) => item.priority === filterClick))
     } else {
@@ -26,18 +27,36 @@ const HabitsPage = () => {
   }, [filterClick])
 
   useEffect(() => {
-    const orderedArr = [...display]
+    const sortArray = [...display]
     if (sortClick === "sortincrease") {
-      setDisplay(orderedArr.sort((a, b) => a.repetitions - b.repetitions))
+      setDisplay(sortArray.sort((a, b) => a.repetitions - b.repetitions))
     } else if (sortClick === "sortdecrease") {
-      setDisplay(orderedArr.sort((a, b) => b.repetitions - a.repetitions))
+      setDisplay(sortArray.sort((a, b) => b.repetitions - a.repetitions))
     }
-  }, [sortClick, habits])
+  }, [sortClick, habits]) */
 
-  /*   useEffect(() => {
-    setDisplay(habits)
-  }, [habits]) */
+  useEffect(() => {
+    console.log("useffect from latest try is running")
+    const currentHabits = [...habits]
+    let result = []
+    if (filterClick && filterClick !== "all") {
+      console.log("in if statement for filter")
+      result = currentHabits.filter((item) => item.priority === filterClick)
+    } else {
+      result = currentHabits
+    }
+    if (sortClick === "sortincrease") {
+      result = result.sort((a, b) => a.repetitions - b.repetitions)
+    } else if (sortClick === "sortdecrease") {
+      result = result.sort((a, b) => b.repetitions - a.repetitions)
+    }
+    setDisplay(result)
+  }, [filterClick, sortClick, habits])
 
+  const resetChoices = () => {
+    setFilterClick("")
+    setSortClick("")
+  }
   return (
     <div className={s.wrapper}>
       <h2 className={s.pagetitle}>Rutiner</h2>
@@ -83,7 +102,9 @@ const HabitsPage = () => {
         </div>
       </div>
       <div className={s.mainflex}>
-        <div className={s.newhabit}>{addMode && <HabitsForm />}</div>
+        <div className={s.newhabit}>
+          {addMode && <HabitsForm resetChoices={resetChoices} />}
+        </div>
         <div className={s.grid}>
           {display
             .filter((habit) => habit.userId === currentUser.userId)
