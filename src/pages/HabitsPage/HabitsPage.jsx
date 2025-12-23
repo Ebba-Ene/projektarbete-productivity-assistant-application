@@ -19,6 +19,10 @@ const HabitsPage = () => {
     } else {
       setDisplay(habits)
     }
+  }, [filterClick, habits])
+
+  useEffect(() => {
+    setSortClick("")
   }, [filterClick])
 
   useEffect(() => {
@@ -28,11 +32,11 @@ const HabitsPage = () => {
     } else if (sortClick === "sortdecrease") {
       setDisplay(orderedArr.sort((a, b) => b.repetitions - a.repetitions))
     }
-  }, [sortClick])
+  }, [sortClick, habits])
 
-  useEffect(() => {
+  /*   useEffect(() => {
     setDisplay(habits)
-  }, [habits])
+  }, [habits]) */
 
   return (
     <div className={s.wrapper}>
