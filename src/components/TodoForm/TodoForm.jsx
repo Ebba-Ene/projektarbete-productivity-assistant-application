@@ -106,7 +106,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
           onChange={(e) => {setTimeEstimateNumber(e.target.value)}}
           />
 
-          {timeEstimateNumber !== 1 && 
+          {timeEstimateNumber !== "1" && 
             <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
               <option value="" disabled>Tidsform</option>
               <option>minuter</option>
@@ -115,7 +115,7 @@ const TodoForm = ({todoId, editedTitle, editedCategory, editedDescription, edite
             </select>
           }
     
-          {timeEstimateNumber == 1 && 
+          {timeEstimateNumber == "1" && 
             <select value={timeEstimateUnit} onChange={(e) => {setTimeEstimateUnit(e.target.value)}}>
               <option value="" disabled>Tidsform</option>
               <option>minut</option>

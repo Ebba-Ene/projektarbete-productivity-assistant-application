@@ -25,23 +25,23 @@ const TodoList = () => {
       const scalar = parseInt(parts[1])
       const minutes = units[parts[2]]
 
-    return minutes*scalar
-    }
+      return minutes*scalar
+  }
 
     const userTodos = todos.filter(todo => todo.userId === currentUser.userId)
 
     const filterTodos = userTodos.filter(todo => {
-    if (filter === "Status" && whatToFilter === "Utförd") {
-      return todo.status === true
-    }
-    if (filter === "Status" && whatToFilter === "Ej utförd") {
-      return todo.status === false
-    }
-    if (filter === "Kategori") {
-      return todo.category === whatToFilter
-    }
-    return true
-  })
+      if (filter === "Status" && whatToFilter === "Utförd") {
+        return todo.status === true
+      }
+      if (filter === "Status" && whatToFilter === "Ej utförd") {
+        return todo.status === false
+      }
+      if (filter === "Kategori") {
+        return todo.category === whatToFilter
+      }
+      return true
+    })
   
   const sortedTodos = [...filterTodos].sort((a, b) => {
     if (sort === "Status") {
